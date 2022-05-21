@@ -1,0 +1,67 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module7/module7.html}{Module 7: Quantum circuits - Universality}\\
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/module7/problems7.html}{Module-7 Solved Problems}
+
+\begin{enumerate}
+
+\item[] \textbf{In-Class Exercise 1:}\textbf{Q.} Show that \textbf{A.}
+\begin{align*}
+     K(\delta) T(\alpha) R(\beta) T(\gamma) & = \left[\begin{array}{cc}e^{i\delta}&0\\0&e^{i\delta}\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\alpha}&0\\0&e^{-i\alpha}\end{array}\right]
+                                            \left[\begin{array}{cc}\cos\beta&\sin\beta\\-\sin\beta&\cos\beta\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\gamma}&0\\0&e^{-i\gamma}\end{array}\right]\\
+                                            & = \left[\begin{array}{cc}e^{i(\delta+\alpha)}&0\\0&e^{i(\delta-\alpha)}\end{array}\right]
+                                            \left[\begin{array}{cc}\cos\beta&\sin\beta\\-\sin\beta&\cos\beta\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\gamma}&0\\0&e^{-i\gamma}\end{array}\right]\\
+                                            & = \left[\begin{array}{ll}e^{i(\delta+\alpha)\cos\beta}& e^{i(\delta+\alpha)\sin\beta}\\
+                                            -e^{i(\delta-\alpha)\sin\beta}&e^{i(\delta-\alpha)\cos\beta}\end{array}\right]
+                                            \left[\begin{array}{cc}e^{i\gamma}&0\\0&e^{-i\gamma}\end{array}\right]\\    
+                                            & = \left[\begin{array}{cc}
+                                            e^{i(\delta+\alpha+\gamma)} \cos \beta & e^{i(\delta+\alpha-\gamma)} \sin \beta \\
+                                            -e^{i(\delta-\alpha+\gamma)} \sin \beta & e^{i(\delta-\alpha-\gamma)} \cos \beta
+                                            \end{array}\right]
+\end{align*}
+   
+
+\item[] \textbf{In-Class Exercise 2:} \textbf{Q.} What parameter values for $\alpha, \beta, \gamma, \delta$ result in the Hadamard gate? \textbf{A.}
+\begin{align*}
+                                    & \left[\begin{array}{ll}e^{i \theta_{00}} \cos \beta & e^{i \theta_{01}} \sin \beta \\
+                                    -e^{i \theta_{10}} \sin \beta & e^{i \theta_{11}} \cos \beta\end{array}\right]\\
+    \delta+\alpha+\gamma            & = \theta_{00} \\
+    \delta+\alpha-\gamma            & = \theta_{01} \\
+    \delta-\alpha+\gamma            & = \theta_{10} \\
+    \delta-\alpha-\gamma            & = \theta_{11} \\
+    \alpha                          & = \frac{-\pi}{2}\\
+    \beta                           & = \frac{\pi}{4}\\
+    \gamma                          & = 0\\
+    \delta                          & = \frac{\pi}{2}\\
+    \left[\begin{array}{ll}
+    e^{0}\cos\frac{\pi}{4}&
+    e^{0}\sin\frac{\pi}{4}\\
+    -e^{i\pi}\sin\frac{\pi}{4}&
+    e^{i\pi}\cos\frac{\pi}{4}
+    \end{array}\right]              & = \frac{1}{\sqrt{2}}\left[\begin{array}{ll}1&1\\1&-1\end{array}\right]
+\end{align*}
+
+\item[] \textbf{In-Class Exercise 3:} \textbf{Q.} The first four were shown earlier. Prove the latter two using matrix representations. \textbf{A.}
+\begin{align*}
+    X R(\beta) X    & = \left[\begin{array}{ll}0&1\\1&0\end{array}\right]
+                    \left[\begin{array}{ll}\cos\beta&\sin\beta\\-\sin\beta&\cos\beta\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}-\sin\beta&\cos\beta\\\cos\beta&\sin\beta\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}\cos\beta&-\sin\beta\\\sin\beta&\cos\beta\end{array}\right]\\
+                    & = R(-\beta) \\
+    X T(\alpha) X   & = \left[\begin{array}{ll}0&1\\1&0\end{array}\right]
+                    \left[\begin{array}{ll}e^{i\alpha}&0\\0&e^{-i\alpha}\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}0&e^{-i\alpha}\\e^{i\alpha}&0\end{array}\right]
+                    \left[\begin{array}{ll}0&1\\1&0\end{array}\right]\\
+                    & = \left[\begin{array}{ll}e^{-i\alpha}&0\\0&e^{i\alpha}\end{array}\right]\\ 
+                    & = T(-\alpha)
+\end{align*}
+
+\end{enumerate}
+\end{document}

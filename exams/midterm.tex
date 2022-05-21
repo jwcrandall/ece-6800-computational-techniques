@@ -1,0 +1,250 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\begin{comment}
+
+\subsection{Prep}
+
+\begin{itemize}
+\item cloud versus edge
+\item gradient descent
+\itme perceptron
+\item hashing
+\item signal processing
+\item matrix computation
+\item operation benchmarks, operation per system per joule
+\item generative adversarial neural networks
+\end{itemize}
+
+\subsubsection{Introduction}
+\subsubsection{Supervised ML}
+Probabilistic Learning Model
+$$\epsilon \triangleq \mathbb{E}_{(x, y) \sim \mathcal{D}}[\ell(y, f(x))]=\sum_{(x, y)} \mathcal{D}(x, y) \ell(y, f(x))$$
+Our training error is simply our average error over the training data. 
+$$\hat{\epsilon} \triangleq \frac{1}{N} \sum_{n=1}^{N} \ell\left(y_{n}, f\left(\boldsymbol{x}_{n}\right)\right)$$
+
+\subsubsection{Perceptron}
+Input vector $X_i$, weights $w_i$, bias $b$, activation function $f$
+$$f\left(\sum_{i} w_{i} x_{i}+b\right)$$
+
+\begin{algorithm}
+\caption{PerceptronTrain(\textbf{D}, MaxIter)}
+\begin{algorithmic}[1]
+\State $w_d \leftarrow 0, \text{ for all } d = 1 ... D$ 
+\State $b \leftarrow 0$
+\For{$iter = 1 ... MaxIter$}
+    \ForAll{$(x, y) \in \mathbf{D}$}
+        \State $a \leftarrow \sum_{d=1}^{D} w_d x_d +b$
+        \If{$ya \leq 0$}{
+            \State $w_d \leftarrow w_d + yx_d, \text{ for all } d = 1...D$
+            \State $b \leftarrow b + y$
+        \EndIf
+    \EndFor
+\EndFor
+\State \Return $w_0, w_1, ..., w_D, b$
+\end{algorithmic}
+\end{algorithm}
+
+Decision boundary where activation changes from -1 to +1
+$$\mathcal{B}=\left\{x: \sum_{d} w_{d} x_{d}=0\right\}$$
+
+\subsubsubsection{Spiking Neural Networks}
+Signals are idieally represented by series of delta functions where the inputs and outputs, for spike times $\tau_j$ take the form 
+$$x(t)=\sum_{j=1}^{n} \delta\left(t-\tau_{j}\right)$$
+
+\subsubsection{Neural Networks}
+\subsubsubsection{Gradient Decent}
+Define differentiable function $F(x)$ with gradient $\nabla F\left(\mathbf{x}_{n}\right)$ and step on gradient $-\gamma_{n} \nabla F\left(\mathbf{x}_{n}\right)$ where
+
+$$\gamma_{n}=\frac{\left|\left(\mathbf{x}_{n}-\mathbf{x}_{n-1}\right)^{T}\left[\nabla F\left(\mathbf{x}_{n}\right)-\nabla F\left(\mathbf{x}_{n-1}\right)\right]\right|}{\left\|\nabla F\left(\mathbf{x}_{n}\right)-\nabla F\left(\mathbf{x}_{n-1}\right)\right\|^{2}}$$
+
+and where $\gamma \in \mathbb{R}_{+}$ and $n \in N>0$ which equals the number of steps. With an initial guess $x_0$, and a sequence of steps $\mathbf{x}_{0}, \mathbf{x}_{1}, \mathbf{x}_{2}, \ldots$, such that 
+
+$$\mathbf{x}_{n+1}=\mathbf{x}_{n}-\gamma_{n} \nabla F\left(\mathbf{x}_{n}\right), n \geq 0$$
+
+resulting in a monotonic sequence $F\left(\mathbf{x}_{0}\right) \geq F\left(\mathbf{x}_{1}\right) \geq F\left(\mathbf{x}_{2}\right) \geq \cdots$ that converges to a desired local minimum.
+
+\subsubsubsection{Back Propagation}
+
+\begin{aligned}
+&\delta^{L}=\nabla_{a} C \odot \sigma^{\prime}\left(z^{L}\right) \\
+&\delta^{l}=\left(\left(w^{l+1}\right)^{T} \delta^{l+1}\right) \odot \sigma^{\prime}\left(z^{l}\right) \\
+&\frac{\partial C}{\partial b_{j}^{l}}=\delta_{j}^{l} \\
+&\frac{\partial C}{\partial w_{j k}^{l}}=a_{k}^{l-1} \delta_{j}^{l}
+\end{aligned}
+
+\subsubsubsection{Nonlinear Activation Function (NLAF)}
+
+Logistic function where $x_0$, the $x$ value of the sigmoid's midpoint, $L$, the curve's maximum value, $k$, the logistic growth rate or steepness of the curve resulting in 
+
+$$f(x)=\frac{L}{1+e^{-k\left(x-x_{0}\right)}}$$
+
+\subsubsection{Introduction Theory}
+
+\subsubsubsection{Communication Limits}
+Shannon limit $C \sim \log _{2}(1+S N R)$, Density in electrical interconnects $B \propto A / \ell^{2}$
+
+\subsubsubsection{Communication Limits}
+Options for multiplexing, signal noise ratio (SNR) $\mathrm{C} \sim \mathrm{M} \times \mathrm{B} \times 2 \log _{2}(\mathrm{SNR})$
+
+\subsubsection{Hardware for AI}
+Biological Plausibility $x(t)=\sum_{j=1}^{n} \delta\left(t-\tau_{j}\right)$
+\subsubsection{Optics for AI}
+Montgomery Multiplication $\bar{C}=\frac{\bar{a} \bar{b}+\left(\bar{a} \bar{b} M^{-1} \bmod R\right) M}{R}$
+
+\subsubsection{Photonic Integrated Hardware}
+
+\end{comment}
+
+\subsection{Exam}
+
+\subsubsection{Warm-ups}
+\begin{enumerate}
+
+\item A key feature of neural network for AI is that they offer train ability. Briefly (1-2 sentences) state \textbf{Q a)} why is training essential for "learning" such as in machine learning. \textbf{A a} Training is the learning process by which the weights in your perceptron (core building block of NN) get rewritten based on activation function. This process is iterative and allows the algorithm to improve on its classification of data points. Training more generally in learning is iteratively trying a solution, testing it against a known truth, and then modifying your value to improve your results. \textbf{Q b)} Then, discuss (2-3 sentences) what challenges exist when training neural networks. \textbf{A b} one of the core challenges in training is over fitting, this is the process where you create an decision boundary in your data set that two closely represents that data set that you have been training on. The result is that the trained model does not generalize well because when you pass it novel data it categorizes it based almost entirely on the unique data you used during training. Another challenge in training is the type of non-linear activation function that you use to decide if a value is correct or incorrect and therefore requires additional iterative modification. The wide variety of mathematical functions available means that you must develop a deep understand of the modality of data you are using and the characteristics of it that make that NLAF useful.
+
+\item For training a perceptron or neural network, the neurons(s) perform a weighted sum of the input vectors. \textbf{Question:} if $y = \vec{y}\vec{x}$ correct, or $y=\vec{w^T}\vec{x}$? Tip: here the bold annotation refers to a vector and the superscript T to the transposed vector (also known as 'augmented'). State your answer either by explaining, or a calculation. \textbf{A} For the peceptron the Input vector $X_i$, weights vector $w_i$, bias $b$, activation function $f$ are defined as follows
+$$f\left(\sum_{i} w_{i} x_{i}+b\right)$$
+
+If both vectors for example are 4x1, then you would need the technically you would need the transpose of the weights vector so you could perform a 1x4 X 4x1 matrix (vector) multiplication.
+
+\item Neural networks are not new, and are in fact known since the 1950's. Why do we have an AI revolution now? State 3 key factors that are \textbf{a)} required for machine-learning, and \textbf{b} give an actual example (product/name/option etc). \textbf{A} 1. Plentiful data and a desire to monetize that data through prediction products to the same level of success the Google and Facebook were able to in the 2000's through their adds driven business models. 2. The success of Alex Net and other Deep Neural Networks that have been experiencing and parameters explosion since 2012 and have out performed other algorithms at image classification and speed recognition. 3. A large open source community build around python that has made many Machine Learning Neural network algorithms accessable to novice users. 
+
+\item \textbf{Q} Training Algorithm and Non linearity: In class, we discussed training algorithm based on gradient descent algorithm and signal back-propagation. We encountered a possible issue known as vanishing (or exploding) gradients. Briefly state or explain the issue, and then state and briefly discuss a possible solution to it. \textbf{A} For gradient decent you define differentiable function $F(x)$ with gradient $\nabla F\left(\mathbf{x}_{n}\right)$ and step on gradient $-\gamma_{n} \nabla F\left(\mathbf{x}_{n}\right)$ where
+
+$$\gamma_{n}=\frac{\left|\left(\mathbf{x}_{n}-\mathbf{x}_{n-1}\right)^{T}\left[\nabla F\left(\mathbf{x}_{n}\right)-\nabla F\left(\mathbf{x}_{n-1}\right)\right]\right|}{\left\|\nabla F\left(\mathbf{x}_{n}\right)-\nabla F\left(\mathbf{x}_{n-1}\right)\right\|^{2}}$$
+
+and where $\gamma \in \mathbb{R}_{+}$ and $n \in N>0$ which equals the number of steps. With an initial guess $x_0$, and a sequence of steps $\mathbf{x}_{0}, \mathbf{x}_{1}, \mathbf{x}_{2}, \ldots$, such that 
+
+$$\mathbf{x}_{n+1}=\mathbf{x}_{n}-\gamma_{n} \nabla F\left(\mathbf{x}_{n}\right), n \geq 0$$
+
+resulting in a monotonic sequence $F\left(\mathbf{x}_{0}\right) \geq F\left(\mathbf{x}_{1}\right) \geq F\left(\mathbf{x}_{2}\right) \geq \cdots$ that converges to a desired local minimum. The problem arises when you quickly reach a local minimum and your gradient goes to zero. This is fine of your data is generally "convex" in structure meaning that no matter where you start your descent you are roughly guaranteed to arrive at the true minimum. However most data does not have this property and has many local minimums. One solution is to use Stochastic gradient descent where Select initial random guess, but pick additional starting guesses from sample space and repeat finding min for entire data set. From all of these iterations you select the lowest local minimum, which is likely to be closer to the true minimum.
+
+\end{enumerate}
+
+\subsubsection{Electronic AI Hardware}
+\begin{enumerate}
+\item Memory
+    \begin{enumerate}
+    \item \textbf{Q} What is the role of Memory in machine learning and neural networks? What its role in machine intelligence (in general) and learning? \textbf{A} Its primary role is the volatile storage for the purpose of iteratively reading and writing weights as a machine learning algorithm is being trained. In general for machines or other systems to learn, memory allows experiences from the past to be recalled and then used in the present.
+    \item \textbf{Q} What performance trade offs exist for memory types (at the physical hardware level). \textbf{A} Memory types can be considered along an axis which starts with volatility (does not persist without power or for very long) read and write time, and storage time, and goes to non volatile, longer read and write times, and larger storage space. Within traditional electronic hardware typically you have multiple layers of volatile caches, followed by random access memory, followed by a jump from volatile to non volatile, followed by disk, and then potentially tapes.
+    \item \textbf{Q} ... and how do these trade offs impact AI systems. For example, is an ever-faster WRITE-speed desired for AI systems of a longer retention time. \textbf{A} If you are only using a trained model to make predictions on a data set then fast read times are good, if you are training, then improvements in both read and write times and good, the benefit is that if you can increase your clock speed you can decrease your retation time, however you also need to speed up your time to access the data which can encounter I/O bottle necks.
+    \end{enumerate}
+
+    \item AI Systems performance. Refer to the table below, and fill in the missing data and answer the following questions:
+    \begin{enumerate}
+    \item \textbf{Q} Which AI system has the highest MAC rate? \text{A} MAC $a+(b \times c)$ is defined by inputs times frequency so in this case inputs = signal multiplexing factor times bit resolution, and frequency is clock speed. So system 2 has the highest MAC rate. 
+    \item \textbf{Q} Which one is most energy efficient? \text{A} Energy efficiency is defined in GMAC/J, J = Ws, and system MAC rate is in GMAC/s so Efficiency is defined by System MAC Rate / Power Consumption so system 1 is the most efficient. 
+    \item \textbf{Q} Which one would you use for a data-center (cloud) vs. which one for a drone (network edge)? Why? You would want to use the efficient system 3 within and edge application, and the inefficient system 1 in the cloud if you have power concerns.
+    \item \textbf{Q} Which one do you think could be an electronic system? Which one could be a photonic-accelerated AI system? Why? The 3rd system is most likely photonic since it has the highest clock speed and lowest system latency. The other two are mostly likely electronic.
+    
+    *Gbps = Giga bits per second = $10^9$ bits per second\\
+    **Assume the signal is an on-off keying (OOK). Meaning 1x bit MAC\\
+    ***Performing the inference tasks (not training).\\
+    
+    \end{enumerate}
+    \begin{center}
+    \begin{tabular}{||c c c c||} 
+     \hline
+     AI System & Clock speed* (Gbps) & Signal Multiplexing factor & Bit resolution \\ [0.5ex] 
+     \hline\hline
+     1 & 5 & 1 & 8 \\ 
+     \hline
+     2 & 1 & 100 & 4 \\
+     \hline
+     3 & 40 & 4 & 1 \\ [1ex] 
+     \hline
+    \end{tabular}
+    \end{center}
+    
+    \begin{center}
+    \begin{tabular}{||c c c c||} 
+     \hline
+     AI System & System MAC Rate ** & Power Consumption n (W) & Efficiency (GMAC/J) \\ [0.5ex] 
+     \hline\hline
+     1 & 40 GMAC/s & 100 & 0.4 \\ 
+     \hline
+     2 & 400 GMAC/s & 100 & 4 \\
+     \hline
+     3 & 160 GMAC/s & 10 & 16 \\ [1ex] 
+     \hline
+    \end{tabular}
+    \end{center}
+    
+    \begin{center}
+    \begin{tabular}{||c c c c||} 
+     \hline
+     AI System & System Latency & Use case \\ [0.5ex] 
+     \hline\
+     1 & ms & cloud \\ 
+     \hline
+     2 & us & cloud\\
+     \hline
+     3 & ns & edge \\ [1ex] 
+     \hline
+    \end{tabular}
+    \end{center}
+    
+    \item Neuromorphic AI Systems In class we discussed this figure below (not shown).
+    \begin{enumerate}
+        \item \textbf{Q} Looking at the region (the white box) for 'Neuromorphic Electronics', why are these electronic ASICs so much more efficient as compared to digital compute systems? \textbf{A} The ASICs tend to have fewer I/O interactions with memory, or even disk, and spend more of there time performing the arithmetic of the algorithm without needing to read and write external to the chip.
+        \item \textbf{Q} The right side of the figure shows photonic approaches to AI: Why is optical information processing suggested to be so much 'better' than electronics *(either digital or neuromicrphic)? Give several reasons for photonics being superior, and state why electronics has fundamental limits in regards to signal and MAC processing. Finally, what challenges do optical AI hardware accelerators have? \textbf{A}. Bosonic Photons can be clocked in the Terahertz regime, Fermionic electronics would encounter heat issue as these frequencies, photonics can also be multiplexed when adds a physical layer of parallelization that electronics struggles to replicate, and photonics can operate in the atto joule regime.
+    \end{enumerate}
+    
+\end{enumerate}
+\subsubsection{Matrix-Multiplication Drill and Conv. Neural Network for Image Edge Detection}
+\begin{enumerate}
+    \item \textbf{Q} Perform this matrix-matrix  multiplication. What type of data may the input matrix represent? \textbf{A} Pixel values on a gray scale image.
+    
+    \begin{bmatrix} 
+	1 & 2 & 2 \\
+	3 & 4 & 5\\
+	6 & 7 & 8 \\
+	\end{bmatrix}
+	\times
+	\begin{bmatrix} 
+	4 & 3 & 7 \\
+	5 & 5 & 6\\
+	3 & 4 & 4 \\
+	\end{bmatrix}
+	=
+	\begin{bmatrix} 
+	20 & 21 & 27 \\
+	47 & 49 & 65\\
+	83 & 85 & 116 \\
+	\end{bmatrix}
+	
+	\item \textbf{Q} Repeat for this vector-matrix multiplication. Again, what type of input data does the vector represent (for example)? \textbf{A} The input vector could represent a trained kernel that will be strided across the matrix.
+	
+	\begin{bmatrix} 
+	3 & 4 & 5 \\
+	\end{bmatrix}
+	\times
+	\begin{bmatrix} 
+	1 & 2 & 2 \\
+	3 & 4 & 5\\
+	6 & 7 & 8 \\
+	\end{bmatrix}
+	=
+	\begin{bmatrix} 
+	45 & 57 & 66 \\
+	\end{bmatrix}
+	
+	\item Images and Information Processing using CNN: We talked in class about iamge processing using convolutions. A convolutional neural network (CNN) is performing exactly that - a mathematical convolution on the incoming data (e.g. image) to extract several 'features'. One of these features are to detect the edges of an image. Let's practice that...
+	
+	\begin{enumerate}
+	    \item \textbf{Q} What function foes the kernel have within the CNN? What is its purpose. \textbf{A} The kernel is the trained tensor of data that is a generalization of the training data used when iterative building it. Once it performing at a high accuracy, the kernel can be used against new data to extract useful features, and insights, without having to modify it (in some algorithms).
+	    \item \textbf{Q} So is there then one kernel in image processing or more then one? \textbf{A} Multiple kernels can be used but even if only one is being used it will go thought multiple states as it is being trained.
+	    \item \textbf{Q} Say, we want to perform edge-detection of this image below, how would a good edge detection kernel look like? \textbf{A} If we used the Fourier optics systems discussed in class than we would want two Digital Mirror Modulators to generate a Fourier transformation of the original image which would act as the kernel, and then could be used to produce a convolution of the original image which filters for edges.
+	    \item \textbf{Q} Go blackboard and download the George Washington image data (see below). Now apply your edge detection kernel from above. You can use whichever data program you like. \textbf{A ran out of time} 
+ 	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Bonus 1} \textbf{Q} A generic goal of inference (i.e. classification) tasks in Machine-Learning is to achieve higher accuracy of correctly classifying unseen data. Discuss why having physical ‘noise’ in the system actually helps with respect to training efficiency, and hence improves accuracy of the AI system. In addition to training efficiency, what other positive effects does ‘noise’ offer to AI systems, why/how? \textbf{A} In reservoir computing, the noise generating random effect of the reservoir can help create a nonlinear system that is then used for trained weights in an output kernel and helps to prevent over fitting.
+
+\subsubsection{Bonus 2} Machine Intelligence - Process
+\begin{enumerate}
+    \item \textbf{Q} What would you fill-in for 3 question marks? \text{A} Prior knowledge = weights, data = vector or matrix being run through the ML function (perceptron), knowledge = insight in the form of updated weights, knowledge = insights in the form of updated weights which will be trained again or used as is. \textbf{See handwritten supplement for diagram}
+\end{enumerate}
+
+\end{document}

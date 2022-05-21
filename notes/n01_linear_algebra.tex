@@ -1,0 +1,1698 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/quantum/modules/review/lin-review/lin-review.html}{Linear Algebra Review}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review1.html}{Linear Algebra Review Basics Part I}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review2.html}{Linear Algebra Review Basics Part II}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review3.html}{Linear Algebra Review Basics Part III}
+
+\href{https://www2.seas.gwu.edu/~simhaweb/lin/modules/review/review4.html}{Linear Algebra Review Basics Part IV}
+
+\subsection{Relationship Between Linear Algebra and Quantum Computing}
+
+The parts of standard linear algebra we will cover in the review will include vectors, matrices, matrix-vector multiplication, matrix-matrix multiplication, span, basis, linear independence, eigenvectors, and eigenvalues.
+
+\subsection{Review of Basic Linear Algebra Parts I, II, III, and IV}
+    
+    \subsubsection{What are Vectors and what do you do with them?}
+    
+    \begin{enumerate}[]
+        \item Scalar multiplication $$\begin{aligned} \alpha \mathbf{u} &=\alpha\left(u_{1}, \ldots, u_{n}\right) \\ &=\left(\alpha u_{1}, \ldots, \alpha u_{n}\right) \end{aligned}$$
+        
+        \item Vector addition $$\begin{aligned} \mathbf{u}+\mathbf{v} &=\left(u_{1}, u_{2}, \ldots, u_{n}\right)+\left(v_{1}, v_{2}, \ldots, v_{n}\right) \\ &= \left(u_{1}+v_{1}, u_{2}+v_{2}, \ldots, u_{n}+v_{n}\right) \end{aligned}$$
+        
+        \item Vector dot-product $$\begin{aligned} \mathbf{u} \cdot \mathbf{v} &=\left(u_{1}, u_{2}, \ldots, u_{n}\right) \cdot\left(v_{1}, v_{2}, \ldots, v_{n}\right) \\ &=u_{1} v_{1}+u_{2} v_{2}+\ldots+u_{n} v_{n} \end{aligned}$$
+    \end{enumerate}
+    
+    Scalars changes the magnitude of the vector, addition combines vectors, and dot-products transform multiple vectors into a scalar. Suppose we have three 3D vectors 
+    
+    $$\begin{aligned} \mathbf{u} &=\left(u_{1}, u_{2}, u_{3}\right) \\ \mathbf{v} &=\left(v_{1}, v_{2}, v_{3}\right) \\ \mathbf{w} &=\left(w_{1}, w_{2}, w_{3}\right) \end{aligned}$$
+    
+    and three scalars $\alpha, \beta, \gamma$, the linear combination becomes
+    
+    $$\begin{aligned} \alpha \mathbf{u}+\beta \mathbf{v}+\gamma \mathbf{w} &=\alpha\left(u_{1}, u_{2}, u_{3}\right)+\beta\left(v_{1}, v_{2}, v_{3}\right)+\gamma\left(w_{1}, w_{2}, w_{3}\right) \\ &=\left(\alpha u_{1}+\beta v_{1}+\gamma w_{1}, \alpha u_{2}+\beta v_{2}+\gamma w_{2}, \alpha u_{3}+\beta v_{3}+\gamma w_{3}\right) \end{aligned}$$
+    
+    Whenever you "think" vector, you should think "column" style and write $\mathbf{v}=(1,2,3)$ instead of 
+    
+    $$\mathbf{v}=\left[\begin{array}{l}1 \\ 2 \\ 3\end{array}\right].$$
+    
+    Sometimes, we'll emphasize the "row" style when it's useful by explicitly transposing the column into a row vector $\mathbf{v}^{T}=\left[\begin{array}{lll}1 & 2 & 3\end{array}\right]$.
+    
+    \subsubsection{Dot Products, Lengths, Angles, Orthogonal Vectors}
+    
+    We can express the length of a vector with a dot-product:
+    
+    $$\begin{aligned}|\mathbf{u}| &=\text { length of } \mathbf{u} \\ &=\sqrt{\mathbf{u} \cdot \mathbf{u}} \end{aligned}$$
+    
+    The dot product gives us a relation with the angle between two vectors
+    
+    $$\mathbf{u} \cdot \mathbf{v}=|\mathbf{u}||\mathbf{v}| \cos (\theta)$$
+    
+    because when $\mathbf{u}=\mathbf{v}$ then 
+    
+    $$ \begin{aligned} \cos (\theta) &=\frac{\mathbf{u} \cdot \mathbf{v}}{|\mathbf{u}||\mathbf{v}|} \\
+    &=\frac{\mathbf{u} \cdot \mathbf{u}}{|\mathbf{u}||\mathbf{u}|} \\
+    &=\frac{|\mathbf{u}|^{2}}{|\mathbf{u}|^{2}} \\
+    &=1
+    \end{aligned}$$
+    
+    When $\theta=0, \cos (\theta)=1$ and is the largest possible value of the cosine. At the other extreme, the smallest value of the cosine is $0$ when the angle is $90^\circ$. Since $\cos \left(90^{\circ}\right)=0$, we can use this to define orthogonality with dot products where two vectors $\mathbf{u}$ and $\mathbf{v}$ are \textit{orthogonal} if their dot product is zero $\mathbf{u} \cdot \mathbf{v}=0$.
+    
+    \subsubsection{Matrix-Vector Multiplication and what it means}
+    
+    Think of the left side as the linear combination and the right side as the vector that results from the linear combination. Matrices came about by visually reorganizing the left side into 
+    
+    $$\alpha\left[\begin{array}{l}u_{1} \\ u_{2} \\ u_{3}\end{array}\right]+\beta\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]+\gamma\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]=\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{1} & v_{2} & w_{2} \\ u_{1} & v_{3} & w_{3}\end{array}\right]\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right]$$
+    
+    Since it's the same left-side (just visually) reorganized, it must equal the original right side:
+
+    $$\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{2} & v_{2} & w_{2} \\ u_{3} & v_{3} & w_{3}\end{array}\right]\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right]=\left[\begin{array}{l}\alpha u_{1}+\beta v_{1}+\gamma w_{1} \\ \alpha u_{2}+\beta v_{2}+\gamma w_{2} \\ \alpha u_{3}+\beta v_{3}+\gamma w_{3}\end{array}\right]$$
+    
+    If we give each of these names:
+    
+    $$\begin{aligned} \mathbf{A} & \triangleq\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{1} & v_{2} & w_{2} \\ u_{1} & v_{3} & w_{3}\end{array}\right] \\ \mathbf{x} & \triangleq\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right] \\ \mathbf{b} & \triangleq\left[\begin{array}{l}\alpha u_{1}+\beta v_{1}+\gamma w_{1} \\ \alpha u_{2}+\beta v_{2}+\gamma w_{2} \\ \alpha u_{3}+\beta v_{3}+\gamma w_{3}\end{array}\right] \end{aligned}$$
+    
+    Then, written in these symbols, we have $\mathbf{A x}=\mathbf{b}$, of which there are two meanings. In the first one, $\mathbf{x}$ is only incidentally a vector, and contains the scalars in the linear combination. The left side of $\mathbf{A} \mathbf{x}=\mathbf{b}$ unpacks into 
+    
+    $$\left[\begin{array}{lll}u_{1} & v_{1} & w_{1} \\ u_{2} & v_{2} & w_{2} \\ u_{3} & v_{3} & w_{3}\end{array}\right]\left[\begin{array}{l}\alpha \\ \beta \\ \gamma\end{array}\right]=\alpha\left[\begin{array}{l}u_{1} \\ u_{2} \\ u_{3}\end{array}\right]+\beta\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]+\gamma\left[\begin{array}{l}v_{1} \\ v_{2} \\ v_{3}\end{array}\right]$$
+    
+    whereas the right side is the result vector (of the linear combination):
+    
+    $$\left[\begin{array}{l}\alpha u_{1}+\beta v_{1}+\gamma w_{1} \\ \alpha u_{2}+\beta v_{2}+\gamma w_{2} \\ \alpha u_{3}+\beta v_{3}+\gamma w_{3}\end{array}\right]$$
+    
+    When we ask whether there is an $x$ vector such that $\mathbf{A x}=\mathbf{b}$, we are asking whether there is some linear combination of the column vectors to produce the vector $\mathbf{b}$. The second interpretation is a matrix transforms a vector
+    
+    $$\left[\begin{array}{ccc}\cdots & \mathbf{r}_{1} & \cdots \\ \cdots & \mathbf{r}_{2} & \cdots \\ \vdots & \vdots & \vdots \\ \cdots & \mathbf{r}_{m} & \cdots\end{array}\right] \mathbf{x}=\left[\begin{array}{c}\mathbf{r}_{1} \cdot \mathbf{x} \\ \mathbf{r}_{2} \cdot \mathbf{x} \\ \vdots \\ \mathbf{r}_{m} \cdot \mathbf{x}\end{array}\right]$$
+    
+    \subsubsection{Solving Ax=b Exactly and Approximately}
+    
+    In a "vector stretch"
+    
+    $$x_{1}\left[\begin{array}{l}1 \\ 4\end{array}\right]+x_{2}\left[\begin{array}{l}3 \\ 2\end{array}\right]=\left[\begin{array}{r}7.5 \\ 10\end{array}\right]$$
+    
+    we ask is there a linear combination (values of $x_1$,$x_2$) such that the linear combination on left yields the vector on the right. In this case the solution is $x_{1}=1.5, \quad x_{2}=2$. In a case where there is no solution 
+    
+    $$x_{1}\left[\begin{array}{l}1 \\ 2\end{array}\right]+x_{2}\left[\begin{array}{l}3 \\ 6\end{array}\right]=\left[\begin{array}{r}7.5 \\ 10\end{array}\right]$$
+    
+    we notice that the vector (3,6), which is the second column is in fact a multiple of the first column (1,2). Thus, it so happens that
+    
+    $$3\left[\begin{array}{l}1 \\ 2\end{array}\right]-\left[\begin{array}{l}3 \\ 6\end{array}\right]=\left[\begin{array}{l}0 \\ 0\end{array}\right]$$
+    
+    where 
+    
+    $$x_{1}\left[\begin{array}{l}1 \\ 2\end{array}\right]+x_{2}\left[\begin{array}{l}3 \\ 6\end{array}\right]=\left[\begin{array}{l}0 \\ 0\end{array}\right]$$
+    
+    has a non-zero solution $\left(x_{1}, x_{2}\right)=(3,-1)$. This means that the two columns are not independent by the definition of linear independence, and the matrix 
+    
+    $$\left[\begin{array}{ll}1 & 3 \\ 2 & 6\end{array}\right]$$
+    
+    is not full-rank. The Reduced Row Echelon Form (RREF) where 
+    
+    \begin{enumerate}
+        \item Nonzero rows appear above the zero rows.
+        \item In any nonzero row, the first nonzero entry is a one (called the leading one).
+        \item The leading one in a nonzero row appears to the left of the leading one in any lower row.
+        \item If a column contains a leading one, then all the other entries in that column are zero.
+    \end{enumerate}
+    
+    for 
+    
+    $$\left[\begin{array}{ll}1 & 3 \\ 2 & 6\end{array}\right]$$
+    
+    using elementary row operations
+    
+    \begin{enumerate}
+        \item Divide a row by a nonzero number.
+        \item Subtract a multiple of a row from another row.
+        \item Interchange two rows
+    \end{enumerate}
+    
+    (Row 2) - 2(Row 1) gives
+    
+    $$\left[\begin{array}{ll}1 & 3 \\ 0 & 0\end{array}\right]$$
+
+    which contains one pivot. A pivot is any row that does not contain only zeros and its first non zero number is a 1. What do we do when no solution is possible? Consider $\mathbf{A x}=\mathbf{b}$ and $\mathbf{A}$'s columns
+    
+    $$\mathbf{A}=\left[\begin{array}{cccc}\vdots & \vdots & \ldots & \vdots \\ \mathbf{c}_{1} & \mathbf{c}_{2} & \ldots & \mathbf{c}_{n} \\ \vdots & \vdots & \ldots & \vdots\end{array}\right]$$
+    
+    In general, if $\mathbf{A} \mathbf{x}=\mathbf{b}$ does not have a solution, it means right-side vector $\mathbf{b}$ is not in the span of the columns of $\mathbf{A}$. The span of a set of vectors is all the vectors you can reach by linear combinations. Thus, there is no linear combination such that
+    
+    $$x_{1} \mathbf{c}_{1}+x_{2} \mathbf{c}_{2}+\ldots+x_{n} \mathbf{c}_{n}=\mathbf{b}$$
+    
+    Suppose we were to seek a "next best" or approximate solution $\hat{\mathbf{x}}$. The first thing to realize is that an approximate solution is still a linear combination of the columns:
+    
+    $$\hat{x}_{1} \mathbf{c}_{1}+\hat{x}_{2} \mathbf{c}_{2}+\ldots+\hat{x}_{n} \mathbf{c}_{n}=?$$
+    
+    Thus, in this example, we seek
+
+    $$\hat{x}_{1}\left[\begin{array}{l}6 \\ 2 \\ 0\end{array}\right]+\hat{x}_{2}\left[\begin{array}{l}4 \\ 3 \\ 0\end{array}\right]+\hat{x}_{3}\left[\begin{array}{l}8 \\ 1 \\ 0\end{array}\right]$$
+    
+    that's closest to the desired target (5,6,3). The difference vector between the "closest" and $\mathbf{b}$ is perpendicular to every vector in the span of the columns. This is what the least-squares method exploits. Suppose $\mathbf{y}=$ the closest vector in the colspan. Let 
+    
+    $$\begin{aligned} \mathbf{z} &=\text { the difference vector } \\ &=\mathbf{b}-\mathbf{y} \end{aligned}$$
+    
+    Since $\mathbf{z}$ is perpendicular to the plane containing the columns, it's perpendicular to the columns themselves:
+    
+    $$\mathbf{c}_{1} \cdot \mathbf{z}=0$$
+    $$\mathbf{c}_{2} \cdot \mathbf{z}=0$$
+    
+    The rest of least squares stems from the observation that the columns of $\mathbf{A}$ are rows of $\mathbf{A}^{T}$. If we were to multiply $\mathbf{A}^{T}$ into $\mathbf{z}$
+    
+    $$\mathbf{A}^{T} \mathbf{z}=\left[\begin{array}{ccc}\cdots & \mathbf{c}_{1} & \cdots \\ \cdots & \mathbf{c}_{2} & \cdots \\ \vdots & \vdots & \vdots \\ \cdots & \mathbf{c}_{n} & \cdots\end{array}\right]=\left[\begin{array}{c}\mathbf{c}_{1} \cdot \mathbf{z} \\ \mathbf{c}_{2} \cdot \mathbf{z} \\ \vdots \\ \mathbf{c}_{n} \cdot \mathbf{z}\end{array}\right]=\left[\begin{array}{l}0 \\ 0 \\ 0 \\ 0\end{array}\right]$$
+    
+    plug $\mathbf{y}=\mathbf{A} \hat{\mathbf{x}}$ into $\mathbf{z}=\mathbf{b}-\mathbf{y}$ and do the algebra to get 
+    
+    $$\mathbf{A}^{T} \mathbf{b}-\mathbf{A}^{T} \mathbf{A} \hat{\mathbf{x}}=\mathbf{0}$$
+    
+    after which we get
+    
+    $$\hat{\mathbf{x}}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$$
+    
+    provided the inverse exists
+    
+    \subsubsection{Matrix-Matrix Multiplication and what it means}
+    
+    There are generally four contexts where we see matrix-matrix multiplication:
+    
+    \begin{enumerate}
+        \item When the matrices represent vector-transformations and they multiply to create one matrix that does the combined transformation.
+        \item When the associative rule is used to simplify terms.
+        \item When a matrix's inverse multiplies into it to produce $\mathbf{I}$
+        \item When one matrix transforms another matrix (which is useful in understanding row operations).
+    \end{enumerate}
+    
+    Multiply-compatibility for matrix-matrix and matrix-vector multiplication. Two matrices $\mathbf{A}_{m \times n}$ and $\mathbf{B}_{n \times k}$ can be multiplied as $\mathbf{A B}$ to produce $\mathbf{C}_{m \times k}$. $\mathbf{A}_{m \times n} \mathbf{B}_{n \times k}=\mathbf{C}_{m \times k}$. Thus, $\mathbf{B}$ should have as many rows as $\mathbf{A}$ has columns. The same rule works for matrix-vector compatibility if we treat a column vector of dimension $n$ as having $n$ rows $\mathbf{A}_{m \times n} \mathbf{x}_{n \times 1}=\mathbf{b}_{m \times 1}$. The standard way we describe $\mathbf{B A}$ is 
+
+    $$
+    \left[\begin{array}{cccc}
+    b_{11} & b_{12} & \cdots & b_{1 n} \\
+    b_{21} & b_{22} & \cdots & b_{2 n} \\
+    \vdots & \vdots & & \vdots \\
+    b_{n 1} & b_{n 2} & \cdots & b_{n n}
+    \end{array}\right]\left[\begin{array}{cccc}
+    a_{11} & a_{12} & \cdots & a_{1 n} \\
+    a_{21} & a_{22} & \cdots & a_{2 n} \\
+    \vdots & \vdots & & \vdots \\
+    a_{n 1} & a_{n 2} & \cdots & a_{n n}
+    \end{array}\right]=\left[\begin{array}{cccc}
+    c_{11} & c_{12} & \cdots & c_{1 n} \\
+    c_{21} & c_{22} & \cdots & c_{2 n} \\
+    \vdots & \vdots & & \vdots \\
+    c_{n 1} & c_{n 2} & \cdots & c_{n n}
+    \end{array}\right]
+    $$    
+
+    where 
+    
+    $$c_{i j}=\sum_{k=1}^{n} b_{i k} a_{k j}$$
+    
+    (this is the element in row i, column j of $\mathbf{C}$. When unpacking the matrix $\mathbf{A}$ into its columns $\mathbf{a}_{1}, \mathbf{a}_{2}, \ldots$ then this is one useful way to describe it
+    
+    $$
+    \mathbf{B}\left[\begin{array}{cccc}
+    a_{11} & a_{12} & \cdots & a_{1 n} \\
+    a_{21} & a_{22} & \cdots & a_{2 n} \\
+    a_{31} & a_{32} & \cdots & a_{3 n} \\
+    \vdots & \vdots & \vdots & \vdots \\
+    a_{n 1} & a_{n 2} & \cdots & a_{n n}
+    \end{array}\right]=\mathbf{B}\left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \vdots & \vdots \\
+    \mathbf{a}_{1} & \mathbf{a}_{2} & \cdots & \mathbf{a}_{n} \\
+    \vdots & \vdots & \vdots & \vdots
+    \end{array}\right]=\left[\begin{array}{cccc} 
+    & & & \\
+    & & & \vdots & \vdots & \vdots \\
+    \mathbf{B a}_{1} & \mathbf{B a}_{2} & \cdots & \mathbf{B a}_{n} \\
+    \vdots & \vdots & \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    where the k-th column of the resulting $\mathbf{C}$ matrix is the vector $\mathbf{B a}_{k}$ that results from the matrix $\mathbf{B}$ multiplying vector $\mathbf{a}_{k}$. For the second context matrix multiplication turned out to be associative $\mathbf{A}(\mathbf{B C})=(\mathbf{A B}) \mathbf{C}$, however is not commutative. For the third context the inverse of a matrix $\mathbf{A}$, if it exists, is a matrix $\mathbf{A}^{-1}$ such that $\mathbf{A}^{-1} \mathbf{A}=\mathbf{I}$ where $\mathbf{I}$ is the identity matrix. 
+    
+    $$
+    \left[\begin{array}{cccc}
+    1 & 0 & \cdots & 0 \\
+    0 & 1 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & \cdots & 1
+    \end{array}\right]
+    $$
+    
+    Additionally, $\mathbf{A}^{-1}$ is defined only for square matrices, exists only if it's full rank, and is computed by identifying the row operations that reduce $\mathbf{A}$ to its Reduced Row Echelon Form (RREF). If RREF procedures reveal that $\mathbf{A}$ is not full-rank (fewer pivots than columns), then $\mathbf{A}^{-1}$ does not exist. If $\mathbf{A}$ is not square or $\mathbf{A^{-1}}$ does not exist we can utilize least-squares. In this case, $\mathbf{A}^{T} \mathbf{A}$ is square and likely to have an inverse. Recall the least-squares solution:
+    
+    $$\hat{\mathbf{x}}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$$
+    
+    Here we need the inverse $\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1}$ to exist. When there are many more rows than columns $\mathbf{A}_{m \times n}$ has a few column vectors with many dimensions. The likelihood that these are independent will be high. A somewhat difficult proof showed that if the columns of $\mathbf{A}$ are independent then $\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1}$ oes indeed exist. For the fourth context matrix-multiplication as a "matrix transformer", we multiply one matrix by another and get a third $\mathbf{A B}=\mathbf{C}$, and could interpret it as $\mathbf{A}$ transforms matrix $\mathbf{B}$ into matrix $\mathbf{C}$. Such an interpretation does turn out to be useful for theoretical purposes, as we'll see when reasoning about RREFs where there are three types of row operations
+    
+    \begin{enumerate}
+        \item Scale: divide one row by a number
+        $$
+        \mathbf{r}_{i} \leftarrow \frac{\mathbf{r}_{i}}{\alpha}
+        $$
+        \item Swap: swap two rows
+        $$
+        \begin{aligned}
+        \operatorname{temp} & \leftarrow \mathbf{r}_{i} \\
+        \mathbf{r}_{i} & \leftarrow \mathbf{r}_{j} \\
+        \mathbf{r}_{j} & \leftarrow \text { temp }
+        \end{aligned}
+        $$    
+        \item Replace a row by adding a multiple of another row.
+        $$
+        \mathbf{r}_{i} \leftarrow \mathbf{r}_{i}+\alpha \mathbf{r}_{j}
+        $$
+    \end{enumerate}
+    
+    There is also an order in which we change coefficients, always start with row 1, column 1, trying to make that element a pivot, when we're successful making an element into a pivot, we change coefficients below the pivot to zero. The search for the next pivot moves to the next row, next column. A search may not be successful, in which case we move to the next column (same row). fter the final pivot we go back to the first one and start the process of creating zeroes above each pivot. A full-rank RREF (a pivot in every column), tells us the equations have a unique solution. When we get an RREF at the end of $k$ row operations (transformations) we can describe it as $\operatorname{RREF}(\mathbf{A})=\mathbf{R}_{k} \mathbf{R}_{k-1} \cdots \mathbf{R}_{2} \mathbf{R}_{1} \mathbf{A}$ where the first row op is acheived by $\mathbf{R}_{1}$ the second is represented by $\mathbf{R}_{2}$ applied to the result, and so on. So, the question is: what do we get when applying $\mathbf{R}_{k} \mathbf{R}_{k-1} \cdots \mathbf{R}_{2} \mathbf{R}_{1} \mathbf{I}=?$ \\
+    
+    Start with $\operatorname{RREF}(\mathbf{A})=\mathbf{R}_{k} \mathbf{R}_{k-1} \ldots \mathbf{R}_{2} \mathbf{R}_{1} \mathbf{A}$ and recognize that $\operatorname{RREF}(\mathbf{A})=\mathbf{I}$, and multiply all the $\mathbf{R}_{i}$ matrices into one matrix $\mathbf{R} \triangleq \mathbf{R}_{k} \mathbf{R}_{k-1} \ldots \mathbf{R}_{2} \mathbf{R}_{1}$. The reduction to RREF can be written as $\mathbf{I}=\mathbf{R} \mathbf{A}$ which means that $\mathbf{R}$ is the inverse of $\mathbf{A}$.\\
+    
+    If we've already solved for the variables, why do we need the inverse? We started with wanting to solve $\mathbf{A x}=\mathbf{b}$ for some $\mathbf{A}$ and some $\mathbf{b}$, the given equations. We apply row reductions to get $\operatorname{RREF}(\mathbf{A})$. That gave us the solution $\mathbf{x}$. Isn't that enough? Why also compute $\mathbf{A}^{-1}$ on the right side? In applications, it turns out that very often the equations stay the same but the right side changes to $\mathbf{A} \mathbf{x}=\mathbf{c}$. We solve once to get $\mathbf{A}^{-1}$ and apply it to a new right side $\mathbf{X}=\mathbf{A}^{-1} \mathbf{c}$. In other applications like least-squares, we need to compute the inverse of matrices like $\left(\mathbf{A}^{T} \mathbf{A}\right)$.
+    
+    \subsubsection{Spaces, Span, Independence, Basis}
+    
+    The span is all the vectors you can get by linear combinations $\operatorname{span}(\mathbf{u}, \mathbf{v})=\{\mathbf{z}: \mathbf{z}=\alpha \mathbf{u}+\beta \mathbf{v}$, for some $\alpha, \beta\}$ read as "all z such that z can be expressed as a linear combination of u and v". A plane is "complete" if that it contains all linear combinations of any subset of vectors. Such a collection is called a subspace. A subspace is a collection of vectors where the linear combination of any two vectors is in the collection. A basis for a subspace is any minimal collection of vectors whose span is the subspace. Two vectors are not enough to span a 3D space. A basis for a 3D space needs three, and three that are not co-planar. We are often interested in an orthogonal basis. Consider $\mathbf{u}=(4,0,2)$ and $\left.\mathbf{r}=\left(3,-\frac{25}{2},-6\right)\right)$, $\mathbf{u} \cdot \mathbf{r}=(4,0,2) \cdot\left(3,-\frac{25}{2},-6\right)=0$. So, these two are orthogonal and because two vectors are enough for a 2D plane, they form an orthogonal basis.\\
+    
+    For orthogonal spaces, consider the vectors $\mathbf{y}$ and $\mathbf{w}$ both of which are on the same line. $\operatorname{span}(\mathbf{y}, \mathbf{w})$ is a subspace, because all linear combinations of any two vectors on this line are on the line. Consider all the vectors orthogonal to $\mathbf{y}$. These are all going to be on a plane to which the line is perpendicular. Let $\mathbf{S}$ be the subspace of vectors on this perpendicular plane. Every vector in $\mathbf{S}$ is perpendicular to every vector $\operatorname{span}(\mathbf{y}, \mathbf{w})$. Thus, $\mathbf{S}$ and span $(\mathbf{y}, \mathbf{w})$ are orthogonal subspaces $\mathbf{S}^{\perp}=\operatorname{span}(\mathbf{y}, \mathbf{w})$ and $\mathbf{S}=\operatorname{span}(\mathbf{y}, \mathbf{w})^{\perp}$.\\
+    
+    Vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ are linearly independent if the only solution to the equation $x_{1} \mathbf{v}_{1}+x_{2} \mathbf{v}_{2}+\ldots+x_{n} \mathbf{v}_{n}=\mathbf{0}$ is $x_{1}=x_{2}=\ldots=x_{n}=0$. Given a collection of vectors, we can check that they are independent by placing the vectors as columns of a matrix $\mathbf{A}$:
+    
+    $$
+    \mathbf{A}=\left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \ldots & \vdots \\
+    \mathbf{v}_{1} & \mathbf{v}_{2} & \ldots & \mathbf{v}_{n} \\
+    \vdots & \vdots & \ldots & \vdots
+    & & & \\
+    \end{array}\right]
+    $$
+    
+    so $x_{1} \mathbf{v}_{1}+x_{2} \mathbf{v}_{2}+\ldots+x_{n} \mathbf{v}_{n}=\mathbf{0}$ becomes 
+
+    $$
+    \left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \ldots & \vdots \\
+    \mathbf{v}_{1} & \mathbf{v}_{2} & \ldots & \mathbf{v}_{n} \\
+    \vdots & \vdots & \ldots & \vdots
+    \end{array}\right]\left[\begin{array}{c}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    \vdots \\
+    x_{n}
+    \end{array}\right]=\left[\begin{array}{c}
+    0 \\
+    0 \\
+    0 \\
+    \vdots \\
+    0
+    \end{array}\right]
+    $$
+    
+    or, more compactly, solve $\mathbf{A x}=\mathbf{0}$. When RREF(A) = I (i.e., the RREF is full-rank), then $\mathbf{x}=\mathbf{0}$ is the only solution to $\mathbf{A x}=\mathbf{0}$. Thus, the vectors will be independent if the RREF is full-rank (a pivot in every column). This gives us a means to identify whether a collection of vectors is independent: put them in a matrix and check its RREF.\\
+    
+    To review the rowspace and colspace of a matrix consider the matrix
+    
+    $$
+    \mathbf{A}=\left[\begin{array}{ccccc}
+    1 & 1 & 1 & 0 & 3 \\
+    -1 & 0 & 1 & 1 & -1 \\
+    0 & 1 & 2 & 1 & 2 \\
+    0 & 0 & 0 & 0 & 0
+    \end{array}\right]
+    $$
+    
+    treat the rows as vectors and name them
+    
+    $$
+    \begin{aligned}
+    &\mathbf{r}_{1}=(1,1,1,0,3) \\
+    &\mathbf{r}_{2}=(-1,0,1,1,-1) \\
+    &\mathbf{r}_{3}=(0,1,2,1,2) \\
+    &\mathbf{r}_{4}=(0,0,0,0,0)
+    \end{aligned}
+    $$
+    
+    The span of these vectors is the rowspace of the matrix $\operatorname{rowspace}(\mathbf{A})=\operatorname{span}\left(\mathbf{r}_{1}, \mathbf{r}_{2}, \mathbf{r}_{3}, \mathbf{r}_{4}\right)$. That is, any linear combination of the four row vectors is in the rowspace. For example 
+    
+    $$
+    \begin{aligned}
+    2 \mathbf{r}_{1}+3 \mathbf{r}_{2}+0 \mathbf{r}_{3}+5 \mathbf{r}_{4} &=2(1,1,1,0,3)+3(-1,0,1,1,-1)+0(0,1,2,1,2)+5(0,0,0,0,0) \\
+    &=(-1,2,5,3,3)
+    \end{aligned}
+    $$
+    
+    So (−1,2,5,3,3) is a vector in the rowspace. Similarly, if we name the 5 columns $\mathbf{c}_{1}, \mathbf{c}_{2}, \mathbf{c}_{3}, \mathbf{c}_{4}, \mathbf{c}_{5}$ then the colspace is their span $\operatorname{colspace}(\mathbf{A})=\operatorname{span}\left(\mathbf{c}_{1}, \mathbf{c}_{2}, \mathbf{c}_{3}, \mathbf{c}_{4}, \mathbf{c}_{5}\right)$. When checking the dimension of the rowspace the RREF turns out to be
+    
+    $$
+    \left[\begin{array}{ccccc}
+    \mathbf{1} & 0 & -1 & -1 & 1 \\
+    0 & \mathbf{1} & 2 & 1 & 2 \\
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0
+    \end{array}\right]
+    $$
+    
+    where the rowspace of the RREF is the span of the first two rows. The key observation is that the row operations we performed do not change the rowspace of the matrices along the way from $\mathbf{A}$ to its RREF. This is because all row operations are linear combinations of rows. However, it is not true that $\operatorname{colspace}(\mathbf{A})=\operatorname{colspace}(R R E F(\mathbf{A}))$ What is true is that the size of the basis for $\operatorname{colspace}(\mathbf{A})$ is the same as the number of pivot columns. Because pivots are alone in both their rows and columns, we get the result that the dimension of the rowspace is the same as the dimension of the colspace.
+
+    \subsubsection{Orthogonality}
+    
+    There are two subtopics of orthogonality that commonly appear in applications, 1. Orthogonal vectors and matrices, and 2. Projections. Two vectors $\mathbf{u}$ and $\mathbf{v}$ are orthogonal if $\mathbf{u} \cdot \mathbf{v}=0$. The definition comes from the angle between them, which is a right-angle: $\cos (\theta)=\frac{\mathbf{u} \cdot \mathbf{v}}{|\mathbf{u}||\mathbf{v}|}$. Since the lengths aren't zero, if the dot product is zero, that implies a zero cosine, or $\theta=90^{\circ}$. This definition extends to a collection of vectors: Consider vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}$. The collection is orthogonal if 
+    
+    $$
+    \begin{aligned}
+    &\mathbf{v}_{1} \cdot \mathbf{v}_{2}=0 \\
+    &\mathbf{v}_{1} \cdot \mathbf{v}_{3}=0 \\
+    &\mathbf{v}_{2} \cdot \mathbf{v}_{3}=0
+    \end{aligned}
+    $$
+    
+    Since dot-product is commutative we don't need to specify products like $\mathbf{v}_{2} \cdot \mathbf{v}_{2}=0$. Now consider the equation $\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}+\alpha_{3} \mathbf{v}_{3}=\mathbf{0}$. Does this imply that all the $\alpha$'s are zero, and therefore the $\mathbf{v}$'s are independent? Multiply (dot product) both sides by $\mathbf{v}_1$: $\mathbf{v}_{1} \cdot\left(\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}+\alpha_{3} \mathbf{v}_{3}\right)=\mathbf{v}_{1} \cdot \mathbf{0}$. The right side becomes the number 0. Do the algebra on the left side, passing the dot into the parenthesis: $\alpha_{1}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{1}\right)+\alpha_{2}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{2}\right)+\alpha_{3}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{3}\right)=0$. Because they are orthogonal, the only non-zero dot product is the first one $\alpha_{1}\left(\mathbf{v}_{1} \cdot \mathbf{v}_{1}\right)+0+0=0$. Now apply the dot product $\mathbf{v}_{1} \cdot \mathbf{v}_{1}=\left|\mathbf{v}_{1}\right|\left|\mathbf{v}_{1}\right| \cos (0)$ and we get $\alpha_{1}\left|\mathbf{v}_{1}\right|\left|\mathbf{v}_{1}\right|=0$ which, because $\left|\mathbf{v}_{1}\right| \neq 0$, implies that, $\alpha_{1}=0$. To conclude, an orthogonal collection is linearly independent.\\
+    
+    What about complex vectors? Consider these two 3-component complex vectors $\mathbf{u}=(1+0 i,-0.5+0.866 i,-0.5-0.866 i)$, and $\mathbf{v}=(1+0 i, 1+0 i, 1+0 i)$. Their dot-product is $(1+0 i)(1-0 i)+(-0.5+0.866 i)(1-0 i)+(-0.5-0.866 i)(1-0 i)=0$. Thus, we define orthogonality between two complex vectors to mean: their dot-product is zero.\\
+    
+    To differentiate between orthogonal vs orthonormal consider two vectors $\mathbf{u}$ and $\mathbf{v}$ are orthonormal if 1. They are orthogonal, and 2. They have unit length $|\mathbf{u}|=1$, $|\mathbf{v}|=1$. An orthogonal matrix is a matrix whose columns are pairwise (all possible pairs) orthonormal. For example, consider 
+    
+    $$
+    \mathbf{A}=\left[\begin{array}{ccc}
+    4 & 4 & 6 \\
+    4 & -8 & 0 \\
+    4 & 4 & -6
+    \end{array}\right]
+    $$
+    
+    You can check that the columns are pairwise orthogonal but not orthonormal. For example: $|(4,4,4)|=\sqrt{4^{2}+4^{2}+4^{2}}=6.92820$. However, this matrix is orthonormal: 
+    
+    $$
+    \mathbf{Q}=\left[\begin{array}{ccc}
+    0.577 & 0.408 & 0.707 \\
+    0.577 & -0.816 & 0.408 \\
+    0.577 & 0 & -0.707
+    \end{array}\right]
+    $$
+    
+    The columns are pairwise orthogonal and all have unit length. What's nice about an orthogonal matrix is this: $\mathbf{Q}^{T} \mathbf{Q}=\mathbf{I}$. With the above example: 
+    
+    $$
+    \mathbf{Q}^{T} \mathbf{Q}=\left[\begin{array}{ccc}
+    0.577 & 0.577 & 0.577 \\
+    0.408 & -0.816 & 0 \\
+    0.707 & 0.408 & -0.707
+    \end{array}\right]\left[\begin{array}{ccc}
+    0.577 & 0.408 & 0.707 \\
+    0.577 & -0.816 & 0.408 \\
+    0.577 & 0 & -0.707
+    \end{array}\right]=\left[\begin{array}{lll}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+    \end{array}\right]
+    $$
+    
+    The row $i$, column $j$ entry of the product is the dot product of row i from $\mathbf{Q}^{T}$ and column $j$ from $\mathbf{Q}$. But row i from $\mathbf{Q}^{T}$ is just column i from $\mathbf{Q}$. When $i \neq j$ column i and column j from $\mathbf{Q}$ are orthonormal and so their dot-product is 0. When $\mathrm{i}=\mathrm{j}$, it's the dot-product of a column with itself, which is $1$. The important implication is that $\mathbf{Q}^{T}$ is the inverse of $\mathbf{Q}$.
+    
+    \subsubsection{Projections}
+    
+    The projection of vector $\mathbf{w}$ on vector $\mathbf{v}$ is that vector $\mathbf{y}$ along $\mathbf{v}$ which will make the difference perpendicular (dot product zero): $(\mathbf{w}-\alpha \mathbf{v}) \cdot \mathbf{v}=0$. That is, there is some stretch $\alpha \mathbf{v}$ of $\mathbf{v}$ which will make the difference $\mathbf{z}$ perpendicular to $\mathbf{v}$. We can solve for the number $\alpha=\frac{\mathbf{w} \cdot \mathbf{v}}{\mathbf{v} \cdot \mathbf{v}}$. \\
+    
+    Let's look at a 3D vector that's projected onto a plane whose basis is orthogonal. Think of $\mathbf{w}$ as a regular $3 \mathrm{D}$ vector sticking out into $3 \mathrm{D}$ space. Next, let $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ be two orthogonal vectors in the x-y plane. We want to ask: what's the projection of $\mathbf{w}$ onto each of $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ and what do those individual projections have to do with $\mathbf{y}$, the projection of $\mathbf{w}$ on the span of the two vectors? The individual projections are: $\alpha_{1} \mathbf{v}_{1}$, and $\alpha_{2} \mathbf{v}_{2}$ where $\alpha_{1}=\frac{\mathbf{w} \cdot \mathbf{v}_{1}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}}$ and $\alpha_{2}=\frac{\mathbf{w} \cdot \mathbf{v}_{2}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}}$. But the sum of these is exactly $\mathbf{y}=\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}$. Note: you cannot reconstruct the original vector $\mathbf{w}$ knowing only the individual projections $\alpha_{1} \mathbf{v}_{1}$ and $\alpha_{2} \mathbf{v}_{2}$. That's because $\mathbf{w}$ is not in the same space as $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$.\\
+    
+    In the case when $\mathbf{w}$ is in the span of $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, the individual projections add up to the original vector $\mathbf{w}=\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2}$. Thus, when $\mathbf{w}$ is in the span of $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$, we can fully reconstruct $\mathbf{w}$ knowing only the individual projections on the basis vectors. Note: although we have used a basis for the x-y plane, the above reasoning applies to any subspace and any orthogonal basis for that subspace. Thus, in the general case we'd say that $\mathbf{w}=\alpha_{1} \mathbf{v}_{1}+\alpha_{2} \mathbf{v}_{2} \ldots+\alpha_{n} \mathbf{v}_{n}$ where $\alpha_{i}=\frac{\mathbf{w} \cdot \mathbf{v}_{i}}{\mathbf{v}_{i} \cdot \mathbf{v}_{i}}$. When the $\mathbf{v}_{i}$ 's are orthonormal, they have unit length and so $\mathbf{v}_{i} \cdot \mathbf{v}_{i}=\left|\mathbf{v}_{i}\right|^{2}=1$. Which means $\alpha_{i}=\mathbf{w} \cdot \mathbf{v}_{i}$ and then $\mathbf{w}=\left(\mathbf{w} \cdot \mathbf{v}_{1}\right) \mathbf{v}_{1}+\ldots+\left(\mathbf{w} \cdot \mathbf{v}_{n}\right) \mathbf{v}_{n}$.
+    
+    \subsubsection{Summary of Useful Results}
+    
+    \begin{itemize}
+        \item Properties of matrix multiplication:
+
+        $$
+        \begin{aligned}
+        \mathbf{A B} & \neq \mathbf{B A} & \text{Typically not commutative}\\
+        \mathbf{A}(\mathbf{B C}) &=(\mathbf{A B}) \mathbf{C} & \text{Always associative}\\
+        \mathbf{A}(\mathbf{B}+\mathbf{C}) &=(\mathbf{A B})+(\mathbf{A C}) & \text{Distributes over addition}\\
+        (\mathbf{A}+\mathbf{B}) \mathbf{C} &=(\mathbf{A} \mathbf{C})+(\mathbf{B C}) & \text{Distributes over addition}\\
+        \alpha(\mathbf{A B}) &=(\alpha \mathbf{A}) \mathbf{B}=\mathbf{A}(\alpha \mathbf{B}) & \text{Scalars move freely} 
+        \end{aligned}
+        $$
+
+        \item A different way to view matrix-matrix multiplication:
+        
+        $$
+        \mathbf{A}\left[\begin{array}{cccc} 
+        & & & \\
+        \vdots & \vdots & \vdots & \vdots \\
+        \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{n} \\
+        \vdots & \vdots & \vdots & \vdots
+        & & & \\
+        \end{array}\right]=\left[\begin{array}{cccc}
+        & & & \\
+        \vdots & \vdots & \vdots & \vdots \\
+        \mathbf{A b}_{1} & \mathbf{A b}_{2} & \cdots & \mathbf{A} \mathbf{b}_{n} \\
+        \vdots & \vdots & \vdots & \vdots \\
+        & & &
+        \end{array}\right]
+        $$
+        
+        \item Reverse order rules: 
+        
+        $$
+        \begin{aligned}
+        (\mathbf{A B})^{T} & =\mathbf{B}^{T} \mathbf{A}^{T} & \text{Transpose of a product} \\
+        (\mathbf{A B})^{-1} & =\mathbf{B}^{-1} \mathbf{A}^{-1} & \text{Inverse of a product}
+        \end{aligned}
+        $$
+        
+        \item Relationship between dot-product and angle between two vectors:
+        
+        $$
+        \cos (\theta)=\frac{\mathbf{v} \cdot \mathbf{u}}{|\mathbf{v}||\mathbf{u}|}
+        $$
+        
+        \item If $\mathbf{A}$ has orthonormal columns, then $\mathbf{A}^{T} \mathbf{A}=\mathbf{I}$ which makes  $\mathbf{A}^{-1}=\mathbf{A}^{T}$.
+        
+        \item If $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ is a collection of vectors and $\mathbf{A}$ is a matrix that has these vectors as columns, then if columns $i_{1}, i_{2}, \ldots, i_{k}$ are the pivot columns of $R R E F(\mathbf{A})$, then $\mathbf{v}_{i_{1}}, \mathbf{v}_{i_{2}}, \ldots, \mathbf{v}_{i_{k}}$ are independent vectors.
+        
+        \item The rowspace dimension (minimum number of vectors needed to span the rowspace) is the same as the colspace dimension: $\operatorname{dim}(\text{rowspace}(\mathbf{A}))=\operatorname{dim}(\operatorname{colspace}(\mathbf{A}))$
+        
+        \item A collection of mutually-orthogonal vectors is linearly independent.
+        
+        \item If the columns of $\mathbf{A}_{m \times n}$ are linearly independent, then $\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1}$ exists. This is useful in the least squares solution $\hat{\mathbf{x}}=\left(\mathbf{A}^{T} \mathbf{A}\right)^{-1} \mathbf{A}^{T} \mathbf{b}$. In most applications, we'll typically have many more rows than columns, and so it's very likely that the columns are independent. Also, if the system $\mathbf{A x}=\mathbf{b}$ has a solution, the least squares solution is an exact solution.
+        
+        \item The Gram-Schmidt algorithm takes a collection of linearly independent vectors and produces an orthogonal (orthonormal, if tweaked) basis for the span of those vectors. Another way of saying it: it turns a non-orthogonal basis into an orthogonal one. 
+        
+        \item The following are equivalent (any one implies the other two):
+        
+        \begin{enumerate}
+            \item $\mathbf{Q}$ has orthonormal columns.
+            \item $|\mathbf{Q} \mathbf{x}|=|\mathbf{x}|$, Transformation by $\mathbf{Q}$ preserves lengths.
+            \item $(\mathbf{Q x}) \cdot(\mathbf{Q y})=\mathbf{x} \cdot \mathbf{y}$, Transformation by $\mathbf{Q}$ preserves dot-products.
+        \end{enumerate}
+    
+    \end{itemize}       
+    
+    \subsubsection{Summary of Some Key Theorems}
+    
+    \begin{itemize}
+    
+        \item The main result that ties together inverses and equation solutions for square matrices: The following are equivalent (each implies any of the others) for a real matrix $\mathbf{A}_{n \times n}$.
+        
+        \begin{enumerate}
+            \item $\mathbf{A}$ is invertible (the inverse exists).
+            \item $\mathbf{A}^{T}$ is invertible.
+            \item $RREF(\mathbf{A})=\mathbf{I}$
+            \item $\operatorname{rank}(A)=n$.
+            \item The rows are linearly independent.
+            \item The columns are linearly independent.
+            \item $\operatorname{nullspace}(\mathbf{A})=\{\mathbf{0}\}$ $\triangleright \mathbf{A} \mathbf{x}=\mathbf{0}$ has $\mathbf{x}=\mathbf{0}$ as the only solution.
+            \item $\mathbf{A x}=\mathbf{b}$ has a unique solution.
+            \item $\operatorname{colspace}(\mathbf{A})=\operatorname{rowspace}(\mathbf{A})=\mathbb{R}^{n}$
+        \end{enumerate}
+        
+        \item For any matrix $\mathbf{A}_{m \times n}$, $\operatorname{rank}(\mathbf{A})=\operatorname{rank}\left(\mathbf{A}^{T} \mathbf{A}\right)$
+        
+        \item The singular value decomposition: any real matrix $\mathbf{A}_{m \times n}$ with rank r can be written as the product $\mathbf{A}=\mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^{T}$ where $\mathbf{U}_{m \times m}$ and $\mathbf{V}_{n \times n}$ are real orthogonal matrices and $\boldsymbol{\Sigma}_{m \times n}$ is a real diagonal matrix of the form
+        
+            $$
+            \boldsymbol{\Sigma}=\left[\begin{array}{ccccccc}
+            \sigma_{1} & 0 & 0 & \ldots & & & 0 \\
+            0 & \sigma_{2} & 0 & \ldots & & & 0 \\
+            \vdots & \vdots & \ddots & & & & 0 \\
+            0 & 0 & \ldots & \sigma_{r} & & \ldots & 0 \\
+            0 & \ldots & & & 0 & \ldots & 0 \\
+            0 & \ldots & & & \ldots & \ddots & 0 \\
+            0 & \ldots & & & & \ldots & 0
+            \end{array}\right]
+            $$
+        
+        \item For every linear transformation $T$ there is an equivalent matrix $\mathbf{A}$ such that $T(\mathbf{x})=\mathbf{A} \mathbf{x}$ for all $\mathbf{x}$. Think of a transformation $T(\mathbf{x})$ as something that does something to a vector. An example: square the components of a vector: $T\left(x_{1}, x_{2}, \ldots, x_{n}\right)=\left(\left(x_{1}^{2}, x_{2}^{2}, \ldots, x_{n}^{2}\right)\right$. Thus, a transformation produces another vector. A linear transformation satisfies the property: $T(\alpha \mathbf{x}+\beta \mathbf{y})=\alpha T(\mathbf{x})+\beta T(\mathbf{y})$ for all scalars $\alpha, \beta$ and all vectors $\mathbf{x}$. (The squaring example above is not linear.) Let's now expand $\mathbf{x}$ in terms of a basis like the standard basis and apply the linearity of $T$ :
+        $$
+        \begin{aligned}
+        T(\mathbf{x}) &=T\left(x_{1} \mathbf{e}_{1}+x_{2} \mathbf{e}_{2}+\ldots+x_{n} \mathbf{e}_{n}\right) \\
+        &=x_{1} T\left(\mathbf{e}_{1}\right)+x_{2} T\left(\mathbf{e}_{2}\right)+\ldots+x_{n} T\left(\mathbf{e}_{n}\right)
+        \end{aligned}
+        $$
+        What this means: once a linear transformation has taken a linear combination of the standard vectors, it is forced to produce the same linear combination of the transformed standard vectors. Thus, a linear transformations actions on standard vectors completely determine its action on any vector. This becomes the equivalent matrix (with the $T\left(\mathbf{e}_{i}\right)$'s as columns).
+        
+        \item Why should we care about linear transformations when we could instead work with their matrix representations? The linear transformation version is useful in proofs. Linear transformations generalize beyond real vectors to functions.
+        
+        \item Consider $\mathbb{R}^{n}$, the set of all $\mathrm{n}$-component vectors: Then, $\mathbb{R}^{n}$ needs exactly $n$ vectors for a basis. That is, $n$ linearly independent vectors are sufficient and necessary.
+        
+        \item If $\mathbf{w}$ is in the span of linearly independent vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{m}$, then there's a unique linear combination that expresses $\mathbf{w}$ in terms of the $\mathbf{v}_{i}$'s. To prove this, try two different linear combinations and subtract. Then use the linear independence of the $\mathbf{v}_{i}$'s.
+    
+    \end{itemize}
+    
+    \subsubsection{Change of Basis for Vectors}
+    
+    Suppose $B$ denotes a basis with vectors $\mathbf{b}_{1}$ and $\mathbf{b}_{2}$ where
+    
+    $$
+    \mathbf{b}_{1}=\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right] \quad \mathbf{b}_{2}=\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right]
+    $$
+    
+    Next, suppose $C$ denotes a basis with vectors $\mathbf{c}_{1}$ and $\mathbf{c}_{2}$ where 
+    
+    $$
+    \mathbf{c}_{1}=\left[\begin{array}{l}
+    2 \\
+    4
+    \end{array}\right] \quad \mathbf{c}_{2}=\left[\begin{array}{l}
+    3 \\
+    1
+    \end{array}\right]
+    $$
+    
+    Then, if $\mathbf{u}$ is the vector $(4,3)$, we can express $\mathbf{u}$ in either basis:
+    
+    $$
+    \begin{aligned}
+    &\mathbf{u}=4 \mathbf{b}_{1}+3 \mathbf{b}_{2}=4\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right]+3\left[\begin{array}{l}
+    0 \\
+    1
+    \end{array}\right] \\
+    &\mathbf{u}=0.5 \mathbf{c}_{1}+1 \mathbf{c}_{2}=0.5\left[\begin{array}{l}
+    2 \\
+    4
+    \end{array}\right]+1\left[\begin{array}{l}
+    3 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    The coordinates of $\mathbf{u}$ in basis $B$ are $(4,3)$. The coordinates of $\mathbf{u}$ in basis $C$ are $(0.5,1)$. We can write these statements in matrix form by placing the basis vectors as columns:
+    
+    $$
+    \begin{aligned}
+    &\mathbf{u}=\left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right] \\
+    &\mathbf{u}=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    The vector $\mathbf{u}$ exists (as an arrow) without being codified numerically in a basis: It has a length. And it has an orientation (direction). To express a vector numerically, we need to pick a basis. The numbers then obtained are the coordinates of the vector in the basis selected. Thus, if we select $B$ as a basis, then $\mathbf{u}$ gets "numerified" as (4,3), the coordinates in $B$ (the coefficients in the linear combination). If we instead select $C$, $\mathbf{u}$ gets "numerified" as (0.5,1).\\
+    
+    If we have the coordinates in one basis, how can we get the coordinates in another basis? Let's start by going from basis $C$ to basis $B$ by writing $\mathbf{u}$ in $C$:
+    
+    $$
+    \left[\begin{array}{cc}
+    \vdots & \vdots \\
+    \mathbf{c}_{1} & \mathbf{c}_{2} \\
+    \vdots & \vdots
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\mathbf{u}
+    $$
+    
+    If we numerify $\mathbf{c}_{1}, \mathbf{c}_{2}$ and $\mathbf{u}$ in the $B$ basis, we would get:
+    
+    $$
+    \left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]
+    $$
+    
+    The columns are the vectors $\mathbf{c}_{1}, \mathbf{c}_{2}$ numerified in the $B$ basis. That is, the coordinates of $\mathbf{c}_{1}, \mathbf{c}_{2}$ in the $B$ basis. Why is this? It's because the un-numerified vectors here are the two columns $\mathbf{c}_{1}, \mathbf{c}_{2}$ and the vector $\mathbf{u}$ on the right, whereas $0.5$ and 1 are the linear-combination-of-columns coefficients. This means, whatever basis one picks (like $B$ above), we numerify $\mathbf{c}_{1}, \mathbf{c}_{2}$ and $\mathbf{u}$, in that same basis. This converts coordinates in $C$ to $B$ coordinates. To emphasize, we are going to rewrite this as: $\mathbf{A}_{C \rightarrow B}[\mathbf{u}]_{C}=[\mathbf{u}]_{B}$ where
+    
+    $$
+    \begin{aligned}
+    \mathbf{A}_{C \rightarrow B} 
+    & =\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]
+    & =\text { Change-of-basis matrix from } \mathrm{C} \text { to } \mathrm{B} \\
+    [\mathbf{u}]_{C} 
+    & =\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]
+    & =\text { u expressed in basis } \mathrm{C} \\
+    [\mathbf{u}]_{B} &=\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]
+    & =\mathbf{u} \text { expressed in basis } \mathrm{B}
+    \end{aligned} 
+    $$
+    
+    Thus, we have a way to convert coordinates in one basis to another. To go from $B$ coordinates to $C$ coordinates, there will be some matrix that converts: $\mathbf{A}_{B \rightarrow C}[\mathbf{u}]_{B}=[\mathbf{u}]_{C}$. Clearly, from the earlier conversion of $\mathbf{A}_{C \rightarrow B}[\mathbf{u}]_{C}=[\mathbf{u}]_{B}$ we can multiply both sides by the matrix inverse to get $[\mathbf{u}]_{C}=\mathbf{A}_{C \rightarrow B}^{-1}[\mathbf{u}]_{B}$ and so $\mathbf{A}_{B \rightarrow C}=\mathbf{A}_{C \rightarrow B}^{-1}$. In this example (once the inverse is found): 
+    
+    $$
+    \left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]
+    $$
+    
+    and so
+    
+    $$
+    \mathbf{A}_{B \rightarrow C}=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]
+    $$
+
+    This is the change-of-basis matrix going from $B$ coordinates to $C$ coordinates. Note that the columns 
+    
+    $$
+    \left[\begin{array}{r}
+    -0.1 \\
+    0.3
+    \end{array}\right] \text { and }\left[\begin{array}{r}
+    0.4 \\
+    -0.2
+    \end{array}\right]
+    $$
+    
+    are the basis vectors of $B$, $\mathbf{b}_{1}$ and $\mathbf{b}_{2}$ expressed in C's coordinates. Since we are working with a basis, the vectors as columns will be independent. Then, if the dimensions are correct, the matrix is square (with independent columns). Thus, the inverse will exist.\\
+    
+    A vector exists without reference to any basis, in which case it is just a length and a direction. To "numerify" a vector, we need to pick a basis, in which case the numbers are the coordinates in that basis: the coefficients when expression the vector as a linear combination of the basis vectors. We now know how to convert coordinates in one basis to coordinates in another by building the change-of-basis matrix: Express the source basis vectors in terms of the target basis and place these as columns. If it's more convenient to start with one basis, then for the other direction, just use the inverse. Having an orthonormal basis simplifies matters because the inverse is the transpose. Thus, $[\mathbf{u}]_{C}=\mathbf{A}_{C \rightarrow B}^{-1}[\mathbf{u}]_{B}=\mathbf{A}_{C \rightarrow B}^{T}[\mathbf{u}]_{B}$.
+
+    \subsubsection{Change of Basis for Matrices}
+    
+    Recall the two meanings of matrix-vector multiplication: 1. The vector has the coefficients in the linear combination of the columns:
+
+    $$
+    \left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    \alpha \\
+    \beta
+    \end{array}\right]=\alpha\left[\begin{array}{l}
+    2 \\
+    4
+    \end{array}\right]+\beta\left[\begin{array}{l}
+    3 \\
+    1
+    \end{array}\right]
+    $$
+    
+    This is the interpretation we use, for example, when we seek change of basis, or equation solving (which asks to find the coefficients). 2. The other interpretation is that a matrix transforms one vector into another:
+    
+    $$
+    \left[\begin{array}{cc}
+    0.5 & -0.866 \\
+    0.866 & 0.5
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]=\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]
+    $$
+    
+    This happens to be the "rotate anticlockwise by 60 degrees" matrix. Recall, for a general angle $\theta$ the rotation matrix turned out to be: 
+    
+    $$
+    \left[\begin{array}{cc}
+    \cos (\theta) & -\sin (\theta) \\
+    \sin (\theta) & \cos (\theta)
+    \end{array}\right]
+    $$
+    
+    Now let's return to our two bases $B$ and $C$ from the earlier section and ask: does the same transforming matrix work in both? That is, we know that in the standard basis $B$:
+    
+    $$
+    \left[\begin{array}{cc}
+    0.5 & -0.866 \\
+    0.866 & 0.5
+    \end{array}\right]\left[\begin{array}{l}
+    4 \\
+    3
+    \end{array}\right]=\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]
+    $$
+    
+    If we convert $\mathbf{u}=(4,3)$ to basis $C$ and multiply by the rotation matrix, do we get the right result in $C$ coordinates?
+    
+    $$
+    \mathbf{A}_{B \rightarrow C}\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]
+    $$
+    
+    We already have calculated $\mathbf{u}=(0.5,1)$ in $C$ coordinates. Thus is it true that 
+    
+    $$
+    \left[\begin{array}{cc}
+    0.5 & -0.866 \\
+    0.866 & 0.5
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right] ?
+    $$
+    
+    The answer is: no! This is because the transforming matrix must also be converted into $C$ coordinates. If we convert the rotation matrix to C coordinates (we'll show how below) we get
+    
+    $$
+    \left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]
+    $$
+    
+    and this gives the correct results:
+    
+    $$
+    \left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]
+    $$
+
+    It is convenient to explain in terms of linear transformations. Let $S$ be a linear transformation. Think of this abstractly as $S$ "does something" to a vector. $S(\mathbf{u})$ = some result vector. For example, $S$ rotates a vector. We know of course that $S$ gets "numerified" by representing it as a matrix since every linear transformation can be expressed as a matrix. But for now, let's leave $S$ as an abstract entity. (The technical term for this abstraction is operator.) Since the basis vectors of $B$ are vectors, we can build a matrix by applying $S$ to these basis vectors $\mathbf{b}_{1}, \mathbf{b}_{2}$ and give it a name: 
+    
+    $$
+    \left[\mathbf{A}_{S}\right]_{B} \triangleq\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    S\left(\mathbf{b}_{1}\right) & S\left(\mathbf{b}_{2}\right) \\
+    \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    where: $\mathbf{A}_{S}$ means the matrix corresponding to transformation $S$. The $B$ subscript emphasizes that we built the matrix $\mathbf{A}_{S}$ using basis vectors from $B$. Next, for any vector $\mathbf{u}$ expressed in the basis $B$, we can write $\mathbf{u}=\alpha_{1} \mathbf{b}_{1}+\alpha_{2} \mathbf{b}_{2}$. Here the $\alpha$'s are the coordinates of $\mathbf{u}$ in basis $B$. By linearity of $S$: $S(\mathbf{u})=\alpha_{1} S\left(\mathbf{b}_{1}\right)+\alpha_{2} S\left(\mathbf{b}_{2}\right)$ which in matrix form is:
+    
+    $$
+    S(\mathbf{u})=\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    S\left(\mathbf{b}_{1}\right) & S\left(\mathbf{b}_{2}\right) \\
+    \vdots & \vdots
+    \end{array}\right]\left[\begin{array}{l}
+    \alpha_{1} \\
+    \alpha_{2}
+    \end{array}\right]
+    $$
+    
+    or $S(\mathbf{u})=\left[\mathbf{A}_{S}\right]_{B} \mathbf{u}$. To emphasise that all of this is occurring in basis $B$ we'll use the subscript $B$ everywhere: $[S(\mathbf{u})]_{B}=\left[\mathbf{A}_{S}\right]_{B}[\mathbf{u}]_{B}$.
+    If everything were converted to basis C we would have an equivalent expression. $[S(\mathbf{u})]_{C}=\left[\mathbf{A}_{S}\right]_{C}[\mathbf{u}]_{C}$. So, the obvious question is: what is the relation between $\left[\mathbf{A}_{S}\right]_{C}$ and $\left[\mathbf{A}_{S}\right]_{B}$? By the definition of $\left[\mathbf{A}_{S}\right]_{C}$ 
+    
+    $$
+    \left[\mathbf{A}_{S}\right]_{C}=\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    {\left[S\left(\mathbf{c}_{1}\right)\right]_{C}} & {\left[S\left(\mathbf{c}_{2}\right)\right]_{C}} \\
+    \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    where we're emphasizing that the columns are in $C$ coordinates. Now for a key observation: $\left[S\left(\mathbf{c}_{i}\right)\right]_{\mathbf{B}}=\left[\mathbf{A}_{S}\right]_{\mathbf{B}}\left[\mathbf{c}_{i}\right]_{\mathbf{B}}$ That is, if we expressed the $\mathbf{c}_{i}$'s in B, then applying the transformation in $B$ will give us the $B$-version of the transformed vector. (We've boldfaced $B$ to emphasize.) But we know how to convert any $B$ vector to a $C$ vector: multiply by the $B \rightarrow C$ change-of-basis matrix: $\left[S\left(\mathbf{c}_{i}\right)\right]_{C}=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B}\left[\mathbf{c}_{i}\right]_{B}$. This gives us the i-th column of the transformation matrix in the $C$ basis. Since matrix-matrix multiplication can be broken down column by column, we can piece the columns to together:
+    
+    $$
+    \left[\begin{array}{cc}
+    \vdots & \vdots \\
+    {\left[S\left(\mathbf{c}_{1}\right)\right]_{C}} & {\left[S\left(\mathbf{c}_{2}\right)\right]_{C}} \\
+    \vdots & \vdots
+    \end{array}\right]=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B}\left[\begin{array}{cc}
+    \vdots & \vdots \\
+    \left.\left[\mathbf{c}_{1}\right)\right]_{B} & \left.\left[\mathbf{c}_{2}\right)\right]_{B} \\
+    \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    Now for another key observation: the last matrix is just the $C \rightarrow B$ basis-change matrix! And so,
+    
+    $$
+    \left[\begin{array}{cc}
+    \vdots & \vdots \\
+    {\left[S\left(\mathbf{c}_{1}\right)\right]_{C}} & {\left[S\left(\mathbf{c}_{2}\right)\right]_{C}} \\
+    \vdots & \vdots
+    \end{array}\right]=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B} \mathbf{A}_{C \rightarrow B}
+    $$
+    
+    Or, more compactly as: $\left[\mathbf{A}_{S}\right]_{C}=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B} \mathbf{A}_{C \rightarrow B}$. So finally we have a way to convert a transforming matrix from one basis to another. One can use the inverse relation between the two coordinate change matrices to write this as: $\left[\mathbf{A}_{S}\right]_{C}=\mathbf{A}_{B \rightarrow C}\left[\mathbf{A}_{S}\right]_{B} \mathbf{A}_{B \rightarrow C}^{-1}$. Let's apply this to our rotation example. We have the two change-of-basis matrices: 
+    
+    $$
+    \mathbf{A}_{B \rightarrow C}=\left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right] \quad \mathbf{A}_{C \rightarrow B}=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]
+    $$
+    
+    Now apply on either side of the rotation (transform) matrix:
+    
+    $$
+    \left[\begin{array}{cc}
+    -0.1 & 0.3 \\
+    0.4 & -0.2
+    \end{array}\right]\left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]=\left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]
+    $$
+    
+    Finally, apply this new ($C$-basis) transform matrix to to the original vector in $C$ coordinates: 
+    
+    $$
+    \left[\begin{array}{cc}
+    1.366 & 0.866 \\
+    -1.732 & -0.366
+    \end{array}\right]\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]
+    $$
+    
+    As a final check, let's convert the result on the right back into the $B$ basis. 
+    
+    $$
+    \mathbf{A}_{C \rightarrow B}\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 1
+    \end{array}\right]\left[\begin{array}{r}
+    1.549 \\
+    -1.232
+    \end{array}\right]=\left[\begin{array}{r}
+    -0.598 \\
+    4.964
+    \end{array}\right]
+    $$
+    
+    The vectors and transform exist without coordinates (without a basis). Once we choose a basis, we "numerify" the vectors and transform.
+    
+    \subsubsection{What Basis Should a (Transform) Matrix Use?}
+    
+    We've seen that a transform can be abstract and then "numerified" (turned into a matrix) once a basis is selected. The actual matrix produced is a bunch of numbers, and you get a different matrix for each choice of basis. Since we can choose the basis, we should ask: are some bases better than others for a given transform? The answer: yes, we should use the eigenbasis if one exists. Let's consider an example:
+    
+    $$
+    \mathbf{A} \triangleq\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    For example, when applied to the vector $\mathbf{u}=(3,2)$ we get 
+    
+    $$
+    \mathbf{A} \mathbf{u}=\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    3 \\
+    2
+    \end{array}\right]=\left[\begin{array}{r}
+    11 \\
+    2
+    \end{array}\right]
+    $$
+    
+    It turns out that $\mathbf{A}$ has eigenvectors and corresponding eigenvalues
+    
+    $$
+    \begin{aligned}
+    & A\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right]=5\left[\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right] \\
+    A &\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]=1\left[\begin{array}{r}
+    0.5 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+    The two are linearly independent (but not orthogonal) and form a basis. Let's call this the $E$-basis. And we've called the standard basis $B$ in earlier sections. Then, let's build the change-of-basis matrix going from the eigenbasis to standard: 
+    
+    $$
+    \mathbf{A}_{E \rightarrow B}=\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    The inverse going from $B$ to $E$ turns out to be: 
+    
+    $$
+    \mathbf{A}_{B \rightarrow E}=\mathbf{A}_{E \rightarrow B}^{-1}=\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    Finally, let's convert the transform to its own eigenbasis, which we'll write as
+    
+    $$
+    \begin{aligned}
+    [\mathbf{A}]_{E} &=\mathbf{A}_{B \rightarrow E}[\mathbf{A}]_{B} \mathbf{A}_{E \rightarrow B} \\
+    &=\left[\begin{array}{cc}
+    1 & -0.5 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]=\left[\begin{array}{ll}
+    5 & 0 \\
+    0 & 1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    Which is a diagonal matrix containing the eigenvalues (and only the eigenvalues). For the general n-dimensional case suppose $\mathbf{A}$ is a transform matrix. Suppose $\mathbf{A}$ has $n$ eigenvectors $\mathbf{x}_{1}, \mathbf{x}_{2}, \ldots, \mathbf{x}_{n}$ and corresponding eigenvalues $\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}$ where $\mathbf{A x}_{i}=\lambda_{i} \mathbf{x}_{i}$. Then suppose we place the eigenvectors as columns in a matrix $\mathbf{E}$ and the eigenvalues into a diagonal matrix $\mathbf{\Lambda}$:
+    
+    $$
+    \mathbf{E}=\left[\begin{array}{cccc} 
+    & & & \\
+    \vdots & \vdots & \vdots & \vdots \\
+    \mathbf{x}_{1} & \mathbf{x}_{2} & \cdots & \mathbf{x}_{n} \\
+    \vdots & \vdots & \vdots & \vdots
+    \end{array}\right]
+    $$
+    
+    and 
+    
+    $$
+    \boldsymbol{\Lambda}=\left[\begin{array}{cccc}
+    \lambda_{1} & 0 & & 0 \\
+    0 & \lambda_{2} & & 0 \\
+    \vdots & & \ddots & \\
+    0 & 0 & & \lambda_{n}
+    \end{array}\right]
+    $$
+    
+    In the change of basis for matrices we showed that $\mathbf{A E}=\mathbf{E} \boldsymbol{\Lambda}$. If $\mathbf{E}$ is indeed a basis, it will have an inverse. Then, we can left-multiply and switch sides to get: $\boldsymbol{\Lambda}=\mathbf{E}^{-1} \mathbf{A} \mathbf{E}$. Thus, the diagonal eigenvalue matrix can be written in terms of the eigenbasis matrices. But this is exactly the change-of-basis we get when changing the matrix $\mathbf{A}$ to its eigenbasis. The take-away: the best basis in which to represent a transform matrix is the matrix's own eigenbasis (if one exists). This last point ("if one exists") is not unimportant. The spectral theorem guarantees the existence of such a basis when $\mathbf{A}$ is real, symmetric. We may nonetheless get lucky and get an eigenbasis (as we did with our running example). One additional point: the spectral theorem goes further and guarantees that if $\mathbf{A}$ is real and symmetric, the eigenbasis is orthonormal and the eigenvalues are real. Which means we can write $\boldsymbol{\Lambda}=\mathbf{E}^{-1} \mathbf{A} \mathbf{E}=\mathbf{E}^{T} \mathbf{A} \mathbf{E}$ (since the inverse is just the transpose). With our running example of
+    
+    $$
+    \mathbf{A} \triangleq\left[\begin{array}{cc}
+    5 & -2 \\
+    0 & 1
+    \end{array}\right]
+    $$
+
+    (which is not symmetric) we nonetheless got lucky and obtained an invertible
+    
+    $$
+    \mathbf{E}=\left[\begin{array}{cc}
+    1 & 0.5 \\
+    0 & 1
+    \end{array}\right]
+    $$
+    
+    Notice: $\mathbf{E}$ is not orthogonal. If, however, we had used a symmetric
+    
+    $$
+    \mathbf{A} \triangleq\left[\begin{array}{cc}
+    5 & -2 \\
+    -2 & 1
+    \end{array}\right]
+    $$
+
+    we would get
+    
+    $$
+    \mathbf{E}=\left[\begin{array}{cc}
+    -0.383 & 0.924 \\
+    -0.924 & -0.383
+    \end{array}\right]
+    $$
+
+    which is orthonormal and thus $\mathbf{E}^{T} \mathbf{E}=\mathbf{I}$. When the eigenvectors of a square transform matrix are linearly independent, one can form a basis using the eigenvectors. If the matrix is then converted to eigenbasis coordinates, the resulting matrix is diagonal. The diagonal matrix has two advantages, it's easy to compute with ( $n$ values instead of $n^{2}$ ) and rhe diagonal entries neatly separate along dimensions, with one eigenvalue representing each dimension. Thus $n$ numbers describe the entire transformation, and each number is associated with a different dimension. This is why eigenvectors are important: they quantify the essence of a transformation in its simplest form.
+    
+\subsection{Some Useful Facts}
+
+The product $\mathbf{A B}$ can be written in terms of the columns of $\mathbf{B}$ as
+
+$$
+\mathbf{A B}=\mathbf{A}\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]=\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{A} \mathbf{b}_{1} & \mathbf{A} \mathbf{b}_{2} & \cdots & \mathbf{A} \mathbf{b}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+$$
+
+That is, we stack the individual $\mathbf{A} \mathbf{b}_{i}$ products (which are vectors) as columns in the result. Let's see how this works in an example. Consider
+
+$$
+\mathbf{A B}=\left[\begin{array}{cc}
+1 & 2 \\
+0 & -3
+\end{array}\right]\left[\begin{array}{cc}
+2 & -3 \\
+0 & 1
+\end{array}\right]=\left[\begin{array}{cc}
+2 & -1 \\
+0 & -3
+\end{array}\right]
+$$
+
+The first column on the right becomes
+
+$$
+\mathbf{A} \mathbf{b}_{1}=\left[\begin{array}{cc}
+1 & 2 \\
+0 & -3
+\end{array}\right]\left[\begin{array}{l}
+2 \\
+0
+\end{array}\right]=\left[\begin{array}{l}
+2 \\
+0
+\end{array}\right]
+$$
+
+The second column becomes
+
+$$
+\mathbf{A} \mathbf{b}_{2}=\left[\begin{array}{cc}
+1 & 2 \\
+0 & -3
+\end{array}\right]\left[\begin{array}{c}
+-3 \\
+1
+\end{array}\right]=\left[\begin{array}{l}
+-1 \\
+-3
+\end{array}\right]
+$$
+
+\subsection{Inner-Products and Outer-Products}
+
+We're already familiar with an inner-product: The inner-product of two vectors (of the same dimension) is also known as the dot-product. An example with
+
+$$
+\mathbf{u}=\left[\begin{array}{l}
+1 \\
+2 \\
+3
+\end{array}\right] \quad \mathbf{v}=\left[\begin{array}{r}
+0 \\
+-1 \\
+2
+\end{array}\right]
+$$
+
+The inner (dot) product is the number $1 \times 0+2 \times-1+3 \times 2=4$. We often write the inner product as $\mathbf{u} \cdot \mathbf{v}$. But there is another way of writing this that will ultimately be more useful for us. Let's write the two vectors as a row times a column:
+
+$$
+\left[\begin{array}{lll}
+1 & 2 & 3
+\end{array}\right]\left[\begin{array}{c}
+0 \\
+-1 \\
+2
+\end{array}\right]
+$$
+
+Think of the object on the left as a single-row matrix, the transpose $\mathbf{u}^{T}=\left[\begin{array}{lll} 1 & 2 & 3 \end{array}\right]$. In effect, we are writing the inner product as: $\mathbf{u}^{T} \mathbf{v}$. Why is this useful? This puts the inner product on an equal footing with matrix-vector multiplication, which means larger expressions can be algebraically simplified using associativity and distribution. That is, think of $\mathbf{u}^{T} \mathbf{v}$ as this "matrix" product with dimensions as shown: $\mathbf{u}_{1 \times n}^{T} \mathbf{v}_{n \times 1}$. For example:
+
+$$
+\begin{aligned}
+|\mathbf{u}+\mathbf{v}|^{2} &=(\mathbf{u}+\mathbf{v})^{T}(\mathbf{u}+\mathbf{v}) \\
+&=\left(\mathbf{u}^{T}+\mathbf{v}^{T}\right)(\mathbf{u}+\mathbf{v}) \\
+&=|\mathbf{u}|^{2}+2 \mathbf{u}^{T} \mathbf{v}+|\mathbf{v}|^{2}
+\end{aligned}
+$$
+
+If we had instead only the previous inner-product definition, we would be stuck at the second line. We've seen that a row times a column is a number (the inner product). We could ask: what do we get if we multiple a column times a row? Answer: The product of a column times a row is a matrix: For example:
+
+$$
+\left[\begin{array}{l}
+1 \\
+2 \\
+3
+\end{array}\right]\left[\begin{array}{lll}
+0 & -1 & 2
+\end{array}\right]=\left[\begin{array}{lll}
+0 & -1 & 2 \\
+0 & -2 & 4 \\
+0 & -3 & 6
+\end{array}\right]
+$$
+
+This is simply all possible number multiplications. This is called the outer-product of two vectors. If $\mathbf{A}_{i j}$ is the $\mathrm{i}$-th row, $\mathrm{j}$-th column element of the resulting matrix then $\mathbf{A}_{i, j}=\mathbf{u}_{i} \mathbf{v}_{j}$. We don't even need the vectors to be of the same length, for example:
+
+$$
+\left[\begin{array}{l}
+1 \\
+2
+\end{array}\right]\left[\begin{array}{lll}
+0 & -1 & 2
+\end{array}\right]=\left[\begin{array}{lll}
+0 & -1 & 2 \\
+0 & -2 & 4
+\end{array}\right]
+$$
+
+Thus, if $\mathbf{u}$ and $\mathbf{v}$ are $\mathbf{m}$-dimensional and $\mathbf{n}$-dimensional vectors, the outer-product $\mathbf{u v}^{T}$ has dimensions $m \times n$. As we will see, outer-products are used all over quantum computing (with different notation that we will encounter).
+
+\subsection{Eigenvectors and Eigenvalues: A Review}
+
+We'll focus on the second interpretation of matrix-vector multiplication $\mathbf{A u}=\mathbf{v}$ where we'll think of the matrix $\mathbf{A}$ as transforming or "acting on" vector $\mathbf{u}$ to produce vector $\mathbf{v}$.
+
+$$
+\underset{\mathbf{A}}{\left[\begin{array}{ll}
+5 & -3 \\
+0 & -1
+\end{array}\right]}
+\underset{\mathbf{u}}{\left[\begin{array}{l}
+3 \\
+2
+\end{array}\right]}
+=
+\underset{\mathbf{v}}{\left[\begin{array}{r}
+9 \\
+-2
+\end{array}\right]}
+$$
+
+Notice that $\mathbf{v}$ has a different length and direction than $\mathbf{u}$. This is typical for a random matrix acting on a random vector. We see that $\mathbf{A x}_{i}=\lambda_{i} \mathbf{x}_{i}$. Such $\mathbf{x}_{i}$ vectors are called eigenvectors of the matrix $\mathbf{A}$, each with its associated eigenvalue $\lambda_{i}$ (a number). Thus, in the above case, A has eigenvectors
+
+$$
+\mathbf{x}_{1}=\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right] \quad \mathbf{x}_{2}=\left[\begin{array}{r}
+0.5 \\
+1
+\end{array}\right]
+$$
+
+with associated eigenvalues $\lambda_{1}=5 \quad \lambda_{2}=-1$. Here's what to remember about eigenvectors and eigenvalues. The matrix $\mathbf{A}$ in $\mathbf{A x}=\lambda \mathbf{x}$ needs to be square. Consider $\mathbf{A}_{m \times n} \mathbf{x}_{n \times 1}$. This produces a vector of dimension $m \times 1$. The only way $\mathbf{A x}=\lambda \mathbf{x}$ is if $m=n$. Some matrices will not have eigenvectors. For example, no rotation matrix can possibly leave a vector in the same direction. Most math textbooks focus on hand-calculating eigenvalues using the so-called characteristic equation. In practice, eigenvectors/values are almost always computed using numerical algorithms. \\
+
+Let's examine the special case when when the matrix of interest is symmetric (i.e., $\mathbf{A}^{T}=\mathbf{A}$ ). The spectral theorem (as it's called) tells us that. All its eigenvalues $\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}$ (with possible multiplicities) are real. There exist $n$ corresponding eigenvectors $\mathbf{x}_{1}, \mathbf{x}_{2}, \ldots, \mathbf{x}_{n}$ such that the matrix
+
+$$
+\mathbf{S} \triangleq\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{x}_{1} & \mathbf{x}_{2} & \cdots & \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+\end{array}\right]
+$$
+
+is orthonormal (making them a basis for the space). This is not at all obvious. Surprisingly, this is easier to prove with complex-number matrices. Now, suppose we place the eigenvalues from above diagonally in a matrix $\boldsymbol{\Lambda}$.
+
+$$
+\boldsymbol{\Lambda}=\left[\begin{array}{cccc}
+\lambda_{1} & 0 & & 0 \\
+0 & \lambda_{2} & & 0 \\
+\vdots & & \ddots & \\
+0 & 0 & & \lambda_{n}
+\end{array}\right]
+$$
+
+(with the eigenvalues on the diagonal) then $\mathbf{A S}=\mathbf{S} \boldsymbol{\Lambda}$. It is conventional to renumber the indices so that the eigenvalues are sorted along the diagonal from large to small. Since $\mathbf{A x}_{i}=\lambda_{i} \mathbf{x}_{i}$ you can check that $\text { AS }=\text { S } \boldsymbol{\Lambda}$ (with the eigenvalue matrix appearing on the right side). Then, multiply both sides by $\mathbf{S}^{-1}$ on the right to get $A=S \Lambda S^{-1}$. Because $\mathbf{S}$ has orthonormal columns, $\mathbf{S}^{-1}=\mathbf{S}^{T}$. Which means we can write $\mathbf{A}=\mathbf{S} \mathbf{\Lambda} \mathbf{S}^{T}$. This is sometimes called the diagonalization of the the matrix $\mathbf{A}$. Let's look at an example of a symmetric matrix:
+
+$$
+\mathbf{A}=\left[\begin{array}{lll}
+2 & 1 & 3 \\
+1 & 0 & 1 \\
+3 & 1 & 2
+\end{array}\right]
+$$
+
+For this case, it turns out that the
+
+$$
+\mathbf{x}_{1}=\left[\begin{array}{l}
+0.684 \\
+0.255 \\
+0.684
+\end{array}\right] \quad \mathbf{x}_{2}=\left[\begin{array}{c}
+0.18 \\
+-0.967 \\
+0.18
+\end{array}\right] \quad \mathbf{x}_{3}=\left[\begin{array}{c}
+0.707 \\
+0 \\
+-0.707
+\end{array}\right]
+$$
+
+are the orthonormal eigenvectors with corresponding eigenvalues
+
+$$
+\lambda_{1}=5.372 \quad \lambda_{2}=-0.372 \quad \lambda_{3}=-1
+$$
+
+Which means we can write
+
+$$
+\underset{\mathbf{A}}{\left[\begin{array}{lll}
+2 & 1 & 3 \\
+1 & 0 & 1 \\
+3 & 1 & 2
+\end{array}\right]}
+=
+\underset{\mathbf{S}}{\left[\begin{array}{ccc}
+0.684 & 0.18 & 0.707 \\
+0.255 & -0.967 & 0 \\
+0.684 & 0.18 & -0.707
+\end{array}\right]}
+\underset{\mathbf{\Lambda}}{\left[\begin{array}{ccc}
+5.372 & 0 & 0 \\
+0 & -0.372 & 0 \\
+0 & 0 & -1
+\end{array}\right]}
+\underset{\mathbf{S}^{\mathrm{T}}}{\left[\begin{array}{ccc}
+0.684 & 0.255 & 0.684 \\
+0.18 & -0.967 & 0.18 \\
+0.707 & 0 & -0.707
+\end{array}\right]}
+$$
+
+It turns out we can express the (symmetric) matrix $\mathbf{A}$ above using outer-products of the eigenvectors. Let's go back to $\mathbf{A}=\mathbf{S} \mathbf{\Lambda} \mathbf{S}^{T}$ and write
+
+$$
+\mathbf{S} \mathbf{\Lambda}=\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{x}_{1} & \mathbf{x}_{2} & \cdots & \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+\left[\begin{array}{cccc}
+\lambda_{1} & 0 & & 0 \\
+0 & \lambda_{2} & & 0 \\
+\vdots & & \ddots & \\
+0 & 0 & & \lambda_{n}
+\end{array}\right]
+=
+\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\lambda_{1} \mathbf{x}_{1} & \lambda_{2} \mathbf{x}_{2} & \cdots & \lambda_{n} \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+$$
+
+Therefore
+
+$$
+\mathbf{A}=\mathbf{S} \mathbf{\Lambda} \mathbf{S}^{T}=\left[\begin{array}{cccc} 
+& & & \\
+\vdots & \vdots & \vdots & \vdots \\
+\lambda_{1} \mathbf{x}_{1} & \lambda_{2} \mathbf{x}_{2} & \ldots & \lambda_{n} \mathbf{x}_{n} \\
+\vdots & \vdots & \vdots & \vdots
+& & & \\
+\end{array}\right]
+\left[\begin{array}{ccc}
+\ldots & \mathbf{x}_{1}^{T} & \ldots \\
+\ldots & \mathbf{x}_{2}^{T} & \ldots \\
+& \vdots & \\
+\ldots & \mathbf{x}_{n}^{T} & \ldots
+\end{array}\right]=\sum_{i=1}^{n} \lambda_{i} \mathbf{x}_{i} \mathbf{x}_{i}^{T}
+$$
+
+For our $3 \times 3$ matrix $\mathbf{A}$ example:
+
+$$
+\begin{aligned}
+\mathbf{A}=& \sum_{i=1}^{3} \lambda_{i} \mathbf{x}_{i} \mathbf{x}_{i}^{T} \\
+=& \lambda_{1} \mathbf{x}_{1} \mathbf{x}_{1}^{T}+\lambda_{2} \mathbf{x}_{2} \mathbf{x}_{2}^{T}+\lambda_{3} \mathbf{x}_{3} \mathbf{x}_{3}^{T} \\
+=& 5.372\left[\begin{array}{c}
+0.684 \\
+0.255 \\
+0.684
+\end{array}\right]\left[\begin{array}{llll}
+0.684 & 0.255 & 0.684
+\end{array}\right] \\
+&-0.372\left[\begin{array}{c}
+0.18 \\
+-0.967 \\
+0.18
+\end{array}\right]\left[\begin{array}{llll}
+0.18 & -0.967 & 0.18
+\end{array}\right] \\
+&-1\left[\begin{array}{c}
+0.707 \\
+0 \\
+-0.707
+\end{array}\right]\left[\begin{array}{lll}
+0.707 & 0 & -0.707
+\end{array}\right]
+\end{aligned}
+$$
+
+Each outer-product is matrix. Let's expand to make this clear:
+
+$$
+\mathbf{A}=5.372\left[\begin{array}{ccc}
+0.468 & 0.174 & 0.468 \\
+0.174 & 0.065 & 0.174 \\
+0.468 & 0.174 & 0.468
+\end{array}\right]-0.372\left[\begin{array}{ccc}
+0.032 & -0.174 & 0.032 \\
+-0.174 & 0.935 & -0.174 \\
+0.032 & -0.174 & 0.032
+\end{array}\right]-1\left[\begin{array}{ccc}
+0.5 & 0 & -0.5 \\
+0 & 0 & 0 \\
+-0.5 & 0 & 0.5
+\end{array}\right]
+$$
+
+Why is this useful? Two reasons. The first reason is to approximate and simplify a matrix. Outside of quantum computing, large eigenvalues can indicate what "matters" in a matrix. Thus, in the above case, the first term can be computed as
+
+$$
+5.372\left[\begin{array}{lll}
+0.468 & 0.174 & 0.468 \\
+0.174 & 0.065 & 0.174 \\
+0.468 & 0.174 & 0.468
+\end{array}\right]=\left[\begin{array}{lll}
+2.513 & 0.937 & 2.513 \\
+0.937 & 0.349 & 0.937 \\
+2.513 & 0.937 & 2.513
+\end{array}\right] \approx\left[\begin{array}{lll}
+2 & 1 & 3 \\
+1 & 0 & 1 \\
+3 & 1 & 2
+\end{array}\right]=\mathbf{A}
+$$
+
+Which is a first-order approximation of the original matrix $\mathbf{A}$. In quantum computing and quantum mechanics, however, this eigenvector outerproduct expression is an essential part of the theory. The act of measuring, a very strange aspect of the fundamental theory, will use such outerproducts.
+
+\subsection{Unit Length Vectors and Their Importance}
+
+A unit-length vector $\mathbf{v}$ has $|\mathbf{v}|=\sqrt{\mathbf{v} \cdot \mathbf{v}}=1$ which implies $\mathbf{v} \cdot \mathbf{v}=1$. The importance of unit-length in quantum computing (and mechanics): Unit-length vectors are the only kind of vector used in quantum computing (and mechanics). The reason is convenience. Unit lengths simplify calculations and terms you have to carry around. Let's look at an example of such a simplification: Recall how we computed the projection of a vector $\mathbf{u}$ on $\mathbf{v}$. The projection of $\mathbf{u}$ along $\mathbf{v}$ is:
+
+$$
+\begin{aligned}
+\mathbf{y} &=\alpha \mathbf{v} \\
+&=\left(\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}}\right) \mathbf{v}
+\end{aligned}
+$$
+
+When $\mathbf{v}$ has unit length, this becomes $\mathbf{y}=(\mathbf{v} \cdot \mathbf{u}) \mathbf{v}$. Unit lengths also simplify orthogonal bases. The basis
+
+$$
+\mathbf{w}_{1}=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right] \quad \mathbf{w}_{2}=\left[\begin{array}{r}
+-\sqrt{3} \\
+1
+\end{array}\right]
+$$
+
+is orthogonal (Check: $\mathbf{w}_{1} \cdot \mathbf{w}_{2}=0$ ). But neither vector is of unit length. Which means that if we place them as columns in a matrix
+
+$$
+\mathbf{X}=\left[\begin{array}{cc}
+\vdots & \vdots \\
+\mathbf{w}_{1} & \mathbf{w}_{2} \\
+\vdots & \vdots
+\end{array}\right]=\left[\begin{array}{cc}
+1 & -\sqrt{3} \\
+\sqrt{3} & 1
+\end{array}\right]
+$$
+
+then the transpose is not quite the inverse:
+
+$$
+\mathbf{X}^{T} \mathbf{X}=\left[\begin{array}{cc}
+1 & \sqrt{3} \\
+-\sqrt{3} & 1
+\end{array}\right]\left[\begin{array}{cc}
+1 & -\sqrt{3} \\
+\sqrt{3} & 1
+\end{array}\right]=\left[\begin{array}{ll}
+4 & 0 \\
+0 & 4
+\end{array}\right]
+$$
+
+It is easy to convert an orthogonal basis to an orthonormal basis: divide each vector by its length. Thus, define
+
+$$
+\mathbf{v}_{1}=\frac{\mathbf{w}_{1}}{\left|\mathbf{w}_{1}\right|}=\left[\begin{array}{r}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]
+$$
+
+and
+
+$$
+\mathbf{v}_{2}=\frac{\mathbf{w}_{2}}{\left|\mathbf{w}_{2}\right|}=\left[\begin{array}{c}
+-\frac{\sqrt{3}}{2} \\
+\frac{1}{2}
+\end{array}\right]
+$$
+
+Then, if we define
+
+$$
+\mathbf{Y}=\left[\begin{array}{cc}
+\vdots & \vdots \\
+\mathbf{v}_{1} & \mathbf{v}_{2} \\
+\vdots & \vdots
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]
+$$
+
+we see that
+
+$$
+\mathbf{Y}^{T} \mathbf{Y}=\left[\begin{array}{cc}
+\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]\left[\begin{array}{cc}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1
+\end{array}\right]=\mathbf{I}
+$$
+
+\subsection{Projectors, Completeness}
+
+Let's revisit projection on unit-length vectors: Consider the projection of vector $\mathbf{u}$ (not necessarly unit-length along unit-length vector $\mathbf{v}_{1}$. We've seen that the projected vector $\mathbf{y}_{1}$ is
+
+$$
+\begin{aligned}
+\mathbf{y}_{1} &=\left(\mathbf{v}_{1} \cdot \mathbf{u}\right) \mathbf{v}_{1} \\
+&=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1}
+\end{aligned}
+$$
+
+Note: The customary denominator in the projection coefficient, the squared length of $\mathbf{v}_{1}$ is now $1$. We've written the dot-product in row-column form. In our example,
+
+$$
+\begin{aligned}
+\mathbf{y}_{1} &=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1} \\
+&=\left(\left[\begin{array}{ll}
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]\right)\left[\begin{array}{c}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]=2\left[\begin{array}{r}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right]
+\end{aligned}
+$$
+
+One could think of $\mathbf{y}_{1}$ as the resulting vector obtained (through projection on $\mathbf{v}_{1}$ ) from the vector $\mathbf{u}$. We can then ask: is there a matrix $\mathbf{P}_{1}$ that would achieve this transformation, i.e. $\mathbf{y}_{1}=\mathbf{P}_{1} \mathbf{u}$? We could call such a matrix a projector matrix. Observe that
+
+$$
+\begin{aligned}
+\mathbf{y}_{1} &=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1} & & \text { From earlier } \\
+&=\mathbf{v}_{1}\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) & & \text { The scalar in parens can be moved } \\
+&=\left(\mathbf{v}_{1} \mathbf{v}_{1}^{T}\right) \mathbf{u} & & \text { Associativity of matrix multiplication }
+\end{aligned}
+$$
+
+But we've seen that the outerproduct $\mathbf{v}_{1} \mathbf{v}_{1}^{T}$ is in fact a matrix. So, let's define $\mathbf{P}_{1} \triangleq \mathbf{v}_{1} \mathbf{v}_{1}^{T}$
+
+In our example:
+
+$$
+\mathbf{v}_{1} \mathbf{v}_{1}^{T}=\left[\begin{array}{c}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{ll}
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right] \triangleq \mathbf{P}_{1}
+$$
+
+Then,
+
+$$
+\mathbf{P}_{1} \mathbf{u}=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right]=\mathbf{y}_{1}
+$$
+
+Now consider projecting a vector $\mathbf{u}$ onto every vector in an orthonormal basis $\mathbf{v}_{1}, \ldots, \mathbf{v}_{n}$:
+
+Note how the projections add up to the original vector: $\mathbf{y}_{1}+\mathbf{y}_{2}=\mathbf{u}$. The projector matrices are:
+
+$$
+\begin{aligned}
+&\mathbf{P}_{1}=\mathbf{v}_{1} \mathbf{v}_{1}^{T}=\left[\begin{array}{c}
+\frac{1}{2} \\
+\frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{ll}
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right] \quad=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right] \\
+&\mathbf{P}_{2}=\mathbf{v}_{2} \mathbf{v}_{2}^{T}=\left[\begin{array}{c}
+\frac{-\sqrt{3}}{2} \\
+\frac{1}{2}
+\end{array}\right]\left[\begin{array}{ll}
+-\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{3}{4} & \frac{-\sqrt{3}}{4} \\
+\frac{-\sqrt{3}}{4} & \frac{1}{4}
+\end{array}\right]
+\end{aligned}
+$$
+
+Applying them in this example gives us
+
+$$
+\begin{aligned}
+&\mathbf{y}_{1}=\mathbf{P}_{1} \mathbf{u}=\left[\begin{array}{cc}
+\frac{1}{4} & \frac{\sqrt{3}}{4} \\
+\frac{\sqrt{3}}{4} & \frac{3}{4}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+\sqrt{3}
+\end{array}\right]=\left[\begin{array}{c}
+1 \\
+-\frac{1}{\sqrt{3}}
+\end{array}\right]=\mathbf{y}_{1} \\
+&\mathbf{y}_{2}=\mathbf{P}_{2} \mathbf{u}=\left[\begin{array}{cc}
+\frac{3}{4} & \frac{-\sqrt{3}}{4} \\
+\frac{-\sqrt{3}}{4} & \frac{1}{4}
+\end{array}\right]\left[\begin{array}{c}
+2 \\
+\frac{2}{\sqrt{3}}
+\end{array}\right]=\mathbf{y}_{2}
+\end{aligned}
+$$
+
+We'll next describe a property called completeness for projectors: First, let's recall that a vector is the sum of its projections on any orthonormal basis:
+$\mathbf{u}=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1}+\ldots\left(\mathbf{v}_{n}^{T} \mathbf{u}\right) \mathbf{v}_{n}$. Why is this true? This comes from first writing $\mathbf{u}$ in terms of the basis: $\mathbf{u}=\alpha_{1} \mathbf{v}_{1}+\ldots \alpha_{n} \mathbf{v}_{n}$. Now multiply from the left by $\mathbf{v}_{i}^{T}$ to get $\alpha_{i}=\mathbf{v}_{i}^{T} \mathbf{u}$. Since $\mathbf{v}_{i}^{T} \mathbf{u}$ is a number we can rewrite and use associativity
+
+$$
+\begin{aligned}
+\mathbf{u} &=\left(\mathbf{v}_{1}^{T} \mathbf{u}\right) \mathbf{v}_{1}+\ldots+\left(\mathbf{v}_{n}^{T} \mathbf{u}\right) \mathbf{v}_{n} \\
+&=\mathbf{v}_{1}\left(\mathbf{v}_{1}^{T} \mathbf{u}\right)+\ldots+\mathbf{v}_{n}\left(\mathbf{v}_{n}^{T} \mathbf{u}\right) \\
+&=\left(\mathbf{v}_{1} \mathbf{v}_{1}^{T}\right) \mathbf{u}+\ldots+\left(\mathbf{v}_{n} \mathbf{v}_{n}^{T}\right) \mathbf{u} \\
+&=\left(\mathbf{v}_{1} \mathbf{v}_{1}^{T}+\ldots+\mathbf{v}_{n} \mathbf{v}_{n}^{T}\right) \mathbf{u}
+\end{aligned}
+$$
+
+Which means the sum of projector matrices $\mathbf{v}_{i} \mathbf{v}_{i}^{T}$ is the identity matrix: $\mathbf{v}_{1} \mathbf{v}_{1}^{T}+\ldots+\mathbf{v}_{n} \mathbf{v}_{n}^{T}=\mathbf{I}$. This is sometimes called the completeness theorem for projectors. We will make frequent use of this result.
+
+\end{document}
