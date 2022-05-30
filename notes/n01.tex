@@ -1,0 +1,449 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Vectors \& Linear Combinations}
+
+    Vectors in $\mathbb{R}^{2}$
+    
+    $$\bar{u}=\left[\begin{array}{l} 1 \\ 2\end{array}\right]$$
+    
+    Vectors in $\mathbb{R}^{3}$
+    
+    $$\bar{\omega}=\left[\begin{array}{l}1 \\ 2 \\ 3\end{array}\right] \begin{aligned}&x_{1} \\&x_{2} \\&x_{3}\end{aligned}$$
+
+\subsection{Linear Combinations}
+
+    Linear combinations remain in the same $\mathbb{R}^{2}$ vector space
+    
+    $$
+    \begin{aligned}
+    c_{1} \bar{v}+c_{2} \bar{\omega}
+    & =c_{1}\left[\begin{array}{l}
+    v_{1} \\
+    v_{2}
+    \end{array}\right]+c_{2}\left[\begin{array}{l}
+    \omega_{1} \\
+    \omega_{2}
+    \end{array}\right]\\
+    &=\left[\begin{array}{l}
+    c_{1} v_{1} \\
+    c_{1} v_{2}
+    \end{array}\right]+\left[\begin{array}{l}
+    c_{2} \omega_{1} \\
+    c_{2} \omega_{2}
+    \end{array}\right] \\
+    &=\left[\begin{array}{l}
+    c_{1} v_{1}+c_{2} \omega_{1} \\
+    c_{1} v_{2}+c_{2} \omega_{2}
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    $c_{1} \bar{v}+c_{2} \bar{\omega} \in R^{2}$ space. Where $\bar{v}_{1}, \bar{v}_{2}, \ldots, \bar{v_{n}} \in \mathbb{R}^{n}$ the linear combination remains in $c_{1} \bar{v}_{1}+c_{2} \bar{v}_{2}+\ldots+c_{n} \bar{v}_{n} \in \mathbb{R}^{n}$ space where $c_{1}, c_{2}, \ldots, c_{n} \in \mathbb{R}$ scalars.
+    
+    $$
+    \begin{aligned}
+    & \bar{v}_{1} = \left[\begin{array}{l} 1 \\ 2 \end{array}\right],
+    \bar{v}_{2} = \left[\begin{array}{l} 1 \\ 3 \end{array}\right] \\
+    & \bar{v}_{1} + \bar{v}_{2} = \left[\begin{array}{l} 1 \\ 2 \end{array}\right]
+    + \left[\begin{array}{l} 1 \\ 3 \end{array}\right]
+    = \left[\begin{array}{l} 2 \\ 5 \end{array}\right] = \bar{v}_{3}
+    \end{aligned}
+    $$
+    
+    For all linear combinations of $\bar{u}_{1}, \bar{u}_{2}$.
+    
+    $$\bar{u}_{1} = \left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right], \bar{u}_{2}=\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right]$$
+    
+    How do I know if a vector belongs to that collection? The set of all linear combinations of $\bar{u}_{1}$ and $\bar{u}_{2}$, where a linear combination $=c_{1} \bar{u}_{1} + c_{2} \bar{u}_{2} \forall C_{1} C_{2} \in \mathbb{R}$
+    
+    $$
+    \begin{aligned}
+    c_{1} \bar{u}_{1}+c_{2} \bar{u}_{2} & = c_{1}\left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right]
+                                        + c_{2}\left[\begin{array}{l}1 \\ 0 \\ 0\end{array}\right]\\
+                                        & = \left[\begin{array}{c}c_{2} \\ c_{1}+c_{2} \\ c_{1}\end{array}\right]
+    \end{aligned}
+    $$
+    
+    Is vector $\left[\begin{array}{l}1 \\ 2 \\ 3\end{array}\right]$ in the linear combination of $\bar{u}_{1}, \bar{u}_{2}$ ?
+    
+    $$
+    \left[\begin{array}{l}
+    1 \\
+    2 \\
+    3
+    \end{array}\right] \neq c_{1} \bar{u}_{1}+c_{2} \bar{v}_{2}, \forall c_{1}, c_{2} \in \mathbb{R}
+    $$
+
+\subsection{Length \& Dot Product}
+
+    Dot product
+
+    $$
+    \begin{aligned}
+    \bar{v} \cdot \bar{\omega} &=\left[\begin{array}{l}
+    v_{1} \\
+    v_{2} \\
+    v_{3}
+    \end{array}\right] \cdot\left[\begin{array}{l}
+    \omega_{1} \\
+    \omega_{2} \\
+    \omega_{3}
+    \end{array}\right]\\
+    & = v_{1} \omega_{1} + v_{2} \omega_{2} + v_{3} w_{3}
+    \end{aligned}
+    $$
+    
+    In general 
+    
+    $$
+    \bar{v} \cdot \bar{\omega}=\sum_{i=1}^{n} v_{i} w_{i} 
+    $$
+    
+    $\forall \bar{v}, \bar{w} \in \mathbb{R}^{n}$\\
+  
+    Length of vector
+    
+    $$
+    \|\bar{v}\| = \sqrt{\sum_{i=1}^{n} v_{i} \cdot v_{i}\right} \quad  \forall \bar{v} \in \mathbb{R}^{n}
+    $$
+    
+    Unit vector
+    
+    $$
+    \|\bar{v}\|=1
+    $$
+    
+    $$
+    \begin{aligned}
+    \bar{u} & = \left[\begin{array}{l} 3 \\ 4 \end{array}\right]\\
+    \|\bar{u}\| & = \sqrt{3^{2}+4^{2}} = 5
+    \end{aligned}
+    $$
+    
+    Unit length vector
+    
+    $$
+    \bar{u} = \frac{\bar{u}}{ \| \bar{u} \|} 
+            = \frac{1}{5}\left[\begin{array}{l} 3 \\ 4 \end{array}\right]\\
+            = \left[\begin{array}{c} 3 / 5 \\ 4 / 5 \end{array}\right]
+    $$
+    
+    Angle between vectors
+    
+    $$
+    \cos \theta = \frac{\bar{u} \cdot \bar{\omega}}{\|\bar{u}\| \cdot\|\bar{\omega}\|}
+    $$
+    
+    note if $\theta=90$ we have orthogonal vectors
+    
+    $$
+    \cos 90 = \frac{\bar{u} \cdot \bar{\omega}}{\|\bar{u}\| \cdot\|\bar{\omega}\|} = 0
+    $$
+    
+    vectors are orthogonal if $\bar{u} \cdot \bar{\omega} = 0$
+    
+\subsection{Matrix Equation}
+
+    $A \bar{x}=\bar{b}$
+    
+    $$
+    \left[\begin{array}{cccc}
+    a_{11} & a_{12} & \ldots & a_{1 n} \\
+    \vdots & & & \\
+    a_{m 1} & a_{m 2} & \ldots & a_{m n}
+    \end{array}\right]\left[\begin{array}{c}
+    x_{1} \\
+    \vdots \\
+    x_{n}
+    \end{array}\right]=\left[\begin{array}{c}
+    b_{1} \\
+    \vdots \\
+    b_{m}
+    \end{array}\right]
+    $$
+    
+    Linear equation for $A \bar{x} = \bar{b}$
+    
+    $$
+    x_{1}\left[\begin{array}{c}
+    a_{11} \\
+    a_{21} \\
+    \vdots \\
+    a_{m 1}
+    \end{array}\right]+x_{2}\left[\begin{array}{c}
+    a_{12} \\
+    a_{22} \\
+    \vdots \\
+    a_{m}
+    \end{array}\right]+\ldots+x_{n}\left[\begin{array}{c}
+    a_{1 m} \\
+    a_{3 m} \\
+    \vdots \\
+    a_{m n}
+    \end{array}\right]=\left[\begin{array}{c}
+    b_{1} \\
+    a_{2} \\
+    \vdots \\
+    a_{m}
+    \end{array}\right]
+    $$
+
+    Given $A \bar{x} = \bar{b}$ solve for $\bar{x}$ (unknown)
+    
+    $$
+    \left\{\begin{array}{l}
+    x-2 y=1 \\
+    3 x+2 y=11
+    \end{array}\right\}
+    $$
+    
+    Rewrite above system of linear equations in (1) matrix form, (2) column equation form, and (3) row equation form.
+    
+    $$
+    \begin{aligned}
+    1. \quad &{\left[\begin{array}{cc}
+    1 & -2 \\
+    3 & 2
+    \end{array}\right]\left[\begin{array}{l}
+    x \\
+    y
+    \end{array}\right]=\left[\begin{array}{l}
+    1 \\
+    11
+    \end{array}\right]} \\
+    2. \quad &\hat{x}\left[\begin{array}{l}
+    1 \\
+    3
+    \end{array}\right]+\hat{y}\left[\begin{array}{l}
+    -2 \\
+    2
+    \end{array}\right]=\left[\begin{array}{l}
+    1 \\
+    11
+    \end{array}\right] \\
+    3. \quad &{\left[\begin{array}{ll}
+    1 & -2
+    \end{array}\right]\left[\begin{array}{l}
+    x \\
+    y
+    \end{array}\right]=1} \\
+    &{\left[\begin{array}{ll}
+    3 & 2
+    \end{array}\right]\left[\begin{array}{l}
+    x \\
+    y
+    \end{array}\right]=11}
+    \end{aligned}
+    $$
+
+\subsection{Triangular matrix \& solving a matrix equation}
+
+    $$
+    \left[\begin{array}{llll}
+    x & x & x & x \\
+    0 & x & x & x \\
+    0 & 0 & x & x \\
+    0 & 0 & 0 & x
+    \end{array}\right] \text { upper triangular matrix }
+    $$
+    
+    $$
+    \left[\begin{array}{llll}
+    x & 0 & 0 & 0 \\
+    x & x & 0 & 0 \\
+    x & x & x & 0 \\
+    x & x & x & x
+    \end{array}\right] \text { lower triangular matrix }
+    $$
+    
+    Pivot points in a matrix (pivot element) are the 1st non zero elements in a row. 
+    
+    $$
+    A=\left[\begin{array}{lll}
+    1 & 2 & 3 \\
+    0 & 4 & 5 \\
+    0 & 0 & 6
+    \end{array}\right]
+    $$
+    
+    In matrix a above, pivot element are l, 4, 6.\\
+    
+    Finding an upper triangular augmented matrix using eliminations. The operations allowed When reducing an augmented matrix into an upper triangular matrix.
+    
+    \begin{itemize}
+        \item Multiply a row by a non-zero constant
+        \item Add multiple of row to another row
+        \item Interchange two rows
+    \end{itemize} 
+    
+    $$
+    \left[\begin{array}{cc}
+    1 & -2 \\
+    3 & 2
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]=\left[\begin{array}{c}
+    1 \\
+    11
+    \end{array}\right]
+    $$
+    
+    $$
+    \left[\begin{array}{cc|c}
+    1 & -2 & 1 \\
+    3 & 2 & 11
+    \end{array}\right]
+    $$
+    
+    $$
+    -3R_{1} + R_{2} \rightarrow R_{2}
+    $$
+    
+    $$
+    \left[\begin{array}{cc|c}
+    1 & -2 & 1 \\
+    0 & 8 & 8
+    \end{array}\right]
+    $$
+    
+\subsection{Matrix Addition}
+
+    $$
+    A=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 5
+    \end{array}\right] \quad B=\left[\begin{array}{ll}
+    1 & -2 \\
+    4 & -3
+    \end{array}\right]
+    $$
+    
+    $$
+    A+B=C=\left[\begin{array}{ll}
+    2 & 3 \\
+    4 & 5
+    \end{array}\right]+\left[\begin{array}{ll}
+    1 & -2 \\
+    4 & -3
+    \end{array}\right]=\left[\begin{array}{ll}
+    3 & 1 \\
+    8 & 2
+    \end{array}\right]
+    $$
+
+\subsection{Matrix Multiplication}
+
+    $$
+    \left[\begin{array}{ccc}
+    a_{11} & \cdots & a_{1 m} \\
+    a_{21} & \cdots & a_{2 m} \\
+    \vdots & &  \vdots \\
+    a_{n 1} & \ldots & a_{n m}
+    \end{array}\right]
+    \left[\begin{array}{ccc}
+    b_{11} & \ldots & b_{1 m} \\
+    b_{21} & \cdots & b_{2 m} \\
+    \vdots & &  \vdots \\
+    b_{n 1} & \ldots & b_{n m}
+    \end{array}\right]
+    =\left[\begin{array}{ccc}
+    c_{11} & \cdots & c_{1 m} \\
+    \vdots & & \vdots \\
+    c_{n 1} & \cdots & c_{n m}
+    \end{array}\right]
+    $$
+    
+    $$
+    c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}
+    $$
+
+    \subsection{Block Matrices}
+    
+    $$
+    \begin{aligned}
+    A = B \times C  & = \left[\frac{B_{1}}{B_{2}}\right]\left[C_{1} \mid C_{2}\right]\\
+                    & = \left[\begin{array} {l|l} B_{1} C_{1} & B_{1} C_{2} \\ \hline B_{2} C_{1} & B_{2} C_{2}\end{array}\right]
+    \end{aligned}
+    $$
+    
+    note $B_{1}$, $B_{2}$,  $C_1$, $C_{2}$ are blocks of matrices. Note blocks should be compatible in term of their dimensions.
+    
+    $$
+    \begin{aligned}
+    A & = \left[\begin{array}{l|l}
+    3 & -1 \\ 
+    -5 & 2
+    \end{array}\right]\left[\begin{array}{ll}
+    2 & 1 \\ \hline
+    5 & 3
+    \end{array}\right] \\
+    & = \left[\begin{array}{ll}
+    B_{1} & C_{1}
+    \end{array}\right] + \left[\begin{array}{ll}
+    B_{2} & C_{2}
+    \end{array}\right] \\
+    & =\left[\begin{array}{cc}
+    6 & 3 \\
+    -10 & -6
+    \end{array}\right]+\left[\begin{array}{cc}
+    -5 & -3 \\
+    10 & 6
+    \end{array}\right]\\
+    & = \left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    matrices are inverse of each other.
+
+\subsection{Inverse Matrices}
+
+    $A^{p} A^{q}= A^{p+q}$ if $A$ is a square matrix we can calculate $A^{\prime}$.
+    
+    $$
+    A^{-1} \cdot A = A \times A^{-1} = I
+    $$
+    
+    $$
+    A=\left[\begin{array}{ll}
+    a & b \\
+    c & d
+    \end{array}\right], A^{-1}=\frac{1}{ad - bc}\left[\begin{array}{cc}
+    d & -b \\
+    -c & a
+    \end{array}\right]
+    $$
+    
+    Example
+    
+    $$
+    \begin{aligned}
+    A^{-1} & = \frac{1}{4 \times 2 - 2 \times 1}\left[\begin{array}{cc}
+    2 & -1 \\
+    -7 & 4
+    \end{array}\right]\\
+    & =\frac{1}{8-7}\left[\begin{array}{cc}
+    2 & -1 \\
+    -7 & 4
+    \end{array}\right]\\
+    & =\frac{1}{1}\left[\begin{array}{cc}
+    2 & -1 \\
+    -7 & 4
+    \end{array}\right]\\
+    & =\left[\begin{array}{cc}
+    2 & -1 \\
+    -7 & 4
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+    Property 
+    
+    $$
+    (A B)^{-1}=B^{-1} A^{-1}
+    $$
+\end{document}
