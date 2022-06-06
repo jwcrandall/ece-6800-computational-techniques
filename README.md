@@ -1,3 +1,3 @@
-# csci-6907-quantum-computing
-csci-6907-quantum-computing
+# csci-6800-computational-techniques
+csci-6800-computational-techniques
 
