@@ -1,0 +1,561 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Column Space}
+
+Column space of $A$ or $\operatorname{col}(A)$ is the collection of all vectors that are linear combinations of columns of matrix $A$.
+
+$$
+\begin{aligned}
+A_{m \times n} &= \left[\bm{a_{1}} \mid \bm{a}_{2} \mid \ldots \mid \bm{a}_{n}\right]\\
+A_{m \times n} \bm{x}_{n \times 1} &= \bm{b}_{m \times 1}\\
+\left[\bm{a}_1 \mid \bm{a}_2 \mid \ldots \mid \bm{a}_n \right]
+\left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{n}
+\end{array}\right]&=\left[\begin{array}{c}
+b_{1} \\
+b_{2} \\
+\vdots \\
+b_{m}
+\end{array}\right]
+\end{aligned}
+$$
+
+Multiply each column by element resulting in a linear combination of columns or vectors. $b$ is in column space of $A$. $\operatorname{col}(A)$ includes all such vectors included in a linear combination of columns of matrix $A$.
+
+$$
+\begin{aligned}
+A &= \left[\begin{array}{lll}
+3 & 6 \\
+3 & 4
+\end{array}\right]\\
+c(A) &= x_{1}\left[\begin{array}{l}
+3 \\
+3
+\end{array}\right]+x_{2}\left[\begin{array}{l}
+6 \\
+4
+\end{array}\right]\\
+& = x_{1}\left[\begin{array}{l}
+3 \\
+3
+\end{array}\right]+2 x_{2}\left[\begin{array}{l}
+3 \\
+2
+\end{array}\right]\\
+&=c\left[\begin{array}{l}
+3 \\
+2
+\end{array}\right] \forall c \in \mathbb{R}
+\end{aligned}
+$$
+
+$c(A)$ is space of all possible vectors out of system $A$.
+
+$$
+\begin{aligned}
+A &= \left[\begin{array}{lll}
+1 & 2 & 1 \\
+0 & 0 & 5
+\end{array}\right]_{2 \times 3} \\
+{\left[\begin{array}{lll}
+1 & 2 & 4 \\
+0 & 0 & 5
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{3} \\
+x_{3}
+\end{array}\right] &= \left[\begin{array}{l}
+b_{1} \\
+b_{3}
+\end{array}\right]_{3 \times 1}}\\
+\bm{b} &= x_{1}\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right]+x_{2}\left[\begin{array}{l}
+2 \\
+0
+\end{array}\right]+x_{3}\left[\begin{array}{l}
+4 \\
+5
+\end{array}\right] \\
+&= \left(x_{1}+2 x_{2}\right)\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right]+x_{3}\left[\begin{array}{l}
+4 \\
+5
+\end{array}\right]
+\end{aligned}
+$$
+
+$c(A)$ is in the plane $\mathbb{R}^{2}$
+
+\subsection{Linearize Nonlinear Systems}
+
+We can also linearize systems about an operating point. This is accomplished when nonlinear $\mathbb{R}^{\prime}$ space is linearized around a specific point.
+
+$$
+\begin{aligned}
+y-y_{1} &= m\left(x-x_{1}\right) \\
+y-2.71 &= 2 \cdot \pi(x-1) \\
+y &= 2.71 x-2.71+2.71 \\
+y &= 2.71 x
+\end{aligned}
+$$
+
+linear system operating at $x=1$. Most real world Systems are non-linear, but most get linearized when you Work with them.
+
+\subsection{Null space}
+
+Null space of $A$ is collection of all vectors (in the input space) $\bm{x}$ such that $A \bm{x}=\bm{0}$. $N(A)$ is collection of all input vectors that make the system $\bm{0}$ in the output space.
+
+$$
+\begin{aligned}
+A&=\left[\begin{array}{ll}
+1 & 2 \\
+3 & 6
+\end{array}\right]\\
+\left[\begin{array}{ll}
+1 & 2 \\
+3 & 6
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{2}
+\end{array}\right]&=\left[\begin{array}{l}
+0 \\
+0
+\end{array}\right]\\
+&\left[\begin{array}{ll|l}1 & 2 & 0 \\ 3 & 6 & 0\end{array}\right]\\
+-3 R_{1}+R_{2} &\rightarrow R_{2} \\
+&\left[\begin{array}{ll|l}
+1 & 2 & 0 \\
+0 & 0 & 0
+\end{array}\right]\\
+x_{1}+2 x_{2} &=0 \\
+x_{1} &= -2 x_{2} \\
+\bm{x}&=\left[\begin{array}{c}
+-2 \\
+1
+\end{array}\right] x_{2} \quad \forall x_{2} \in \mathbb{R}
+\end{aligned}
+$$
+
+where $x_2$ is a free variable. All non-pivot column elements are free variables.
+
+$$
+\begin{aligned}
+A &= \left[\begin{array}{llll}
+1 & 2 & 2 & 4 \\
+3 & 8 & 6 & 16
+\end{array}\right]\\
+{\left[\begin{array}{llll}
+1 & 2 & 2 & 4 \\
+3 & 8 & 6 & 16
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] &= \left[\begin{array}{l}
+0 \\
+0
+\end{array}\right]}\\
+&{\left[\begin{array}{llllll}
+1 & 2 & 2 & 1 \\
+3 & 8 & 6 & 1 & 1 & 8
+\end{array}\right]} \\
+-3 R_{1}+R_{2} &\rightarrow R_{2} \\
+&{\left[\begin{array}{llll|l}
+1 & 2 & 2 & 4 & 0 \\
+0 & 2 & 0 & 4 & 0
+\end{array}\right]}\\
+\frac{1}{2} R_{2} & \rightarrow R_{2} \\
+&\left[\begin{array}{llll|l}
+1 & 2 & 2 & 4 & 0 \\
+0 & 1 & 0 & 2 & 0
+\end{array}\right]\\
+x_1 + 2x_2 + 2x_3 + 4x_4 &= 0\\
+x_2 + 2x_4 &= 0 \\
+x_2 &= -2 x_4 \\
+x_{1}-4 x_{4}+2 x_{3}+4 x_{4} &= 0 \\
+x_{1} &= -2 x_{3}\\
+N(A) &= \left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] = \left[\begin{array}{c}
+-2x_3 \\
+-2x_4 \\
+x_3 \\
+x_4
+\end{array}\right]\\
+&= x_{3}\left[\begin{array}{c}
+-2 \\
+0 \\
+1 \\
+0
+\end{array}\right]+x_{4}\left[\begin{array}{c}
+0 \\
+-2 \\
+0 \\
+1
+\end{array}\right] \quad \forall x_3, x_4 \in \mathbb{R}.
+\end{aligned}
+$$
+
+For a matrix to be in echelon form every column can have only one pivot element at the most. All elements below pivot elements must be zero below non-zero values. In reduced echelon form all elements above and below pivot elements must be zero.
+
+$$
+\begin{aligned}
+\left[\begin{array}{llll|l}
+1 & 2 & 2 & 4 & 0 \\
+0 & 1 & 0 & 2 & 0
+\end{array}\right]&\\
+-2R_{2}+R_{1} & \rightarrow R_{1}\\
+\left[\begin{array}{llll|l}
+1 & 0 & 2 & 0 & 0 \\
+0 & 1 & 0 & 2 & 0
+\end{array}\right]&\\
+x_{1} &=-2 x_{3} \\
+x_{2} &=-2 x_{4}
+\end{aligned}
+$$
+
+$x_{3}$, $x_4$ are free variables
+
+\subsection{Rank of Matrix A}
+
+$rank(A)=r$ is the number of pivots. Where $A_{m\times n}$ has full row rank with $m$ pivots, and full column rank with $n$ pivots.  
+
+$$
+A=\left[\begin{array}{llll|l}
+1 & 2 & 7 & 1 & 0 \\
+0 & 1 & 0 & 2 & 0
+\end{array}\right]
+$$
+
+Above example has rank 2, with full row rank where every row has a pivot column.
+
+$A x=b$ solution is called a particular solution $x_p$. $A \bm{x}=\bm{0}$ solution is called a special solution $x_h$.
+
+$$
+\begin{aligned}
+A \bm{x}_p &=\bm{b} \\
+A \bm{x}_h &=\bm{0}
+\end{aligned}
+$$
+
+Solve for particular solution
+
+$$
+\left[\begin{array}{llll}
+1 & 3 & 0 & 2 \\
+0 & 0 & 1 & 4 \\
+1 & 3 & 1 & 6
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right]=\left[\begin{array}{l}
+1 \\
+6 \\
+7
+\end{array}\right]
+$$
+
+Complete solution is $\left[x_{p}+x_{h}\right]$
+
+$$
+\begin{aligned}
+&{\left[\begin{array}{llll|l}
+1 & 3 & 0 & 0 & 0 \\
+0 & 0 & 1 & 4 & 0 \\
+1 & 3 & 1 & 6 & 0
+\end{array}\right]} \\
+&\cdots\\
+&{\left[\begin{array}{llll|l}
+1 & 3 & 0 & 2 & 0 \\
+0 & 0 & 1 & 4 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{array}\right]}\\
+x_{1} &= 3x_{2} - 2x_{4} \\
+x_{3} &= -4x_{4} \\
+\bm{x_h} & = x_{2}\left[\begin{array}{c}
+-3 \\
+1 \\
+0 \\
+0
+\end{array}\right] + x_{4}\left[\begin{array}{c}
+-2 \\
+0 \\
+-4 \\
+1
+\end{array}\right]
+\end{aligned}
+$$
+
+Solution for $x_p$ using row operation.
+
+$$
+\begin{aligned}
+\left[\begin{array}{llll}
+1 & 3 & 0 & 2 \\
+0 & 0 & 1 & 4 \\
+1 & 3 & 1 & 6
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right]&=\left[\begin{array}{l}
+1 \\
+6 \\
+7
+\end{array}\right]\\
+x_{1}\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right]+x_{2}\left[\begin{array}{l}
+3 \\
+0 \\
+3
+\end{array}\right]+x_{3}\left[\begin{array}{l}
+0 \\
+1 \\
+1
+\end{array}\right]+x_{4}\left[\begin{array}{l}
+2 \\
+4 \\
+6
+\end{array}\right] & = \left[\begin{array}{l}
+1 \\
+6 \\
+7
+\end{array}\right]\\
+1\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right]+0\left[\begin{array}{l}
+3 \\
+6 \\
+3
+\end{array}\right]+6\left[\begin{array}{l}
+0 \\
+1 \\
+1
+\end{array}\right]+0\left[\begin{array}{l}
+2 \\
+4 \\
+6
+\end{array}\right]&=\left[\begin{array}{l}
+1 \\
+6 \\
+7
+\end{array}\right] \\
+\left[\begin{array}{l}
+1 \\
+0 \\
+1
+\end{array}\right]+\left[\begin{array}{l}
+0 \\
+0 \\
+0
+\end{array}\right]+\left[\begin{array}{l}
+0 \\
+6 \\
+6
+\end{array}\right]+\left[\begin{array}{l}
+0 \\
+0 \\
+0
+\end{array}\right]&=\left[\begin{array}{l}
+1 \\
+6 \\
+7
+\end{array}\right]\\
+x_{p}\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] &= \left[\begin{array}{l}
+1 \\
+0 \\
+6 \\
+0
+\end{array}\right]\\
+x_{p}+x_{h} & =\left[\begin{array}{l}
+1 \\
+0 \\
+6 \\
+0
+\end{array}\right] + x_{2}\left[\begin{array}{c}
+-3 \\
+1 \\
+0
+\end{array}\right] + x_{4}\left[\begin{array}{c}
+-2 \\
+0 \\
+-4 \\
+1
+\end{array}\right]
+\end{aligned}
+$$
+
+In the complete general solution $x_h + x_p$, $x_p$ shifts the hyperplane, and $x_h$ is the hyperplane.
+
+$$
+\begin{aligned}
+A &= \left[\begin{array}{cc}
+1 & 1 \\
+1 & 3 \\
+-2 & -3
+\end{array}\right]\\
+[A]\left[\begin{array}{l}
+x_{1} \\
+x_{3}
+\end{array}\right]&=\left[\begin{array}{l}
+b_{1} \\
+b_{2} \\
+b_{3}
+\end{array}\right]\\
+-R_1 + R_2 &\rightarrow R_2 \\
+2R_1 + R_3 &\rightarrow R_3 \\
+&\left[\begin{array}{cc|c}
+1 & 1 & b_{1} \\
+0 & 1 & b_{2}-b_{1} \\
+0 & -1 & b_{3}+2 b_{1}
+\end{array}\right]\\
+-R_2 + R_1 &\rightarrow R_1\\
+R_2+R_3 \rightarrow R_3\\
+&\left[\begin{array}{ll|l}
+1 & 0 & 2 b_{1}-b_{2} \\
+0 & 1 & b_{2}-b_{1} \\
+0 & 0 & b_{3}+b_{2}+b_{1}
+\end{array}\right]
+\end{aligned}
+$$
+
+For this system to have any solution $b_{3}+b_{2}+b_{1}=0$. For the particular solution 
+
+$$
+\begin{aligned}
+x_{1} &= 2 b_{1}-b_{3} \\
+x_{2} &= b_{2}-b_{1} \\
+X_{p}&=\left[\begin{array}{c}
+x_{1} \\
+x_{2}
+\end{array}\right]=\left[\begin{array}{c}
+2 b_{1}-b_{2} \\
+b_{2}-b_{1}
+\end{array}\right]
+\end{aligned}
+$$
+
+Particular solution
+
+$$
+\begin{aligned}
+A \bm{x}_{p}&=\bm{b}\\
+\left[\begin{array}{cc}
+1 & 1 \\
+1 & 2 \\
+-2 & -3
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{1}
+\end{array}\right]&=\left[\begin{array}{l}
+b_{1} \\
+b_{3} \\
+b_{0}
+\end{array}\right]\\
+\left[\begin{array}{cc}
+1 & 1 \\
+1 & 2 \\
+-2 & -3
+\end{array}\right]\left[\begin{array}{c}
+2 b_{1}-b_{2} \\
+b_{2}-b_{1}
+\end{array}\right]&=\left[\begin{array}{l}
+b_{1} \\
+b_{2} \\
+b_{3}
+\end{array}\right]\\
+\left[\begin{array}{c}
+\left(2 b_{1}-b_{2}\right)+\left(b_{2}-b_{1}\right) \\
+\left(2 b_{1}-b_{2}\right)+2\left(b_{2}-b_{1}\right) \\
+-2\left(b_{2}-b_{1}\right)-3\left(b_{2}-b_{1}\right)
+\end{array}\right]&=\left[\begin{array}{l}
+b_{1} \\
+b_{2} \\
+b_{3}
+\end{array}\right]
+\end{aligned}
+$$
+
+\subsection{Basis linearly independent}
+
+A set of vectors $\bm{v}_{1}, \bm{v}_{2}, \cdots, \bm{v}_n$ are linearly independent if $c_{1} \bm{v}_{1} + c_{2} \bm{v}_{2} + \ldots + c_{n} \bm{v}_{n}=0$ and if $c_{1}=c_{2}=\ldots=c_{n}$.
+
+$$
+\left(\begin{array}{l}
+0 \\
+0 \\
+1
+\end{array}\right),\left(\begin{array}{l}
+0 \\
+1 \\
+0
+\end{array}\right),\left(\begin{array}{l}
+1 \\
+0 \\
+0 
+\end{array}\right)
+$$
+
+True set of vectors is linearly independent.
+
+$$
+c_{1}\left[\begin{array}{l}
+1 \\
+0 \\
+0
+\end{array}\right]+c_{2}\left[\begin{array}{l}
+0 \\
+1 \\
+0
+\end{array}\right]+c_{3}\left[\begin{array}{l}
+0 \\
+0 \\
+1
+\end{array}\right]=\left[\begin{array}{l}
+0 \\
+0 \\
+0
+\end{array}\right]
+$$
+
+Suppose 
+
+$$
+\begin{aligned}
+c_{1} \bm{v}_{1} + c_{2} \bm{v}_2 + c_{3} \bm{v}_{3} &= 0\\
+\bm{v}_1 &= -\frac{c_2}{c_1} \bm{v}_2 + \frac{c_{3}}{c_{1}} \bm{v}_{2}
+\end{aligned}
+$$
+
+Linearly independent vectors can not be written in terms of each other. Suppose we hove three vectors in $v_1, v_2, v_3$ in $\mathbb{R}^{3}$. Note $\bar{v}_{3}$ is not in the plane going through $\bm{v}_1 \& \bm{v}_2$.
+
+$$
+\bm{v}_{3}= c_{1} \bm{v}_{1} + c_{2} \bm{v}_{2}, \quad c_{1}, c_{2} \neq 0
+$$
+
+\end{document}
