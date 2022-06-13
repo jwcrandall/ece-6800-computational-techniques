@@ -1,0 +1,235 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Section 4.1}
+\begin{enumerate}
+    \item [3.] Construct a matrix with the required property or say why that is impossible:
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} Column space contains $\left[\begin{array}{c}1 \\ 2 \\ -3\end{array}\right]$ and $\left[\begin{array}{c}2 \\ -3 \\ 5\end{array}\right]$, nullspace contains $\left[\begin{array}{l}1 \\ 1 \\ 1\end{array}\right]$ \textbf{A.}
+        
+        \item [b.] \textbf{Q.} Row space contains $\left[\begin{array}{c}1 \\ 2 \\ -3\end{array}\right]$ and $\left[\begin{array}{c}2 \\ -3 \\ 5\end{array}\right]$, nullspace contains $\left[\begin{array}{l}1 \\ 1 \\ 1\end{array}\right]$ \textbf{A.}
+        
+        \item [c.] \textbf{Q.} $A x=\left[\begin{array}{l}1 \\ 1 \\ 1\end{array}\right]$ has a solution and $A^{\mathrm{T}}\left[\begin{array}{l}1 \\ 0 \\ 0\end{array}\right]=\left[\begin{array}{l}0 \\ 0 \\ 0\end{array}\right]$ \textbf{A.}
+        
+        \item [d.] \textbf{Q.} Every row is orthogonal to every column ( $A$ is not the zero matrix) \textbf{A.}
+        
+        \item [e.] \textbf{Q.} Columns add up to a column of zeros, rows add to a row of 1's. \textbf{A.}
+        
+    \end{enumerate}
+    
+    \item [8.] \textbf{Q.} In Figure $4.3$, how do we know that $A x_{r}$ is equal to $A x$ ? How do we know that this vector is in the column space? If $A=\left[\begin{array}{ll}1 & 1 \\ 1 & 1\end{array}\right]$ and $x=\left[\begin{array}{l}1 \\ 0\end{array}\right]$ what is $x_{r}$ ? \textbf{A.}
+    
+    \item [12.] \textbf{Q.} Find the pieces $x_{r}$ and $x_{n}$ and draw Figure $4.3$ properly if
+    $$
+    A=\left[\begin{array}{rr}
+    1 & -1 \\
+    0 & 0 \\
+    0 & 0
+    \end{array}\right] \text { and } x=\left[\begin{array}{l}
+    2 \\
+    0
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    \item [16.] \textbf{Q.} Prove that every $y$ in $N\left(A^{\mathrm{T}}\right)$ is perpendicular to every $A x$ in the column space, using the matrix shorthand of equation $(2)$. Start from $A^{\mathrm{T}} \boldsymbol{y}=\mathbf{0}$. \textbf{A.}
+    
+    \item [28.] Why is each of these statements false?
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $(1,1,1)$ is perpendicular to $(1,1,-2)$ so the planes $x+y+z=0$ and $x+y-$ $2 z=0$ are orthogonal subspaces. \textbf{A.}
+        
+        \item [b.] \textbf{Q.} The subspace spanned by $(1,1,0,0,0)$ and $(0,0,0,1,1)$ is the orthogonal complement of the subspace spanned by $(1,-1,0,0,0)$ and $(2,-2,3,4,-4)$. \textbf{A.}
+        
+        \item [c.] \textbf{Q.} Two subspaces that meet only in the zero vector are orthogonal. \textbf{A.}
+        
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Section 4.2}
+\begin{enumerate}
+    \item [1.] Project the vector $\boldsymbol{b}$ onto the line through $\boldsymbol{a}$. Check that $\boldsymbol{e}$ is perpendicular to $\boldsymbol{a}$:
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $b=\left[\begin{array}{l}1 \\ 2 \\ 2\end{array}\right]$ and $a=\left[\begin{array}{l}1 \\ 1 \\ 1\end{array}\right]$ \textbf{A.}
+        \item [b.] \textbf{Q.} $\boldsymbol{b}=\left[\begin{array}{l}1 \\ 3 \\ 1\end{array}\right]$ and $a=\left[\begin{array}{l}-1 \\ -3 \\ -1\end{array}\right]$ \textbf{A.}
+    \end{enumerate}
+    
+    \item [8.] \textbf{Q.} Project the vector $\boldsymbol{b}=(1,1)$ onto the lines through $\boldsymbol{a}_{1}=(1,0)$ and $\boldsymbol{a}_{2}=(1,2)$. Draw the projections $p_{1}$ and $p_{2}$ and add $p_{1}+p_{2}$. The projections do not add to $b$ because the $a$ 's are not orthogonal. \textbf{A.}
+    
+    \item [11.] (Only a) Project $\boldsymbol{b}$ onto the column space of $A$ by solving $A^{\mathrm{T}} A \widehat{\boldsymbol{x}}=A^{\mathrm{T}} \boldsymbol{b}$ and $\boldsymbol{p}=A \widehat{\boldsymbol{x}}$ :
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $A=\left[\begin{array}{ll}1 & 1 \\ 0 & 1 \\ 0 & 0\end{array}\right]$ and $\boldsymbol{b}=\left[\begin{array}{l}2 \\ 3 \\ 4\end{array}\right]$. \textbf{A.}
+        
+    \end{enumerate}
+    \textbf{Q.} Find $\boldsymbol{e}=\boldsymbol{b}-\boldsymbol{p} .$ It should be perpendicular to the columns of $A$. \textbf{A.}
+    
+\end{enumerate}
+
+\subsection{Section 4.4}
+\begin{enumerate}
+    \item [2.] \textbf{Q.} The vectors $(2,2,-1)$ and $(-1,2,2)$ are orthogonal. Divide them by their lengths to find orthonormal vectors $\bm{q}_{1}$ and $\bm{q}_{2}$. Put those into the columns of $Q$ and multiply $Q^{\mathrm{T}} Q$ and $Q Q^{\mathrm{T}}$. \textbf{A.}
+    
+    \item [13.] \textbf{Q.} What multiple of $\bm{a}=\left[\begin{array}{l}1 \\ 1\end{array}\right]$ should be subtracted from $\boldsymbol{b}=\left[\begin{array}{l}4 \\ 0\end{array}\right]$ to make the result $\boldsymbol{B}$ orthogonal to $\boldsymbol{a}$ ? Sketch a figure to show $\boldsymbol{a}, \boldsymbol{b}$, and $\boldsymbol{B}$. \textbf{A.}
+    
+    \item [18.] \textbf{Q.} (Recommended) Find orthogonal vectors $\boldsymbol{A}, \boldsymbol{B}, \boldsymbol{C}$ by Gram-Schmidt from $\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c}$ :
+    $$
+    \boldsymbol{a}=(1,-1,0,0) \quad \boldsymbol{b}=(0,1,-1,0) \quad \boldsymbol{c}=(0,0,1,-1)
+    $$
+    $\boldsymbol{A}, \boldsymbol{B}, \boldsymbol{C}$ and $\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c}$ are bases for the vectors perpendicular to $\boldsymbol{d}=(1,1,1,1)$ \textbf{A.}
+    
+\end{enumerate}
+
+\subsection{Section 5.1}
+\begin{enumerate}
+    \item [1.] \textbf{Q.} If a 4 by 4 matrix has $\operatorname{det} A=\frac{1}{2}$, find $\operatorname{det}(2 A)$ and $\operatorname{det}(-A)$ and $\operatorname{det}\left(A^{2}\right)$ and $\operatorname{det}\left(A^{-1}\right)$ \textbf{A.}
+    
+    \item [10.] \textbf{Q.} If the entries in every row of $A$ add to zero, solve $A x=0$ to prove $\operatorname{det} A=0$. If those entries add to one, show that $\operatorname{det}(A-I)=0$. Does this mean $\operatorname{det} A=1$ ? \textbf{A.}
+    
+    \item [15.] \textbf{Q.} Use row operations to simplify and compute these determinants:
+    $$
+    \operatorname{det}\left[\begin{array}{lll}
+    101 & 201 & 301 \\
+    102 & 202 & 302 \\
+    103 & 203 & 303
+    \end{array}\right] \quad \text { and } \operatorname{det}\left[\begin{array}{ccc}
+    1 & t & t^{2} \\
+    t & 1 & t \\
+    t^{2} & t & 1
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    \item [23.] \textbf{Q.} From $A=\left[\begin{array}{ll}4 & 1 \\ 2 & 3\end{array}\right]$ find $A^{2}$ and $A^{-1}$ and $A-\lambda I$ and their determinants. Which two numbers $\lambda$ lead to $\operatorname{det}(A-\lambda I)=0$ ? \textbf{A.}
+    
+    \item [27.] \textbf{Q.} Compute the determinants of these matrices by row operations:
+    $$
+    A=\left[\begin{array}{lll}
+    0 & a & 0 \\
+    0 & 0 & b \\
+    c & 0 & 0
+    \end{array}\right] \text { and } B=\left[\begin{array}{cccc}
+    0 & a & 0 & 0 \\
+    0 & 0 & b & 0 \\
+    0 & 0 & 0 & c \\
+    d & 0 & 0 & 0
+    \end{array}\right] \text { and } C=\left[\begin{array}{ccc}
+    a & a & a \\
+    a & b & b \\
+    a & b & c
+    \end{array}\right] \text {. }
+    $$
+    \textbf{A.}
+    
+\end{enumerate}
+
+\subsection{Section 5.2}
+\begin{enumerate}
+    \item [2.] \textbf{Q.} Compute the determinants of $A, B, C, D$. Are their columns independent?
+    $$
+    A=\left[\begin{array}{lll}
+    1 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+    \end{array}\right] \quad B=\left[\begin{array}{lll}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+    \end{array}\right] \quad C=\left[\begin{array}{ll}
+    A & 0 \\
+    0 & A
+    \end{array}\right] \quad D=\left[\begin{array}{cc}
+    A & 0 \\
+    0 & B
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    \item [12.] \textbf{Q.} Find the cofactor matrix $C$ and multiply $A$ times $C^{\mathrm{T}}$. Compare $A C^{\mathrm{T}}$ with $A^{-1}$ :
+    $$
+    A=\left[\begin{array}{rrr}
+    2 & -1 & 0 \\
+    -1 & 2 & -1 \\
+    0 & -1 & 2
+    \end{array}\right] \quad A^{-1}=\frac{1}{4}\left[\begin{array}{lll}
+    3 & 2 & 1 \\
+    2 & 4 & 2 \\
+    1 & 2 & 3
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    \item [13.] The $n$ by $n$ determinant $C_{n}$ has 1 's above and below the main diagonal:
+    $$
+    C_{1}=|0| \quad C_{2}=\left|\begin{array}{ll}
+    0 & 1 \\
+    1 & 0
+    \end{array}\right| \quad C_{3}=\left|\begin{array}{lll}
+    0 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 0
+    \end{array}\right| \quad C_{4}=\left|\begin{array}{llll}
+    0 & 1 & 0 & 0 \\
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 \\
+    0 & 0 & 1 & 0
+    \end{array}\right|
+    $$
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} What are these determinants $C_{1}, C_{2}, C_{3}, C_{4} ?$ \textbf{A.}
+        
+        \item [b.] \textbf{Q.} By cofactors find the relation between $C_{n}$ and $C_{n-1}$ and $C_{n-2}$. Find $C_{10}$. \textbf{A.}
+        
+    \end{enumerate}
+    
+    \item [20.] \textbf{Q.} Find $G_{2}$ and $G_{3}$ and then by row operations $G_{4}$. Can you predict $G_{n}$ ?
+    $$
+    G_{2}=\left|\begin{array}{ll}
+    0 & 1 \\
+    1 & 0
+    \end{array}\right| \quad G_{3}=\left|\begin{array}{lll}
+    0 & 1 & 1 \\
+    1 & 0 & 1 \\
+    1 & 1 & 0
+    \end{array}\right| \quad G_{4}=\left|\begin{array}{llll}
+    0 & 1 & 1 & 1 \\
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 0
+    \end{array}\right|
+    $$
+    \textbf{A.}
+    
+\end{enumerate}
+
+\subsection{Section 5.3}
+\begin{enumerate}
+    \item [2.] \textbf{Q.} (only a) Use Cramer's Rule to solve for $y$ (only). Call the 3 by 3 determinant $D$ :
+    \begin{enumerate}
+        \item [a.] 
+            $$
+            \begin{aligned}
+            a x+b y &= 1\\
+            c x+d y &=0
+            \end{aligned}
+            $$
+            \textbf{A.}
+    \end{enumerate}
+    
+    \item [4.] Quick proof of Cramer's rule. The determinant is a linear function of column 1 . It is zero if two columns are equal. When $b=A x=x_{1} a_{1}+x_{2} a_{2}+x_{3} a_{3}$ goes into the first column of $A$, the determinant of this matrix $B_{1}$ is $\left|\begin{array}{lll}b & a_{2} & a_{3}\end{array}\right|=\left|x_{1} a_{1}+x_{2} a_{2}+x_{3} a_{3} \quad a_{2} \quad a_{3}\right|=x_{1}\left|a_{1} \quad a_{2} \quad a_{3}\right|=x_{1} \operatorname{det} A$
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} What formula for $x_{1}$ comes from left side = right side? \textbf{A.}
+        \item [b.] \textbf{Q.} What steps lead to the middle equation? \textbf{A.}
+    \end{enumerate}
+    
+    \item [6.] Find $A^{-1}$ from the cofactor formula $C^{\mathrm{T}} / \operatorname{det} A$. Use symmetry in part (b).
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $A=\left[\begin{array}{lll}1 & 2 & 0 \\ 0 & 3 & 0 \\ 0 & 7 & 1\end{array}\right]$ \textbf{A.}
+        \item [b.] \textbf{Q.} $A=\left[\begin{array}{rrr}2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2\end{array}\right]$ \textbf{A.}
+    \end{enumerate}
+    
+    \item [9.] \textbf{Q.} Suppose $\operatorname{det} A=1$ and you know all the cofactors in $C$. How can you find $A$ ? \textbf{A.}
+    
+    \item [19.] \textbf{Q.} The parallelogram with sides $(2,1)$ and $(2,3)$ has the same area as the parallelogram with sides $(2,2)$ and $(1,3)$. Find those areas from 2 by 2 determinants and say why they must be equal. (I can't see why from a picture. Please write to me if you do.) \textbf{A.}
+    
+\end{enumerate}
+
+\end{document}

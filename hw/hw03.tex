@@ -1,0 +1,834 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Section 3.3}
+\begin{enumerate}
+    \item [3.] \textbf{Q.} Find the reduced $R$ for each of these (block) matrices:
+        $$
+        A=\left[\begin{array}{lll}
+        0 & 0 & 0 \\
+        0 & 0 & 3 \\
+        2 & 4 & 6
+        \end{array}\right] \quad B=\left[\begin{array}{ll}
+        A & A
+        \end{array}\right] \quad C=\left[\begin{array}{ll}
+        A & A \\
+        A & 0
+        \end{array}\right]
+        $$
+        \textbf{A.}
+        $$
+        \begin{aligned}
+        A &= \left[\begin{array}{lll}
+        0 & 0 & 0 \\
+        0 & 0 & 3 \\
+        2 & 4 & 6
+        \end{array}\right]\\
+        R_1 & \leftrightarrow R_3\\
+        &=\left[\begin{array}{lll}
+        2 & 4 & 6 \\
+        0 & 0 & 3 \\
+        0 & 0 & 0
+        \end{array}\right]\\
+        \frac{1}{2}R_1 & \rightarrow R_1\\
+        \frac{1}{3}R_2 & \rightarrow R_2\\
+        & = \left[\begin{array}{lll}
+        1 & 2 & 3 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0
+        \end{array}\right]\\
+        3R_2 - R_1 & \rightarrow R_1\\
+        R_{A} &= \left[\begin{array}{lll}
+        1 & 2 & 0 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        $$
+        \begin{aligned}
+        B &=\left[\begin{array}{ll}
+        A & A
+        \end{array}\right]\\
+        R_{B}&=\left[\begin{array}{llllll}
+        1 & 2 & 0 & 1 & 2 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        $$
+        \begin{aligned}
+        C &= \left[\begin{array}{ll}
+        A & A \\
+        A & 0
+        \end{array}\right]\\
+        &= \left[\begin{array}{llllll}
+        1 & 2 & 0 & 1 & 2 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 2 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0
+        \end{array}\right]\\
+        R_1 - R_4 & \rightarrow R_4\\
+        R_2 - R_5 & \rightarrow R_5\\
+        & = \left[\begin{array}{cccccc}
+        1 & 2 & 0 & 1 & 2 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & -1 & -2 & 0 \\
+        0 & 0 & 0 & 0 & 0 & -1 \\
+        0 & 0 & 0 & 0 & 0 & 0
+        \end{array}\right]\\
+        R_4 + R_1 & \rightarrow R_1\\
+        R_5 + R_2 & \rightarrow R_2\\
+        & = \left[\begin{array}{cccccc}
+        1 & 2 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & -1 & -2 & 0 \\
+        0 & 0 & 0 & 0 & 0 & -1 \\
+        0 & 0 & 0 & 0 & 0 & 0
+        \end{array}\right]\\
+        -1R_4 & \rightarrow R_4\\
+        -1R_5 & \rightarrow R_5\\
+        R_C & = \left[\begin{array}{llllll}
+        1 & 2 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 & 2 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+    \item [7.] \textbf{Q.} What are the special solutions to $R x=0$ and $y^{\mathrm{T}} R=0$ for these $R$ ?
+    $$
+    R=\left[\begin{array}{llll}
+    1 & 0 & 2 & 3 \\
+    0 & 1 & 4 & 5 \\
+    0 & 0 & 0 & 0
+    \end{array}\right] \quad R=\left[\begin{array}{lll}
+    0 & 1 & 2 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    $$
+    \begin{aligned}
+    R x&=0\\
+    \left[\begin{array}{llll}
+    1 & 0 & 2 & 3 \\
+    0 & 1 & 4 & 5 \\
+    0 & 0 & 0 & 0
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    x_{4}
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right]\\
+    x_{1}+2 x_{3}+3 x_{4} &= 0 \\
+    x_{2}+4 x_{3}+5 x_{4} &= 0 \\
+    x_{3} &= k_{1} \\
+    x_{4} &= k_{2} \\
+    x_{1} &= -\left(2 k_{1}+3 k_{2}\right) \\
+    x_{2} &= -\left(4 k_{1}+5 k_{2}\right) \\
+    \left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    x_{4}
+    \end{array}\right]&=\left[\begin{array}{c}
+    -\left(2 k_{1}+3 k_{2}\right) \\
+    -\left(4 k_{1}+5 k_{2}\right) \\
+    k_{1} \\
+    k_{2}
+    \end{array}\right]\\
+    \left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    x_{4}
+    \end{array}\right]&=k_{1}\left[\begin{array}{c}
+    -2 \\
+    -4 \\
+    1 \\
+    0
+    \end{array}\right]+k_{2}\left[\begin{array}{c}
+    -3 \\
+    -5 \\
+    0 \\
+    1
+    \end{array}\right]\\
+    \text{special solutions} &= \left[\begin{array}{c}
+    -2 \\
+    -4 \\
+    1 \\
+    0
+    \end{array}\right],\left[\begin{array}{c}
+    -3 \\
+    -5 \\
+    0 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    $$
+    \begin{aligned}
+    \bm{y}^{T} R &= \mathbf{0}\\
+    \left(y_{1}, y_{2}, y_{3}\right)\left[\begin{array}{llll}
+    1 & 0 & 2 & 3 \\
+    0 & 1 & 4 & 5 \\
+    0 & 0 & 0 & 0
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0 \\
+    0 \\
+    0
+    \end{array}\right]\\
+    y_{1} &= 0 \\
+    y_{2} &= 0 \\
+    2 y_{1}+4 y_{2} &= 0 \\
+    3 y_{1}+5 y_{2} &= 0 \\
+    y_3 &= k \text{ free variable }\\
+    \left(y_{1}, y_{2}, y_{3}\right)^{T} &= k(0,0,1)\\
+    \text{special solution } &= (0,0,1)
+    \end{aligned}
+    $$
+    
+    $$
+    \begin{aligned}
+    R\bm{x} &= 0\\
+    \left[\begin{array}{lll}
+    0 & 1 & 2 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3}
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right]\\
+    x_{2}+2 x_{3} &= 0\\
+    x_1 &= k_1 \text{ free variable }\\
+    x_3 &= k_2 \text{ free variable }\\
+    x_{2} &= -2x_{3}\\
+    x_{2} &= -2k_{2}\\
+    \left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3}
+    \end{array}\right] &= \left[\begin{array}{c}
+    k_{1} \\
+    -2 k_{2} \\
+    k_{2}
+    \end{array}\right]} \\
+    \left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3}
+    \end{array}\right] &= k_{1}\left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right]+k_{2}\left[\begin{array}{c}
+    0 \\
+    -2 \\
+    1
+    \end{array}\right]\\
+    \text{ special solution } &= \left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right],\left[\begin{array}{c}
+    0 \\
+    -2 \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    $$
+    \begin{aligned}
+    \bm{y}^{T} R &= \bm{0}\\
+    \left(y_{1}, y_{2}, y_{3}\right)\left[\begin{array}{lll}
+    0 & 1 & 2 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{array}\right] &= \left[\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right]\\
+    y_{1} &= 0 \\
+    2 y_{1} &= 0 \\
+    y_{2} &= k_{1} \text{ free variable}\\
+    y_{3} &= k_{2} \text{ free variable}\\
+    \left(y_{1}, y_{2}, y_{3}\right)^{T} &= \left(0, k_{1}, k_{2}\right) \\
+    \left(y_{1}, y_{2}, y_{3}\right)^{T} &= k_{1}(0,1,0)+k_{2}(0,0,1)\\
+    \text{special solutions } & = (0,1,0),(0,0,1)
+    \end{aligned}
+    $$
+    
+    \item [13.] \textbf{Q.} Suppose $P$ contains only the $r$ pivot columns of an $m$ by $n$ matrix. Explain why this $m$ by $r$ submatrix $P$ has rank $r$. \textbf{A.} $P$ contains only the $r$ pivot columns of an $m$ by $n$ matrix. Therefore, the number of pivots in the matrix $P$ is $r$. Therefore, the rank of this $m$ by $r$ sub matrix is $r$.
+    
+    \item [20.] \textbf{Q.} If $A$ is 2 by 3 and $B$ is 3 by 2 and $A B=I$, show from its rank that $B A \neq I$. Give an example of $A$ and $B$ with $B A=I$. For $m<n$, a right inverse is not a left inverse. \textbf{A.} $A$ is a 2 by 3 matrix, so the matrix $A$ has at most rank $2$. $B$ is a 3 by 2 matrix, so the matrix $B$ has at most rank $2$. Therefore the product $A B$ has at most rank $2$. $B A$ is a 3 by 3 matrix, so the matrix $B A$ has at most rank 3. Thus, the rank of $B A$ is not equal to rank of $I$. An example is not possible to show.
+    
+\end{enumerate}
+
+\subsection{Section 3.4}
+\begin{enumerate}
+    \item [2.] \textbf{Q.} Carry out the same six steps for this matrix $A$ with rank one. You will find two conditions on $b_{1}, b_{2}, b_{3}$ for $A \bm{x}=\bm{b}$ to be solvable. Together these two conditions put $\bm{b}$ into the \rule{1cm}{0.15mm} space (two planes give a line):
+    $$
+    A=\left[\begin{array}{l}
+    1 \\
+    3 \\
+    2
+    \end{array}\right]\left[\begin{array}{lll}
+    2 & 1 & 3
+    \end{array}\right]=\left[\begin{array}{lll}
+    2 & 1 & 3 \\
+    6 & 3 & 9 \\
+    4 & 2 & 6
+    \end{array}\right] \quad b=\left[\begin{array}{l}
+    b_{1} \\
+    b_{2} \\
+    b_{3}
+    \end{array}\right]=\left[\begin{array}{l}
+    10 \\
+    30 \\
+    20
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    \begin{enumerate}
+        \item [Step 1.]
+        $$
+        \begin{aligned}
+        A b &= \left[\begin{array}{lll}
+        2 & 1 & 3 \\
+        6 & 3 & 9 \\
+        4 & 2 & 6
+        \end{array}\right] \left[\begin{array}{l}
+        b_{1} \\
+        b_{2} \\
+        b_{3}
+        \end{array}\right]\\
+        3R_1 - R_2 & \rightarrow R_2\\
+        2R_1 - R_3 & \rightarrow R_3\\
+        \text{echelon form} & \\
+        \left[\begin{array}{ll}
+        U & c
+        \end{array}\right] &= \left[\begin{array}{cccc}
+        2 & 1 & 3 & b_1 \\
+        0 & 0 & 0 & b_2 - 3 b_1 \\
+        0 & 0 & 0 & b_3 - 2 b_1
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        \item[Step 2.]
+        $$
+        \begin{aligned}
+        b_{2}-3 b_{1} &= 0 \\
+        b_{3}-2 b_{1} &= 0
+        \end{aligned}
+        $$
+        
+        \item[Step 3.]
+        The pivot element is in column 1. The column space is the line containing the combinations of the pivot column $(2,6,4)$. The column space contains all the vectors with 
+        $$
+        \begin{aligned}
+        b_{2}-3 b_{1} &=0 \\
+        b_{3}-2 b_{1} &=0
+        \end{aligned}
+        $$
+        
+        \item[Step 4.]
+        Free variables $x_{2}, x_{3}$. Set
+        $$
+        \begin{aligned}
+        x_{2} &= 1 \\
+        x_{3} &= 0 \\
+        2 x_{1}+x_{2}+3 x_{3} &= 0 \\
+        2 x_{1}+1+3(0) &= 0\\
+        x_{1} &= -\frac{1}{2}\\
+        \text{special solution }s_{1} &= \left(-\frac{1}{2}, 1,0\right)
+        \end{aligned}
+        $$
+        
+        Set
+        $$
+        \begin{aligned}
+        x_{2} &= 0 \\
+        x_{3} &= 1 \\
+        2 x_{1}+x_{2}+3 x_{3} &= 0 \\
+        2 x_{1}+0+3(1) &= 0\\
+        x_{1} &= -\frac{3}{2}\\
+        \text{special solution }s_{2} &= \left(-\frac{3}{2},0,1\right)
+        \end{aligned}
+        $$
+        
+        \item[Step 5.] Particular Solution
+        $$
+        \begin{aligned}
+        A x &= (10,30,20)\\
+        \text{substitute in }\left[\begin{array}{ll}
+        U & c
+        \end{array}\right]\\
+        2 x_{1}+x_{2}+3 x_{3} &=10 \\
+        2 x_{1}+0+3(0) &=10 \\
+        x_{1} &=5\\
+        \text{particular solution } \bm{x}_{p}=\left[\begin{array}{l}
+        5 \\
+        0 \\
+        0
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        Complete Solution is $\bm{x}=\bm{x}_{n}+\bm{x}_{p}$
+        
+        \item[Step 6.] 
+        $$
+        \begin{aligned}
+        \left[\begin{array}{ll}
+        U & c
+        \end{array}\right]&\\
+        \frac{1}{2}R_1 \rightarrow R_1\\
+        &=\left[\begin{array}{cccc}
+        1 & 1 / 2 & 3 / 2 & \mathbf{b}_{1} / 2 \\
+        0 & 0 & 0 & \mathbf{b}_{2}-3 \mathbf{b}_{1} \\
+        0 & 0 & 0 & \mathbf{b}_{3}-\mathbf{2} \mathbf{b}_{1}
+        \end{array}\right]\\
+        &\bm{b}=(10,30,20) \\
+        \left[\begin{array}{ll}
+        U & \boldsymbol{c}
+        \end{array}\right]&=\left[\begin{array}{cccc}
+        1 & 1 / 2 & 3 / 2 & 5 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+        \end{array}\right]\\
+        \left[\begin{array}{ll}
+        R & d
+        \end{array}\right]&=\left[\begin{array}{cccc}
+        1 & 1 / 2 & 3 / 2 & 5 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+        \end{array}\right]\\
+        \bm{x}_{p} &= \left[\begin{array}{l}
+        5 \\
+        0 \\
+        0
+        \end{array}\right]
+        \end{aligned}\\
+        $$
+        
+        
+    \end{enumerate}
+    
+    \item [4.] \textbf{Q.} Find the complete solution (also called the general solution) to
+    $$
+    \left[\begin{array}{llll}
+    1 & 3 & 1 & 2 \\
+    2 & 6 & 4 & 8 \\
+    0 & 0 & 2 & 4
+    \end{array}\right]\left[\begin{array}{l}
+    x \\
+    y \\
+    z \\
+    t
+    \end{array}\right]=\left[\begin{array}{l}
+    1 \\
+    3 \\
+    1
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    Special Solution
+    $$
+    \begin{aligned}
+    \boldsymbol{A} &=\left[\begin{array}{llll}
+    1 & 3 & 1 & 2 \\
+    2 & 6 & 4 & 8 \\
+    0 & 0 & 2 & 4
+    \end{array}\right] \\
+    \boldsymbol{b} &=\left[\begin{array}{l}
+    b_{1} \\
+    b_{2} \\
+    b_{3}
+    \end{array}\right]=\left[\begin{array}{l}
+    1 \\
+    3 \\
+    1
+    \end{array}\right]\\
+    R_2 - 2R_1 & \rightarrow R_2\\  
+    & = \left[\begin{array}{ccccc}
+    1 & 3 & 1 & 2 & \bm{b}_{1} \\
+    0 & 0 & 2 & 4 & \bm{b}_{2}-\bm{2b}_{1} \\
+    0 & 0 & 2 & 4 & \bm{b}_{3}
+    \end{array}\right]\\
+    R_3 - R_2 & \rightarrow R_3\\ 
+    \text{echelon form }\left[\begin{array}{ll}
+    U & c
+    \end{array}\right]&=\left[\begin{array}{ccccc}
+    1 & 3 & 1 & 2 & \bm{b}_{1} \\
+    0 & 0 & 2 & 4 & \bm{b}_{2}-2 \bm{b}_{1} \\
+    0 & 0 & 0 & 0 & \bm{b}_{3}-\bm{b}_{2}+\bm{2} \bm{b}_{1}
+    \end{array}\right]\\
+    b_{3}-b_{2}+2 b_{1} &= 0 \\    
+    \text{ set free variables } & \\
+    y &=1 \\
+    t &=0 \\
+    2 z+4 t &=0 \\
+    2 z+4(0) &=0 \\
+    z &=0 \\
+    x+3 y+z+2 t &=0 \\
+    x+3(1)+0+2(0) &=0 \\
+    x &=-3 \\
+    s_{1}&=(-3,1,0,0)\\
+    \text{ set free variables } & \\
+    y &= 0 \\
+    t &= 1 \\
+    2z+4 t &=0 \\
+    2z+4(1) &=0 \\
+    2z &=-4 \\
+    z &=-2 \\
+    x+3 y+z+2 t &=0 \\
+    x+3(0)+(-2)+2(1) &=0 \\
+    x &=0 \\
+    s_{2}&=(0,0,-2,1)\\
+    \bm{x}_{n}&=y s_{1}+t s_{2}
+    \end{aligned}\\
+    $$
+    
+    Particular Solution
+    
+    $$
+    \begin{aligned}
+    A x &=(1,3,1)\\
+    2 z+4 t &=3-2(1) \\
+    2 z+4(0) &=1 \\
+    z &=\frac{1}{2} \\
+    x+3 y+z+2 t &=1 \\
+    x+3(0)+\left(\frac{1}{2}\right)+2(0) &=1 \\
+    x &=\frac{1}{2}\\
+    x_{p} &= \left[\begin{array}{c}
+    \frac{1}{2} \\
+    0 \\
+    \frac{1}{2} \\
+    0
+    \end{array}\right]\\
+    \end{aligned}
+    $$
+
+    General Solution
+    $$
+    \begin{aligned}
+    \bm{x}&=\bm{x}_{n}+\bm{x}_{p}\\
+    \bm{x}&=y\left[\begin{array}{c}
+    -3 \\
+    1 \\
+    0 \\
+    0
+    \end{array}\right]+z\left[\begin{array}{c}
+    0 \\
+    0 \\
+    -2 \\
+    1
+    \end{array}\right]+\left[\begin{array}{c}
+    \frac{1}{2} \\
+    0 \\
+    \frac{1}{2} \\
+    0
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    \item [6.] \textbf{Q.} What conditions on $b_{1}, b_{2}, b_{3}, b_{4}$ make each system solvable? Find $\boldsymbol{x}$ in that case:
+    $$
+    \left[\begin{array}{ll}
+    1 & 2 \\
+    2 & 4 \\
+    2 & 5 \\
+    3 & 9
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]=\left[\begin{array}{l}
+    b_{1} \\
+    b_{2} \\
+    b_{3} \\
+    b_{4}
+    \end{array}\right] \quad\left[\begin{array}{rrr}
+    1 & 2 & 3 \\
+    2 & 4 & 6 \\
+    2 & 5 & 7 \\
+    3 & 9 & 12
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2} \\
+    x_{3}
+    \end{array}\right]=\left[\begin{array}{l}
+    b_{1} \\
+    b_{2} \\
+    b_{3} \\
+    b_{4}
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    Echelon Form
+    $$
+    \begin{aligned}
+    \boldsymbol{A} &= \left[\begin{array}{ll}
+    1 & 2 \\
+    2 & 4 \\
+    2 & 5 \\
+    3 & 9
+    \end{array}\right] \\
+    \boldsymbol{b} &= \left[\begin{array}{l}
+    b_{1} \\
+    b_{2} \\
+    b_{3} \\
+    b_{4}
+    \end{array}\right]\\
+    R_2 - 2R_1 &\rightarrow R_2\\
+    R_3 - 2R_1 &\rightarrow R_3\\
+    R_4 - 3R_1 &\rightarrow R_4\\
+    &=\left[\begin{array}{ccc}
+    1 & 2 & \mathbf{b}_{1} \\
+    0 & 0 & \mathbf{b}_{2}-\mathbf{2} \mathbf{b}_{1} \\
+    0 & 1 & \mathbf{b}_{3}-\mathbf{2} \mathbf{b}_{1} \\
+    0 & 3 & \mathbf{b}_{4}-\mathbf{3} \mathbf{b}_{1}
+    \end{array}\right]\\
+    R_2 &\leftrightarrow R_3\\
+    &=\left[\begin{array}{ccc}
+    1 & 2 & \mathbf{b}_{1} \\
+    0 & 1 & \mathbf{b}_{3}-\mathbf{2} \mathbf{b}_{1} \\
+    0 & 0 & \mathbf{b}_{2}-\mathbf{2} \mathbf{b}_{1} \\
+    0 & 3 & \mathbf{b}_{4}-3 \mathbf{b}_{1}
+    \end{array}\right]\\
+    R_4 - 3R_2 &\rightarrow R_4\\
+    \left[\begin{array}{ll}
+    U & c
+    \end{array}\right] &= \left[\begin{array}{ccc}
+    1 & 2 & \mathbf{b}_{1} \\
+    0 & 1 & \mathbf{b}_{3}-\mathbf{2} \mathbf{b}_{1} \\
+    0 & 0 & \mathbf{b}_{2}-\mathbf{2} \mathbf{b}_{1} \\
+    0 & 0 & \mathbf{b}_{4}-\mathbf{3} \mathbf{b}_{3}+\mathbf{3} \mathbf{b}_{1}
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    Special Solution
+    
+    $$
+    \begin{aligned}
+    A x &= b\\
+    b_{2}-2 b_{1} &= 0 \\
+    b_{4}-3 b_{3}+3 b_{1} &= 0\\
+    \text{no free variables} &\\
+    \text{therefore no special solution} &
+    \end{aligned}
+    $$
+    
+    Particular Solution
+    
+    $$
+    \begin{aligned}
+    Ax &= \left(b_{1}, b_{2}, b_{3}, b_{4}\right)\\
+    x_{2} &= b_{3}-2 b_{1} \\
+    x_{1}+2 x_{2} &=b_{1} \\
+    x_{1}+2\left(b_{3}-2 b_{1}\right) &=b_{1} \\
+    x_{1} &=5 b_{1}-2 b_{3}
+    \end{aligned}
+    $$
+    
+    General Solution
+    $$
+    \begin{aligned}
+    x_{p} &= \left[\begin{array}{c}
+    5 b_{1}-2\mathbf{b}_{3} \\
+    \mathbf{b}_{3}-2\mathbf{b}_{1}
+    \end{array}\right]\\
+    x &= x_{n}+x_{p} \\
+    x &= \left[\begin{array}{c}
+    5 \mathbf{b}_{1}-2\mathbf{b}_{3} \\
+    \mathbf{b}_{3}-2\mathbf{b}_{1}
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    2nd Echelon Form
+    $$
+    \begin{aligned}
+    \boldsymbol{A} &=\left[\begin{array}{llc}
+    1 & 2 & 3 \\
+    2 & 4 & 6 \\
+    2 & 5 & 7 \\
+    3 & 9 & 12
+    \end{array}\right] \\
+    \boldsymbol{b} &=\left[\begin{array}{l}
+    b_{1} \\
+    b_{2} \\
+    b_{3} \\
+    b_{4}
+    \end{array}\right]\\
+    R_2 - 2R_1 &\rightarrow R_2\\
+    R_3 - 2R_1 &\rightarrow R_3\\
+    R_4 - 3R_1 &\rightarrow R_4\\
+    &=\left[\begin{array}{cccc}
+    1 & 2 & 3 & b_{1} \\
+    0 & 0 & 0 & b_{2}-2 b_{1} \\
+    0 & 1 & 1 & b_{3}-2 b_{1} \\
+    0 & 3 & 3 & b_{4}-3 b_{1}
+    \end{array}\right]\\
+    R_4 - 3R_3 &\rightarrow R_4\\
+    &=\left[\begin{array}{cccc}
+    1 & 2 & 3 & b_{1} \\
+    0 & 0 & 0 & b_{2}-2 b_{1} \\
+    0 & 1 & 1 & b_{3}-2 b_{1} \\
+    0 & 0 & 0 & b_{4}-3 b_{3}+3 b_{1}
+    \end{array}\right]\\
+    R_2 &\leftrightarrow R_3\\
+    \left[\begin{array}{ll}
+    U & c
+    \end{array}\right] &= \left[\begin{array}{cccc}
+    1 & 2 & 3 & b_{1} \\
+    0 & 1 & 1 & b_{3}- 2 b_{1} \\
+    0 & 0 & 0 & b_{2}- 2 b_{1} \\
+    0 & 0 & 0 & b_{4}- 3 b_{3}+ 3 b_{1}
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+    Special Solution
+    
+    $$
+    \begin{aligned}
+    A x &= b\\
+    b_{2}-2 b_{1} &= 0 \\
+    b_{4}-3 b_{3}+3 b_{1} &= 0 \\
+    \text{free variable } & = x_3 \\
+    x_3 &= 1\\
+    x_2+x_{3} &= 0 \\
+    x_2+1 &= 0 \\
+    x_2 &= -1 \\
+    x_{1}+2 x_{2}+3 x_{3} &=0 \\
+    x_{1}+2(-1)+3(1) &=0 \\
+    x_{1} &=-1\\
+    s_{1}&=(-1,-1,1)\\
+    \bm{x}_{n} &= x_{3} s_{1}\\
+    \end{aligned}
+    $$
+    
+    Particular Solution
+    
+    $$
+    \begin{aligned}
+    A x &= \left(b_{1}, b_{2}, b_{3}, b_{4}\right)\\
+    x_{2} &= b_{3}-2 b_{1}\\
+    x_{1}+2 x_{2} &= b_{1} \\
+    x_{1}+2\left(b_{3}-2 b_{1}\right) &= b_{1} \\
+    x_{1} &= 5 b_{1}-2 b_{3}
+    \end{aligned}
+    $$
+    
+    General Solution
+    
+    $$
+    \begin{aligned}
+    \bm{x}_{p} &= \left[\begin{array}{c}
+    5b_1-2b_3 \\
+    b_3-2b_1 \\
+    0
+    \end{array}\right]\\
+    x &= x_{n}+x_{p} \\
+    \bm{x} &= x_{3}\left[\begin{array}{c}
+    -1 \\
+    -1 \\
+    1
+    \end{array}\right]+\left[\begin{array}{c}
+    5b_1-2b_3 \\
+    b_3-2b_1 \\
+    0
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    \item [18.] \textbf{Q.} Find by elimination the rank of $A$ and also the rank of $A^{\mathrm{T}}$ :
+    $A=\left[\begin{array}{rrr}1 & 4 & 0 \\ 2 & 11 & 5 \\ -1 & 2 & 10\end{array}\right]$ and $A=\left[\begin{array}{lll}1 & 0 & 1 \\ 1 & 1 & 2 \\ 1 & 1 & q\end{array}\right]$ (rank depends on $q$). \textbf{A.}
+    
+    $$
+    \begin{aligned}
+    A &=\left[\begin{array}{ccc}
+    1 & 4 & 0 \\
+    2 & 11 & 5 \\
+    -1 & 2 & 10
+    \end{array}\right]\\
+    R_2 - 2R_1 & \rightarrow R_2\\
+    R_1 + R_3 & \rightarrow R_3\\
+    &= \left[\begin{array}{ccc}
+    1 & 4 & 0 \\
+    0 & 3 & 5 \\
+    0 & 6 & 10
+    \end{array}\right]\\
+    R_1 - \frac{4}{3}R_2 & \rightarrow R_1\\
+    R_3 + 2R_2 & \rightarrow R_3\\
+    &=\left[\begin{array}{ccc}
+    1 & 0 & -20 / 3 \\
+    0 & 3 & 5 \\
+    0 & 0 & 0
+    \end{array}\right]\\
+    \operatorname{rank}(\bm{A})=2\\
+    \operatorname{rank}\left(\bm{A}^{T}\right)=2
+    \end{aligned}
+
+    Rank depends on $q$
+    
+    $$
+    \begin{aligned}
+    A&=\left[\begin{array}{lll}
+    1 & 0 & 1 \\
+    1 & 1 & 2 \\
+    1 & 1 & q
+    \end{array}\right]\\
+    R_2 - R_1 & \rightarrow R_2\\
+    R_3 - R_1 & \rightarrow R_3\\
+    &=\left[\begin{array}{ccc}
+    1 & 0 & 1 \\
+    0 & 1 & 1 \\
+    0 & 1 & q-1
+    \end{array}\right]\\
+    R_3 - R_2 & \rightarrow R_3\\
+    &=\left[\begin{array}{ccc}
+    1 & 0 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & q-2
+    \end{array}\right]\\
+    \text{when } q &= 2\\
+    \operatorname{rank}(A)&=2\\
+    \operatorname{rank}\left(A^{T}\right)&=2\\
+    \text{when } q & \neq 2\\
+    \operatorname{rank}(A)&=3\\
+    \operatorname{rank}\left(A^{T}\right)&=3\\
+    \end{aligned}
+    $$
+    
+\end{enumerate}
+\end{document}
