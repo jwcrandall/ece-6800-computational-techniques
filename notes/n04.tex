@@ -1,6 +1,509 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\subsection{Column Space}
+\subsection{Basis in $R^{n}$}
+
+A linearly independent set of vectors $\bm{v}_1, \ldots, \bm{v}_n$ are linearly independent if $c_1\bm{v}_1 + c_2\bm{v}_2 + \ldots + c_m \bm{v}_n = 0$ and all $c_i = 0$. 
+
+$$
+A_{m \times n} = \left[\bm{a}_1 \mid \bm{a}_1 \mid \ldots \mid \bm{a}_n \right]
+$$
+
+If columns of $A$ are linearly independent, $N(A)=\bm{0}$ and $A^{-1}$ exists. A set of vectors is Basis if the vectors are linearly independent, and the vectors span the space. The basis for a space are not unique. A set of vectors span a space When any vector in the space can be written as a linear combination of the spanning vectors.
+
+\subsection{Dimension of a space}
+
+The dimension of a space is the number of vectors in the basis. The basis for a column space: $c(A)$ are the pivot columns.
+
+$$
+\left[\begin{array}{l}
+1 \\
+0 \\
+0
+\end{array}\right],\left[\begin{array}{l}
+0 \\
+1 \\
+0
+\end{array}\right],\left[\begin{array}{l}
+0 \\
+0 \\
+1
+\end{array}\right]
+$$
+
+Is this a basis for $R^{3}$? 
+
+\begin{enumerate}
+    \item [1.] Span $\mathbb{R}^{3}$
+    $$
+    \begin{aligned}
+    \text { Let }\left[\begin{array}{l}
+    a \\
+    b \\
+    c
+    \end{array}\right] &\in \mathbb{R}^{3} \\
+    {\left[\begin{array}{l}
+    a \\
+    b \\
+    c
+    \end{array}\right]&=a\left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right]+b\left[\begin{array}{l}
+    0 \\
+    1 \\
+    0
+    \end{array}\right]+c\left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right]}
+    \end{aligned}
+    $$
+    
+    \item[2.] Linearly Independent
+    $$
+    \begin{aligned}
+    c_1\left[\begin{array}{l}
+    1 \\
+    0 \\
+    0
+    \end{array}\right]+c_{2}\left[\begin{array}{l}
+    0 \\
+    1 \\
+    0
+    \end{array}\right]+c_{3}\left[\begin{array}{l}
+    0 \\
+    0 \\
+    1
+    \end{array}\right] &= \bm{0} \text { iff } c_{1}=c_{2}=c_{3} \\
+    &= {\left[\begin{array}{l}
+    c_1 \\
+    0 \\
+    0
+    \end{array}\right]+\left[\begin{array}{l}
+    0 \\
+    c_{2} \\
+    0
+    \end{array}\right]+\left[\begin{array}{l}
+    0 \\
+    0 \\
+    c_{3}
+    \end{array}\right] } \\
+    \left[\begin{array}{l}
+    c_1 \\
+    c_2 \\
+    c_3
+    \end{array}\right] &=\left[\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right]
+    \end{aligned}
+    $$
+\end{enumerate}
+
+Another way of showing two segments of vectors form a basis for $\mathbb{R}^{3}$.
+
+
+$$
+\begin{aligned}
+A&=\left[\begin{array}{lll}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right]\\
+N(A) &= \bm{0}\\
+\left[\begin{array}{lll|l}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right]&\\
+x_{1}&=0 \\
+x_{2}&=0 \\
+x_{3}&=0 \\
+N(A)&=\left[\begin{array}{l}
+0 \\
+0 \\
+0
+\end{array}\right]
+\end{aligned}
+$$
+
+Space of all matrices of this form $\left[\begin{array}{ll}a & 0 \\ 0 & b\end{array}\right] \forall a, b \in \mathbb{R}$. What is the dimension of this space? A basis for this space is
+
+$$
+\left[\begin{array}{ll}
+1 & 0 \\
+0 & 0
+\end{array}\right],\left[\begin{array}{ll}
+0 & 0 \\
+0 & 1
+\end{array}\right]
+$$
+
+\begin{enumerate}
+    \item [1.] Span the space
+    $$
+    \left[\begin{array}{ll}
+    a & 0 \\
+    0 & b
+    \end{array}\right]=a\left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 0
+    \end{array}\right]+b\left[\begin{array}{ll}
+    0 & 0 \\
+    0 & 1
+    \end{array}\right], \begin{array}{r}
+    \forall a,b \in \mathbb{R}
+    \end{array}
+    $$
+    
+    \item [2.] Linearly Independent
+    $$
+    \begin{aligned}
+    c_{1}\left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 0
+    \end{array}\right]+c_{2}\left[\begin{array}{ll}
+    0 & 0 \\
+    0 & 1
+    \end{array}\right] &=\left[\begin{array}{ll}
+    0 & 0 \\
+    0 & 0
+    \end{array}\right] \\
+    &=\bm{0}\\
+    c_{1}&=0 \\
+    c_{2}&=0
+    \end{aligned}
+    $$
+\end{enumerate}
+
+\subsection{Dimension of the four subspaces}
+$$
+A_{m \times n}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}
+$$
+\begin{enumerate}
+    \item [1.] $C(A)$ col space of $A$ 
+    \item [2.] $N(A)$ null space of $A$ 
+    \item [3.] $R(A)$ row space of $A$. 
+    \item [4.] $N\left(A^{T}\right)$ all Solution of $A^{T} x=\bm{0}$
+\end{enumerate}
+Assume $c(A)$ dimension is $r$, rank $r$ recall rank of $A$ is number of pivots, or pivot columns.
+
+$$
+[A]_{m \times n} \bm{x}_{n \times 1} = \bm{b}_{m \times 1}
+$$
+
+Dimension of $N(A)$ is the same as the number of non-pivot columns, or the number of free variables. $[A]_{m \times n}$: has $n$ columns. $(n-r)$ is the number of non pivot columns. $\operatorname{dim} N(A)=n-r$.
+
+\subsection{Orthogonal Spaces}
+
+2 subspaces are orthogonal if every vector in the two spaces are orthogonal to every vector in the other space.
+
+$$
+\begin{aligned}
+\bm{u}^{T} \cdot \bm{v} &= \bm{0} \\
+\bm{v}^{T} \cdot \bm{v} &= \bm{0}
+\end{aligned}
+$$
+
+Show that $C\left(A^{T}\right), N(A)$ are orthogonal. Note that $C\left(A^{T}\right)=R(A)$. Start with $N(A)$: suppose $\bm{x} \in N(A) \rightarrow A \bm{x}=0$.
+
+$$
+\begin{aligned}
+\left[\frac{\frac{\operatorname{row}(A)}{\vdots}}{{\operatorname{row}(A)}}\right]_{m \times \eta}\left[\begin{array}{c}
+x \\
+\vdots \\
+x_{n}
+\end{array}\right]_{n \times 1}&=\left[\begin{array}{c}
+0 \\
+\vdots \\
+0
+\end{array}\right]_{m \times 1} \\
+\operatorname{row}_1(A) \bm{x}&=0 \\
+\operatorname{row}_2(A) \bm{x}&=0 \\
+&\vdots \\ 
+\operatorname{row}_{m}(A)\bm{x}&=0
+\end{aligned}
+$$
+
+
+$\bm{x}$ is orthogonal to all columns of $A^{T}$. $N(A) \perp C\left(A^{T}\right)$. Sum of the dimensions of the orthogonal subspace is the same as the dimension of the space they form.
+
+\subsection{Orthogonal Complement}
+
+The orthogonal complement exists When the sum of orthogonal subspace dimensions is equal to the dimension of the space they form. Note: $N(A)$, $C(A)$ are orthogonal components. 
+
+$$
+\bm{x} = \bm{x}_{1} + \bm{x}_{2} \text { where } \bm{x}_{1} \in N(A) \text{ and } \bm{x}_{2} \in (A^{T})
+$$
+
+\subsection{Determinants}
+
+$$
+\begin{aligned}
+A&=\left[\begin{array}{ll}
+a & b \\
+c & d
+\end{array}\right]\\ 
+\operatorname{det}(A) &= ad-bc
+\end{aligned}
+$$
+
+Properties of determinants
+\begin{enumerate}
+    \item [1.] When two rows are interchanged, the sign of the determinant will change. 
+    $$
+    \begin{aligned}
+    \left|\begin{array}{ll}
+    a & b \\
+    c & d
+    \end{array}\right| &= a d-b c \\
+    \left|\begin{array}{ll}
+    c & d \\
+    a & b
+    \end{array}\right| &= c b-a d=-(a d-b c)
+    \end{aligned}
+    $$
+
+    \item [2.] When a row is multiplied by a non constant, then the determinant is multiplied by the same constant.
+    $$
+    \begin{aligned}
+    \operatorname{det}\left|\begin{array}{cc}t a & tb \\ c & d\end{array}\right| &= t a \cdot d - tb\cdot c\\
+    &= t(a d-b c)
+    \end{aligned}
+    $$
+    
+    \item [3.] When adding a multiple of a row to another row, the determinant does not change.
+    $$
+    \begin{aligned}
+    \operatorname{det}\left|\begin{array}{ll}
+    a & b \\
+    c & d
+    \end{array}\right|&=a d-b c\\
+    \operatorname{det}\left|\begin{array}{cc}
+    a & b \\
+    c+fa & d+fb
+    \end{array}\right| &= a(d+fb)-b(c+fa) \\
+    &= ad + fab - bc - fab \\
+    &= ad - bc
+    \end{aligned}
+    $$
+    
+    \item[4.] A matrix with a zero row has zero as its determinant.
+    $$
+    \left|\begin{array}{ll}
+    0 & 0 \\
+    c & d
+    \end{array}\right|=0 \cdot d-0 \cdot c=0-0=0
+    $$
+    
+    \item[5.] When a Matrix has two equal rows, then its determinant is zero.
+    
+    \item[6.] In a triangular matrix, the determinant in the product of the diagonal element
+    $$
+    \begin{aligned}
+    \operatorname{det} \left[\begin{array}{ll}
+    1 & 2 \\
+    0 & 3
+    \end{array}\right] & = 1 \cdot 3 - 2(0) = 1 \cdot 3\\ 
+    \operatorname{det} \left[\begin{array}{ll}
+    1 & 0 \\
+    2 & 3
+    \end{array}\right] & = 1 \cdot 3 - 2(0) = 1 \cdot 3
+    \end{aligned}
+    $$
+    
+    \item[7.] If $A$ is singular then $\operatorname{det} A=0$ and $A^{-1}$ does not exist.
+    $$
+    \begin{aligned}
+    A&=\left[\begin{array}{ll}
+    a & b \\
+    c & d
+    \end{array}\right] \\
+    A^{-1}&=\left[\frac{1}{a d-b c}\right]\left[\begin{array}{cc}
+    d & -b \\
+    c & a
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+    \item[8.] $|A \cdot B|=|A| \cdot|B|$, determinants distribute over product.
+    $$
+    \begin{aligned}
+    \operatorname{det}A&=\left[\begin{array}{lll|ll}
+    a_{11} & a_{12} & a_{13} & a_{11} & a_{12} \\
+    a_{21} & a_{22} & a_{23} & a_{21} & a_{22} \\
+    a_{31} & a_{32} & a_{33} & a_{31} & a_{33} \\
+    \end{array}\right] \\
+    & = a_{11} a_{22} d_{33}
+    +a_{12} a_{33} a_{31} 
+    +a_{13} a_{21} a_{33} \\
+    & -a_{13} a_{22} a_{31}
+    -a_{11} a_{23} a_{32}
+    -a_{12} a_{21} a_{33}
+    \end{aligned}
+    $$
+    
+\end{enumerate}
+
+
+\subsection{Determinant of Any Matrix}
+
+The cofactor $a_{ij}$, $i^{th}$ row, $j^{th}$ column for every $a_{ij}$ there is a number called the cofactor of $a_{ij}$ written as $c_{ij}$. $c_{ij}$ is $\pm$ determinant of a submatrix of $A$ by eliminating the $i^{th}$ row $\&$ the $j^{th}$ column. Note use $(+)$ when $i+J$ is even $\&$ use $(-)$ when $i+j$ is odd.
+
+$$
+\begin{aligned}
+A &= \left[\begin{array}{lll}
+a_{11} & a_{12} & c_{13} \\
+a_{21} & a_{23} & c_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{array}\right]\\
+C &= \left[\begin{array}{lll}
+c_{11} & c_{12} & c_{13} \\
+c_{21} & c_{22} & c_{23} \\
+c_{31} & c_{33} & c_{33}
+\end{array}\right]\\
+c_{11} &= \left|\begin{array}{ll}
+a_{22} & a_{23} \\
+a_{32} & a_{33}
+\end{array}\right|=a_{22} a_{33}-a_{23} a_{32} \\
+c_{12} &= \left|\begin{array}{ll}
+a_{11} & a_{13} \\
+a_{31} & a_{33}
+\end{array}\right|=a_{11} a_{33}-a_{13} a_{31} \\
+c_{13} &= \left|\begin{array}{ll}
+a_{21} & a_{22} \\
+a_{31} & a_{32}
+\end{array}\right|=a_{31} a_{33}-a_{33} a_{31}\\
+\operatorname{det}(A) &= a_{11}\left(a_{22} a_{32} - a_{23} a_{32}\right) \\
+&+a_{12}\left(-a_{21} a_{33}+a_{23} a_{31}\right) \\
+&+a_{13}\left(a_{21} a_{33}-a_{22} a_{31}\right)
+\end{aligned}
+$$
+
+\subsection{Cramer's rule, Inverse and Volume}
+
+Finding the solution without using $A^{-1}$.
+
+$$
+\begin{aligned}
+A \bm{x} &= \bm{b} \\
+&\rightarrow \left[\begin{array}{l}
+\bm{a}_{1} \mid \bm{a}_{2} \mid \bm{a}_{3}
+\end{array}\right]\left[\begin{array}{lll}
+x_{1} & 0 & 0 \\
+x_{2} & 1 & 0 \\
+x_{3} & 0 & 1
+\end{array}\right]
+\end{aligned}
+$$
+
+$B$ is matrix $A$ where its first column is replaced by $\bm{b}$.
+
+$$
+\begin{aligned}
+\operatorname{det} A \cdot \operatorname{det}\left[\begin{array}{lll}
+x_{1} & 0 & 0 \\
+x_{2} & 1 & 0 \\
+x_{3} & 0 & 1
+\end{array}\right] &= \operatorname{det} B_{1}\\
+\operatorname{det} A \cdot x_{1} &= \operatorname{det} B\\
+x_{1} &= \frac{\operatorname{det} B_{1}}{\operatorname{det} A}\\
+\left[a_{1} \mid a_{2} \mid a_{3}\right]
+\left[\begin{array}{lll} 1 & x_{1} & 0 \\ 0 & x_{2} & 0 \\ 0 & x_{3} & 1\end{array}\right]
+&=\left[a_1|\bm{b}|a_3\right]\\
+\operatorname{det} A \cdot x_2 &= \operatorname{det} B_{2}\\ 
+x_{2} &= \frac{\operatorname{det} B_{2}}{\operatorname{det} A}\\
+\operatorname{det} A \cdot x_{3} &= \operatorname{det} B_{3}\\
+x_{3} &= \frac{\operatorname{det} B_{3}}{\operatorname{det} A}
+\end{aligned}
+$$
+
+Solution to $A \bm{x} = \bm{b}$ in $x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det}A}$ where $B_{i}$ is matrix $A$ where its ith column is replaced by $\bm{b}$.
+
+$$
+\left(\bm{u} \times \bm{v} \right) \cdot \bm{\omega} = \operatorname{det}\left|\begin{array}{lll}
+u_1 & u_2 & u_3 \\
+v_1 & v_2 & v_3 \\
+\omega_{1} & \omega_{2} & \omega_{3}
+\end{array}\right|
+$$
+
+\subsection{Projection}
+
+$$\operatorname{proj}_{\bm{a}} \bm{b} = \bm{p}$$
+
+Error
+
+$$
+\begin{aligned}
+\bm{e} &= \bm{b}-\bm{p}\\
+\bm{e} \perp \bm{a} \Rightarrow \bm{a} \cdot \bm{e} &=0 \\
+\bm{a}^{T} \cdot e &= 0 \\
+\bm{a} \cdot (\bm{b}-\bm{p}) &= 0 \\
+\bm{a} \cdot \left(\bm{b} - \hat{\bm{x}} \bm{a}\right) &= 0 \\
+\bm{a}^{-T} (\bm{b} - \hat{\bm{x}} \bm{a}) &= 0\\
+\bm{a}^{-T} \bm{b} - \hat{\bm{x}} a^{-T} \bm{a} &=0 \\
+\hat{\bm{x}} &= \frac{a^{-T} \bm{b}} {\bm{a}^{-T} \bm{a}} 
+\end{aligned}
+$$
+
+Note when $\bm{a} \bm{b}$ are given, you can find $\bm{p}$.
+
+$$
+\begin{aligned}
+\bm{p} &= [p] \bm{a}\\
+\bm{p} &= \hat{\bm{x}} \cdot \bm{a} =\frac{\bm{a}^{T} b}{\bm{a}^{T} \bm{a}} \cdot \bm{a}\\
+& = \bm{a} \cdot \frac{\bm{a}^{T} \bm{b}}{\bm{a}^{T} \bm{a}}\\
+& = \frac{\bm{a} \bm{a}^{T}}{\bm{a}^{T} \bm{a}} \cdot \bm{b}
+\end{aligned}
+$$
+
+$\bm{p}= [p] \bm{b}$ where $[p]=\frac{\bm{a} \cdot \bm{a}^{T}}{\bm{a}^T \bm{a}}$
+
+$$
+\begin{aligned}
+\bm{p} &= \hat{\bm{x}_1} \bm{a}_1 + \hat{\bm{x}}_{2} \bm{a}_2 \\
+&= \left[ \bm{a}_1 \mid \bm{a}_2 \right] \left[\begin{array}{l}
+\hat{\bm{x}}_{1} \\
+\hat{\bm{x}}_{2}
+\end{array}\right]\\
+\bm{e}&=\bm{b}-\bm{p}=\bm{b}-\left[\begin{array}{ll}
+\bm{a}_{1} \mid \bm{a}_{2}
+\end{array}\right]\left[\begin{array}{l}
+\hat{\bm{x}}_{1} \\
+\hat{\bm{x}}_{2}
+\end{array}\right]\\
+\bm{e} \perp a_{1} & \\
+\bm{e} \perp a_{2} & \\
+A^{T} \bm{e} & =0
+\end{aligned}
+$$
+
+$A^{T}(\bm{b}-\bm{p}) &= A^{T}(\bm{b} - A \bm{x}) =0$
+
+$$
+\begin{aligned}
+A^{T}(\bm{b} - A \hat{\bm{x}}) &= 0\\
+A^{T} \bm{b} - A^{T} A \hat{\bm{x}} &= 0\\
+A^{T} A \hat{\bm{x}} & = A^{T} \bm{b}\\
+\hat{\bm{x}} &= \left(A^{T} A \right)^{-1} \cdot A^{T} \bm{b} \\
+\bm{b} &= \left[a_{1} \mid a_{2} \right] \hat{\bm{x}}\\
+\bm{p} &= A \hat{\bm{x}} = A
+\end{aligned}
+$$
+
+So
+
+$$
+\begin{aligned}
+\bm{p} &= \operatorname{proj}^{\bm{b}}_{ \bm{a}_1, \bm{a}_2 } \\
+& = [p] \bm{b}\\
+[p] &= A \cdot ( A^{T} A)^{-1} \cdot A^{T}
+\end{aligned}
+$$
 
 \end{document}
