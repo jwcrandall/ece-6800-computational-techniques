@@ -1070,7 +1070,118 @@
     0 & B
     \end{array}\right]
     $$
+    
     \textbf{A.}
+    
+    Column permutation $P=(\alpha, \beta \ldots \omega)$.
+    
+    $$
+    \begin{aligned}
+    A&=\left[\begin{array}{lll}
+    1 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+    \end{array}\right]\\
+    a_{11}&=1, a_{12}=1, a_{13}=0 \\
+    a_{21}&=1, a_{22}=0, a_{23}=1 \\
+    a_{31}&=0, a_{32}=1, a_{33}=1 \\
+    |A|&=\sum \operatorname{det}(P) a_{1 \alpha} a_{2 \beta} \ldots a_{n \omega}\\
+    &=a_{11} a_{22} a_{33}+a_{12} a_{23} a_{31}+a_{13} a_{21} a_{32}-a_{11} a_{23} a_{32}-a_{12} a_{21} a_{33}-a_{13} a_{22} a_{31} \\
+    &=1 \times 0 \times 1+1 \times 1 \times 0+0 \times 1 \times 0-1 \times 1 \times 1-1 \times 1 \times 1-0 \times 0 \times 0 \\
+    &=-1-1 \\
+    &=-2
+    \end{aligned}
+    $$
+    
+    Determinant is non-zero, therefore columns of $A$ are linearly independent.
+    
+    $$
+    \begin{aligned}
+    B&=\left[\begin{array}{lll}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+    \end{array}\right]\\
+    a_{11}&=1, a_{12}=2, a_{13}=3 \\
+    a_{21}&=4, a_{22}=5, a_{23}=6 \\
+    a_{31}&=7, a_{32}=8, a_{33}=9 \\
+    |B|&=\sum \operatorname{det}(P) a_{1 \alpha} a_{2 \beta} \ldots a_{n \omega}\\
+    &=a_{11} a_{22} a_{33}+a_{12} a_{23} a_{31}+a_{13} a_{21} a_{32}-a_{11} a_{23} a_{32}-a_{12} a_{21} a_{33}-a_{13} a_{22} a_{31} \\
+    &=1 \times 5 \times 9+2 \times 6 \times 7+3 \times 4 \times 8-1 \times 6 \times 8-2 \times 4 \times 9-3 \times 5 \times 7 \\
+    &=45+84+96-48-72-105 \\
+    &=129+48-177 \\
+    &=0
+    \end{aligned}
+    $$
+    
+    Determinant of matrix is 0, therefore the columns are linearly dependent.
+    
+    $$
+    \begin{aligned}
+    C &=\left[\begin{array}{ll}
+    A & 0 \\
+    0 & A
+    \end{array}\right] \\
+    |C| &=A^{2} \\
+    &=\left[\begin{array}{lll}
+    1 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+    \end{array}\right]\left[\begin{array}{lll}
+    1 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+    \end{array}\right] \\
+    &=\left[\begin{array}{lll}
+    2 & 1 & 1 \\
+    1 & 2 & 1 \\
+    1 & 1 & 2
+    \end{array}\right]\\
+    a_{11} &=2, a_{12}=1, a_{13}=1 \\
+    a_{21} &=1, a_{22}=2, a_{23}=1 \\
+    a_{31} &=1, a_{32}=1, a_{33}=2 \\
+    |C|&=\sum \operatorname{det}(P) a_{1 \alpha} a_{2 \beta} \ldots a_{n \omega} \\
+    &=a_{11} a_{22} a_{33}+a_{12} a_{23} a_{31}+a_{13} a_{21} a_{32}-a_{11} a_{23} a_{32}-a_{12} a_{21} a_{33}-a_{13} a_{22} a_{31} \\
+    &=2 \times 2 \times 2+1 \times 1 \times 1+1 \times 1 \times 1-2 \times 1 \times 1-1 \times 1 \times 2-1 \times 2 \times 1 \\
+    &=8+1+1-2-2-2 \\
+    &=4
+    \end{aligned}
+    $$
+    
+    Determinant is non-zero, the columns are linearly independent.
+    
+    $$
+    \begin{aligned}
+    D &=\left[\begin{array}{ll}
+    A & 0 \\
+    0 & B
+    \end{array}\right] \\
+    |D| &=A B \\
+    &=\left[\begin{array}{lll}
+    1 & 1 & 0 \\
+    1 & 0 & 1 \\
+    0 & 1 & 1
+    \end{array}\right]\left[\begin{array}{lll}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+    \end{array}\right] \\
+    &=\left[\begin{array}{ccc}
+    5 & 7 & 9 \\
+    8 & 10 & 12 \\
+    11 & 13 & 15
+    \end{array}\right]\\
+    a_{11}&=5, a_{12}=7, a_{13}=9 \\
+    a_{21}&=8, a_{22}=10, a_{23}=12 \\
+    a_{31}&=11, a_{32}=13, a_{33}=15 \\
+    &=a_{11} a_{22} a_{33}+a_{12} a_{23} a_{31}+a_{13} a_{21} a_{32}-a_{11} a_{23} a_{32}-a_{12} a_{21} a_{33}-a_{13} a_{22} a_{31} \\
+    &=5 \times 10 \times 15+7 \times 12 \times 11+9 \times 8 \times 13-5 \times 12 \times 13-7 \times 8 \times 15-9 \times 10 \times 11 \\
+    &=750+924+936-780-840-990 \\
+    & = 0
+    \end{aligned}
+    $$
+    
+    The determinant is 0, the columns are linearly dependent.
     
     \item [12.] \textbf{Q.} Find the cofactor matrix $C$ and multiply $A$ times $C^{\mathrm{T}}$. Compare $A C^{\mathrm{T}}$ with $A^{-1}$ :
     $$
@@ -1084,7 +1195,124 @@
     1 & 2 & 3
     \end{array}\right]
     $$
+    
     \textbf{A.}
+    
+    $$
+    \begin{aligned}
+    C_{i j} &= (-1)^{i+j} \operatorname{det} M_{i j}\\
+    C_{11} &=(-1)^{1+1}\left|\begin{array}{rr}
+    2 & -1 \\
+    -1 & 2
+    \end{array}\right|, \\
+    &=+1(4-1) \\
+    &=3 \\
+    C_{12} &=(-1)^{1+2}\left|\begin{array}{rr}
+    -1 & -1 \\
+    0 & 2
+    \end{array}\right|, \\
+    &=-(-2-0) \\
+    &=2 \\
+    C_{13} &=(-1)^{1+3}\left|\begin{array}{rr}
+    -1 & 2 \\
+    0 & -1
+    \end{array}\right| \\
+    &=1-0 \\
+    &=1 \\
+    C_{21} &=(-1)^{2+1}\left|\begin{array}{ll}
+    -1 & 0 \\
+    -1 & 2
+    \end{array}\right|, \\
+    &=-(-2-0) \\
+    &=2 \\
+    C_{22} &=(-1)^{2+2}\left|\begin{array}{ll}
+    2 & 0 \\
+    0 & 2
+    \end{array}\right|, \\
+    &=(4-0) \\
+    &=4 \\
+    C_{23} &=(-1)^{2+3}\left|\begin{array}{rr}
+    2 & -1 \\
+    0 & -1
+    \end{array}\right| \\
+    &=-(-2-0) \\
+    &=2 \\
+    C_{31} &=(-1)^{3+1}\left|\begin{array}{cc}
+    -1 & 0 \\
+    2 & -1
+    \end{array}\right| \\
+    &=(1-0) \\
+    &=1 \\
+    C_{32} &=(-1)^{3+2}\left|\begin{array}{cc}
+    2 & 0 \\
+    -1 & -1
+    \end{array}\right| \\
+    &=-(-2-0) \\
+    &=2 \\
+    C_{33} &=(-1)^{3+3}\left|\begin{array}{cc}
+    2 & -1 \\
+    -1 & 2
+    \end{array}\right| \\
+    &=(4-1) \\
+    &=3 \\
+    C&=\left[\begin{array}{lll}
+    3 & 2 & 1 \\
+    2 & 4 & 2 \\
+    1 & 2 & 3
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    $$
+    \begin{aligned}
+    C^{T} &=\left[\begin{array}{lll}
+    3 & 2 & 1 \\
+    2 & 4 & 2 \\
+    1 & 2 & 3
+    \end{array}\right]^{T} \\
+    &=\left[\begin{array}{lll}
+    3 & 2 & 1 \\
+    2 & 4 & 2 \\
+    1 & 2 & 3
+    \end{array}\right] \\
+    \operatorname{det} A &=\left|\begin{array}{ccc}
+    2 & -1 & 0 \\
+    -1 & 2 & -1 \\
+    0 & -1 & 2
+    \end{array}\right| \\
+    &=2(4-1)-(-1)(-2-0)+0 \\
+    &=2(3)-2 \\
+    &=6-2 \\
+    &=4 \\
+    A C^{T} &=\left[\begin{array}{ccc}
+    2 & -1 & 0 \\
+    -1 & 2 & -1 \\
+    0 & -1 & 2
+    \end{array}\right]\left[\begin{array}{ccc}
+    3 & 2 & 1 \\
+    2 & 4 & 2 \\
+    1 & 2 & 3
+    \end{array}\right] \\
+    &=\left[\begin{array}{ccc}
+    6-2+0 & 4-4+0 & 2-2+0 \\
+    -3+4-1 & -2+8-2 & -1+4-3 \\
+    0-2+2 & 0-4+4 & 0-2+6
+    \end{array}\right] \\
+    &=\left[\begin{array}{ccc}
+    4 & 0 & 0 \\
+    0 & 4 & 0 \\
+    0 & 0 & 4
+    \end{array}\right] \\
+    &=4\left[\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+    \end{array}\right] \\
+    &=4 I \\
+    A^{-1} &=\frac{1}{4} C^{T} \\
+    &=\left(\frac{1}{\operatorname{det} A}\right) C^{T}
+    \end{aligned}
+    $$
     
     \item [13.] The $n$ by $n$ determinant $C_{n}$ has 1 's above and below the main diagonal:
     $$
@@ -1103,9 +1331,138 @@
     \end{array}\right|
     $$
     \begin{enumerate}
-        \item [a.] \textbf{Q.} What are these determinants $C_{1}, C_{2}, C_{3}, C_{4} ?$ \textbf{A.}
+        \item [a.] \textbf{Q.} What are these determinants $C_{1}, C_{2}, C_{3}, C_{4} ?$ 
         
-        \item [b.] \textbf{Q.} By cofactors find the relation between $C_{n}$ and $C_{n-1}$ and $C_{n-2}$. Find $C_{10}$. \textbf{A.}
+        \textbf{A.}
+        $C_{1}$
+        $$
+        \begin{aligned}
+        C_{1} &=|0| \\
+        &=0
+        \end{aligned}
+        $$
+        
+        $C_{2}$
+        $$
+        \begin{aligned}
+        C_{11} &=(-1)^{1+1} \operatorname{det} M_{11} \\
+        &=(-1)^{2} \operatorname{det}[0] \\
+        &=1(0) \\
+        &=0 \\
+        C_{12} &=(-1)^{1+2} \operatorname{det} M_{12} \\
+        &=(-1)^{3} \operatorname{det}[1] \\
+        &=(-1)(1) \\
+        &=-1 \\
+        C_{2}&=a_{11} C_{11}+a_{12} C_{12} \\
+        &=(0)(0)+(1)(-1) \\
+        &=0-1 \\
+        &=-1
+        \end{aligned}
+        $$
+        
+        $C_{3}$
+        $$
+        \begin{aligned}
+        C_{11} &=(-1)^{1+1} \operatorname{det} M_{11} \\
+        &=(-1)^{2} \operatorname{det}\left[\begin{array}{ll}
+        0 & 1 \\
+        1 & 0
+        \end{array}\right] \\
+        &=1(0-1) \\
+        &=-1 \\
+        C_{12} &=(-1)^{1+2} \operatorname{det} M_{12} \\
+        &=(-1)^{3} \operatorname{det}\left[\begin{array}{ll}
+        1 & 1 \\
+        0 & 0
+        \end{array}\right] \\
+        &=(-1)(0-0) \\
+        &=0 \\
+        C_{13} &=(-1)^{1+3} \operatorname{det} M_{13} \\
+        &=(-1)^{4} \operatorname{det}\left[\begin{array}{ll}
+        1 & 0 \\
+        0 & 1
+        \end{array}\right] \\
+        &=(1)(1-0) \\
+        &=1 \\
+        C_{3} &= a_{11} C_{11}+a_{12} C_{12}+a_{13} C_{13} \\
+        &=(0)(-1)+(1)(0)+(0)(1) \\
+        &=0 +0+0 \\
+        & =0 \\
+        \end{aligned}
+        $$
+        
+        $C_{4}$
+        
+        $$
+        \begin{aligned}
+        C_{11} &= (-1)^{1+1} \operatorname{det} M_{11}\\
+        &=(-1)^{2} \operatorname{det}\left[\begin{array}{lll}
+        0 & 1 & 0 \\
+        1 & 0 & 1 \\
+        0 & 1 & 0
+        \end{array}\right]\\
+        &=1(0)\\
+        &=0\\
+        C_{12} &= (-1)^{1+2} \operatorname{det} M_{12}\\
+        &=(-1)^{3} \operatorname{det}\left[\begin{array}{lll}
+        1 & 1 & 0 \\
+        0 & 0 & 1 \\
+        0 & 1 & 0
+        \end{array}\right]\\
+        &=(-1)(-1)\\
+        &=1\\
+        C_{13}&=(-1)^{1+3} \operatorname{det} M_{13}\\
+        &=(-1)^{4} \operatorname{det}\left[\begin{array}{lll}
+        1 & 0 & 0 \\
+        0 & 1 & 1 \\
+        0 & 0 & 0
+        \end{array}\right]\\
+        &=(1)(0)\\
+        &=0\\
+        C_{14}&=(-1)^{1+4} \operatorname{det} M_{14}\\
+        &=(-1)^{5} \operatorname{det}\left[\begin{array}{lll}
+        1 & 0 & 1 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+        \end{array}\right]\\
+        &=(-1)(1)\\
+        &=-1\\
+        C_{4}&=a_{11} C_{11}+a_{12} C_{12}+a_{13} C_{13}+a_{14} C_{14}\\
+        &=(0)(0)+(1)(1)+(0)(0)+(0)(-1)\\
+        &=0+1+0+0\\
+        &=1
+        \end{aligned}
+        $$
+        
+        \item [b.] \textbf{Q.} By cofactors find the relation between $C_{n}$ and $C_{n-1}$ and $C_{n-2}$. Find $C_{10}$. 
+        
+        \textbf{A.}
+        
+        $$
+        \begin{aligned}
+        C_{1}&=0\\
+        C_{2}&=-1\\
+        C_{3} &=0 \\
+        &=-0 \\
+        &=-C_{1} \\
+        &=-C_{3-2} \\
+        C_{4} &=1 \\
+        &=-(-1) \\
+        &=-C_{2} \\
+        &=-C_{4-2}\\
+        C_{n}&=-C_{n-2}\\
+        C_{10} &=-C_{10-2} \\
+        &=-C_{8} \\
+        &=-\left(-C_{8-2}\right) \\
+        &=C_{6} \\
+        &=-C_{6-2} \\
+        &=-C_{4} \\
+        &=-\left(-C_{4-2}\right) \\
+        &=-\left(-C_{2}\right) \\
+        &= C_{2} \\
+        &=-1
+        \end{aligned}
+        $$
         
     \end{enumerate}
     
@@ -1125,7 +1482,98 @@
     1 & 1 & 1 & 0
     \end{array}\right|
     $$
+    
     \textbf{A.}
+    
+    $G_{2}$
+    $$
+    \begin{aligned}
+    G_{2}&=a_{i 1} C_{i 1}+a_{i 2} C_{i 2}+\cdots+a_{i n} C_{i n}\\
+    C_{i j}&=(-1)^{i+j} \operatorname{det} M_{i j}\\
+    C_{11}&=0 \\
+    C_{12}&=-1 \\
+    C_{21}&=-1 \\
+    C_{22}&=0 \\
+    G_{2}&=-1 \\
+    \end{aligned}
+    $$
+    
+    $G_{3}$
+    $$
+    \begin{aligned}
+    G_{3}&=a_{i 1} C_{i 1}+a_{i 2} C_{i 2}+\cdots+a_{i n} C_{i n}\\
+    C_{31} &=\left|\begin{array}{ll}
+    1 & 1 \\
+    0 & 1
+    \end{array}\right| \\
+    &=1 \\
+    C_{32} &=\left|\begin{array}{ll}
+    0 & 1 \\
+    1 & 1
+    \end{array}\right| \\
+    &=-1 \\
+    G_{3} &=1 C_{31}-1 C_{32} \\
+    &=1-1 \times(-1) \\
+    &=2
+    \end{aligned}
+    $$
+    
+    $G_{4}$
+    $$
+    \begin{aligned}
+    G_{4}&=\left|\begin{array}{llll}
+    0 & 1 & 1 & 1 \\
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 0
+    \end{array}\right|\\
+    R_1 &\leftrightarrow R_3\\
+    &=\left|\begin{array}{llll}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 0
+    \end{array}\right|\\
+    R_4 - R_3 &\rightarrow R_4\\
+    &=\left|\begin{array}{cccc}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    0 & 0 & 1 & -1
+    \end{array}\right|\\
+    R_4 &\leftrightarrow R_3\\
+    &=\left|\begin{array}{cccc}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & -1 \\
+    1 & 1 & 0 & 1
+    \end{array}\right|\\
+    R_4 - R_1 &\rightarrow R_4\\
+    &=\left|\begin{array}{cccc}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & -1 \\
+    0 & 1 & -1 & 0
+    \end{array}\right|\\
+    R_4 - R_2 &\rightarrow R_4\\
+    &=\left|\begin{array}{cccc}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & -1 \\
+    0 & 0 & -2 & -1
+    \end{array}\right|\\
+    R_4 + 2R_3 &\rightarrow R_4\\
+    &=\left|\begin{array}{cccc}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    0 & 0 & 1 & -1 \\
+    0 & 0 & 0 & -3
+    \end{array}\right|\\
+    G_{4} &=1 \times 1 \times 1 \times(-3) \\
+    &=-3\\
+    G_{n}&=(-1)^{n-1}(n-1)
+    \end{aligned}
+    $$
     
 \end{enumerate}
 
@@ -1140,25 +1588,250 @@
             c x+d y &=0
             \end{aligned}
             $$
+            
             \textbf{A.}
+            
+            $$
+            \begin{aligned}
+            A&=\left[\begin{array}{ll}
+            a & b \\
+            c & d
+            \end{array}\right], \mathbf{x}=\left[\begin{array}{l}
+            x \\
+            y
+            \end{array}\right], \mathbf{b}=\left[\begin{array}{l}
+            1 \\
+            0
+            \end{array}\right]\\
+            \operatorname{det} A &=\left|\begin{array}{ll}
+            a & b \\
+            c & d
+            \end{array}\right| \\
+            &=a d-b c\\
+            B_{2}&=\left[\begin{array}{ll}
+            a & 1 \\
+            c & 0
+            \end{array}\right]\\
+            \operatorname{det} B_{2} &=\left|\begin{array}{ll}
+            a & 1 \\
+            c & 0
+            \end{array}\right| \\
+            &=(a)(0)-(c)(1) \\
+            &=0-c \\
+            &=-c \\
+            y &=\frac{\operatorname{det} B_{2}}{\operatorname{det} A} \\
+            &=\frac{-c}{a d-b c} \\
+            &=-\frac{c}{a d-b c}
+            \end{aligned}
+            $$
+            
     \end{enumerate}
     
     \item [4.] Quick proof of Cramer's rule. The determinant is a linear function of column 1 . It is zero if two columns are equal. When $b=A x=x_{1} a_{1}+x_{2} a_{2}+x_{3} a_{3}$ goes into the first column of $A$, the determinant of this matrix $B_{1}$ is $\left|\begin{array}{lll}b & a_{2} & a_{3}\end{array}\right|=\left|x_{1} a_{1}+x_{2} a_{2}+x_{3} a_{3} \quad a_{2} \quad a_{3}\right|=x_{1}\left|a_{1} \quad a_{2} \quad a_{3}\right|=x_{1} \operatorname{det} A$
     \begin{enumerate}
-        \item [a.] \textbf{Q.} What formula for $x_{1}$ comes from left side = right side? \textbf{A.}
-        \item [b.] \textbf{Q.} What steps lead to the middle equation? \textbf{A.}
+        \item [a.] \textbf{Q.} What formula for $x_{1}$ comes from left side = right side? 
+        
+        \textbf{A.} Cramer's Rule states that: If $\operatorname{det} A \neq 0$, equation $A x=b$ is solved by determinants,
+        
+        $$
+        \begin{aligned}
+        x_{1}=& \frac{\operatorname{det} B_{1}}{\operatorname{det} A} \\
+        x_{2}=& \frac{\operatorname{det} B_{2}}{\operatorname{det} A} \\
+        x_{3}=& \frac{\operatorname{det} B_{3}}{\operatorname{det} A} \\
+        & \vdots \\
+        x_{n}=& \frac{\operatorname{det} B_{n}}{\operatorname{det} A}
+        \end{aligned}
+        $$
+        
+        The matrix $B_{\mathrm{j}}$ has the $j^{\text {th }}$ column of $A$ replaced by the vector $\boldsymbol{b}$.
+        
+        $$
+        x_{1}=\frac{\left[\begin{array}{lll}
+        b & a_{2} & a_{3}
+        \end{array}\right]}{\operatorname{det} A}
+        $$
+        
+        \item [b.] \textbf{Q.} What steps lead to the middle equation? 
+        
+        \textbf{A.}
+        
+        $$
+        \begin{aligned}
+        x_{1}\left|a_{1} \quad a_{2} \quad a_{3}\right|+x_{2}\left|a_{2} \quad a_{2} \quad a_{3}\right|+x_{1}\left|a_{3} \quad a_{2} \quad a_{3}\right| &\\
+        x_{1}\left|a_{1} \quad a_{2} \quad a_{3}\right| &= x_{1} \operatorname{det} A
+        \end{aligned}
+        $$
+    
+        The last two determinants are zero because of repeated columns
+        
     \end{enumerate}
     
     \item [6.] Find $A^{-1}$ from the cofactor formula $C^{\mathrm{T}} / \operatorname{det} A$. Use symmetry in part (b).
     \begin{enumerate}
-        \item [a.] \textbf{Q.} $A=\left[\begin{array}{lll}1 & 2 & 0 \\ 0 & 3 & 0 \\ 0 & 7 & 1\end{array}\right]$ \textbf{A.}
-        \item [b.] \textbf{Q.} $A=\left[\begin{array}{rrr}2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2\end{array}\right]$ \textbf{A.}
+        \item [a.] \textbf{Q.} $A=\left[\begin{array}{lll}1 & 2 & 0 \\ 0 & 3 & 0 \\ 0 & 7 & 1\end{array}\right]$ 
+        \textbf{A.}
+        
+        $$
+        \begin{aligned}
+        A^{-1}&=\frac{C^{T}}{\operatorname{det} A}\\
+        \operatorname{det} A &= \left|\begin{array}{lll}
+        1 & 2 & 0 \\
+        0 & 3 & 0 \\
+        0 & 7 & 1
+        \end{array}\right| \\
+        &=1(3)-2(0)+0 \\
+        &=3\\
+        C&=\left[\begin{array}{lll}
+        C_{11} & C_{12} & C_{13} \\
+        C_{21} & C_{22} & C_{23} \\
+        C_{31} & C_{32} & C_{33}
+        \end{array}\right]\\
+        &=\left[\begin{array}{ccc}
+        \left|\begin{array}{cc}
+        3 & 0 \\
+        7 & 1
+        \end{array}\right| & -\left|\begin{array}{ccc}
+        0 & 0 \\
+        0 & 1
+        \end{array}\right| & \left|\begin{array}{ll}
+        0 & 3 \\
+        0 & 7
+        \end{array}\right| \\
+        -\left|\begin{array}{cc}
+        2 & 0 \\
+        7 & 1
+        \end{array}\right| & \left|\begin{array}{cc}
+        1 & 0 \\
+        0 & 1
+        \end{array}\right| & -\left|\begin{array}{cc}
+        1 & 2 \\
+        0 & 7
+        \end{array}\right| \\
+        \mid \begin{array}{cc}
+        2 & 0 \\
+        3 & 0
+        \end{array} & -\left|\begin{array}{cc}
+        1 & 0 \\
+        0 & 0
+        \end{array}\right| & \left|\begin{array}{ll}
+        1 & 2 \\
+        0 & 3
+        \end{array}\right|
+        \end{array}\right]\\
+        &=\left[\begin{array}{ccc}
+        3 & 0 & 0 \\
+        -2 & 1 & -7 \\
+        0 & 0 & 3
+        \end{array}\right]\\
+        A^{-1}&=\frac{1}{3}\left[\begin{array}{ccc}
+        3 & -2 & 0 \\
+        0 & 1 & 0 \\
+        0 & -7 & 3
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
+        \item [b.] \textbf{Q.} $A=\left[\begin{array}{rrr}2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2\end{array}\right]$ 
+        
+        \textbf{A.}
+        
+        $$
+        \begin{aligned}
+        \operatorname{det} A &=\left|\begin{array}{ccc}
+        2 & -1 & 0 \\
+        -1 & 2 & -1 \\
+        0 & -1 & 2
+        \end{array}\right| \\
+        &=2(4-1)+1(-2)+0 \\
+        &=4\\
+        C &=\left[\begin{array}{lll}
+        C_{11} & C_{12} & C_{13} \\
+        C_{12} & C_{22} & C_{23} \\
+        C_{13} & C_{23} & C_{33}
+        \end{array}\right] \\
+        &=\left[\begin{array}{ccc}
+        \left|\begin{array}{cc}
+        2 & -1 \\
+        -1 & 2
+        \end{array}\right| & -\left|\begin{array}{cc}
+        -1 & -1 \\
+        0 & 2
+        \end{array}\right| & \left|\begin{array}{cc}
+        -1 & 2 \\
+        0 & -1
+        \end{array}\right| \\
+        -\left|\begin{array}{cc}
+        -1 & -1 \\
+        0 & 2
+        \end{array}\right| & \left|\begin{array}{cc}
+        2 & 0 \\
+        0 & 2
+        \end{array}\right| & -\left|\begin{array}{cc}
+        2 & -1 \\
+        0 & -1
+        \end{array}\right| \\
+        \left|\begin{array}{cc}
+        -1 & 2 \\
+        0 & -1
+        \end{array}\right| & -\left|\begin{array}{ll}
+        2 & -1 \\
+        0 & -1
+        \end{array}\right| & \left|\begin{array}{cc}
+        2 & -1 \\
+        -1 & 2
+        \end{array}\right|
+        \end{array}\right] \\
+        &=\left[\begin{array}{lll}
+        3 & 2 & 1 \\
+        2 & 4 & 2 \\
+        1 & 2 & 3
+        \end{array}\right]\\
+        A^{-1}&=\frac{1}{4}\left[\begin{array}{lll}
+        3 & 2 & 1 \\
+        2 & 4 & 2 \\
+        1 & 2 & 3
+        \end{array}\right]
+        \end{aligned}
+        $$
+        
     \end{enumerate}
     
-    \item [9.] \textbf{Q.} Suppose $\operatorname{det} A=1$ and you know all the cofactors in $C$. How can you find $A$ ? \textbf{A.}
+    \item [9.] \textbf{Q.} Suppose $\operatorname{det} A=1$ and you know all the cofactors in $C$. How can you find $A$ ? 
     
-    \item [19.] \textbf{Q.} The parallelogram with sides $(2,1)$ and $(2,3)$ has the same area as the parallelogram with sides $(2,2)$ and $(1,3)$. Find those areas from 2 by 2 determinants and say why they must be equal. (I can't see why from a picture. Please write to me if you do.) \textbf{A.}
+    \textbf{A.}
     
+    $$
+    \begin{aligned}
+    A^{-1}&=\frac{C^{T}}{\operatorname{det} A}\\
+    \operatorname{det} A &= 1\\
+    A^{-1}&=C^{T}
+    \end{aligned}
+    $$
+    
+    $\boldsymbol{A}$ is the inverse of $C^{T}$. Matrix $\boldsymbol{A}$ can be found from the cofactor matrix $\boldsymbol{C}$.
+    
+    
+    \item [19.] \textbf{Q.} The parallelogram with sides $(2,1)$ and $(2,3)$ has the same area as the parallelogram with sides $(2,2)$ and $(1,3)$. Find those areas from 2 by 2 determinants and say why they must be equal. (I can't see why from a picture. Please write to me if you do.) 
+
+    \textbf{A.}
+    
+    $$
+    \begin{aligned}
+    \left|\begin{array}{ll}
+    2 & 1 \\
+    2 & 3
+    \end{array}\right| &=(2)(3)-(2)(1)\\
+    & = 4\\
+    \left|\begin{array}{ll}
+    2 & 2 \\
+    1 & 3
+    \end{array}\right| &=(2)(3)-(2)(1)\\
+    &= 4
+    \end{aligned}
+    $$
+    
+    Both have the same determinants because the transpose has the same determinant.
+
 \end{enumerate}
 
 \end{document}
