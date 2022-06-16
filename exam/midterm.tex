@@ -80,6 +80,32 @@ $$
     \item [c.] \textbf{Q.} Describe exactly all the vectors $b$ for which $A x=b$ can be solved. (Don't just say that $b$ must be in the column space.) 
     
     \textbf{A.}
+    
+    $$
+    \begin{aligned}
+    \left[\begin{array}{lll|l}
+    1 & -1 & 0 & b_1\\
+    2 & -2 & 0 & b_2\\
+    1 & -1 & 0 & b_3
+    \end{array}\right]&\\
+    -R_1 + R_3 &\rightarrow R_3\\
+    \left[\begin{array}{lll|l}
+    1 & -1 & 0 & b_1\\
+    2 & -2 & 0 & b_2\\
+    0 & 0 & 0 & -b_1 + b_3
+    \end{array}\right]&\\
+    -2R_1 + R_2 &\rightarrow R_2\\
+    \left[\begin{array}{lll|l}
+    1 & -1 & 0 & b_1\\
+    0 & 0 & 0 & -2b_1 + b_2\\
+    0 & 0 & 0 & -b_1 + b_3
+    \end{array}\right]&\\
+    \end{aligned}
+    $$
+    
+    If $Ax=b$ has a solution, $-2b_1 + b_2 = 0$ and $-b_1 + b_3=0$.
+    
+    
 \end{enumerate}
 
 \item [2.] Suppose the matrix $A$ has reduced row echelon form $R$ :
