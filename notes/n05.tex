@@ -1,0 +1,618 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Orthogonal Basis}
+
+    $$
+    Q=\left[q_{1}, q_{2}, \ldots q_{m}\right]
+    $$
+    
+    set of basis above are orthogonal if $Q^{\top} Q=I$. Column are orthogonal to each other and $|| C_{i} ||=1$. $Q_{\top} Q= $ diagonal matrix, $\Rightarrow$ columns of $Q$ are orthogonal but $|| v || \neq 1$. If a set of basis is given how can we create a set of orthogonal basis in that space? Recall projections.
+    
+    $$
+    \begin{aligned}
+    \bar{p}&=\operatorname{proj}_{\bar{a}}\bar{b} \\
+    \bar{b}-\bar{p}&=\bar{e}
+    \end{aligned}
+    $$ 
+
+\subsection{Gram Schmidt}
+
+    Find 3 orthogonal vector $\{\bar{A}, \bar{B}, \bar{C}\}$
+    
+    \begin{enumerate}
+        \item[I.] $\bar{A}=\bar{a}$
+        \item[II.] $\bar{B}=\bar{b}-\frac{A^{\top} b}{A^{\top} A} \cdot A$
+        \item[III.] $\bar{C}=\bar{c}-\frac{\bar{A}^{\top} \bar{c}}{\bar{A}^{\top} A} \cdot \bar{A}-\frac{\bar{B}^{\top} \bar{c}}{\bar{B}^{\top} \bar{B}} \cdot \bar{B}$
+    \end{enumerate}
+
+\subsection{Eigen Values & Eigen Vectors}
+
+    $A$ is given, we are looking for vector $\bar{x}$ and constant $\lambda$ such that $A \bar{x}=\lambda \bar{x}$. $\bar{x}, \lambda$ are called the eigen vector, and eigen value for matrix $A$. If $A$ is singular $\Rightarrow A^{-1}$ does not exist $\Rightarrow A \bar{x}=0$ has non zero solution $\bar{x}$.
+    
+    $$(A - \lambda I) \bar{x}=0$$
+    
+    $\bar{x}$ exists if we have a non-zero solution. For $\bar{x} \neq 0$ solution to exist, $A \lambda I$ is singular, $[A \lambda I]^{-1}$ does not exist.
+    
+    $$\operatorname{det}(A-\lambda I)=0$$
+    
+    Solution steps to find $\bar{x} \cdot \lambda$
+    
+    \begin{enumerate}
+        \item [I.] Find $\lambda$'s such that $\operatorname{det}(A-A \bar{I})=0$
+        \item [II.] For each $\lambda$, find $\bar{x}$.
+        \begin{enumerate}
+            \item[1.] find $A-\lambda I$
+            \item[2.] find  $\operatorname{det}(A-\lambda I)$
+            \item[3.] solve $\operatorname{det}(A-\lambda I)=0$
+            \item[4.] find $\bar{x}:(A-\lambda I) \bar{x}=0$
+        \end{enumerate}
+    \end{enumerate}
+    
+    Find eigen values and eigen vectors
+    
+    $$
+    \begin{aligned}
+    A&=\left[\begin{array}{ll}
+    0.5 & 0.5 \\
+    0.5 & 0.5
+    \end{array}\right]\\
+    A-\lambda I &=\left[\begin{array}{ll}
+    0.5 & 0.5 \\
+    0.5 & 0.5
+    \end{array}\right]-\lambda\left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right] \\
+    &=\left[\begin{array}{ll}
+    0.5-\lambda & 0.5 \\
+    0.0 & 0.5-\lambda
+    \end{array}\right]\\
+    \operatorname{det} A-\lambda I &=\operatorname{det}\left[\begin{array}{cc}
+    0.5-\lambda & 0.5 \\
+    0.5 & 0.5-\lambda
+    \end{array}\right] \\
+    (0.5-\lambda)^{2}-(0.5)^{2} & = 0 \\
+    .5-\lambda&=\pm .5 \\
+    \lambda&=1\\
+    \lambda&=0\\
+    \end{aligned}
+    $$
+    
+    For each eigen value $\lambda$, we have an eigen vector $\bar{x}$ through the solution to this equation $(\lambda-\lambda I) \bar{x}=0$
+    
+    $$
+    \begin{aligned}
+    \lambda &= 0
+    (A-\lambda I) \bar{x} &= {\left[\begin{array}{ll}
+    0.5 & 0.5 \\
+    0.5 & 0.5
+    \end{array}\right] \bar{x}\\
+    & =\overline{0} } \\
+    \bar{x}&=\left[\begin{array}{c}
+    1 \\
+    -1
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    In this case eigen vector is the $N(A)$, null space of $A$.
+    
+    $$
+    \begin{aligned}
+    \lambda &= 1\\
+    (A-\lambda I) \bar{x} &= 0\\
+    \left[\begin{array}{ll}-0.5 & 0.5 \\ 0.5 & -0.5\end{array}\right] \bar{x} &=\overline{0}\\ 
+    \bar{x} &= \left[\begin{array}{l} 1 \\ 1 \end{array} \right]
+    \end{aligned}
+    $$
+    
+    Note, using eigen vectors as basis in the space. $\bar{v}$ in $R^{n}$. $\bar{V}= c_{1} \bar{x}_{1} + c_{2} \bar{x}_{2} + \cdots + c_{n} \bar{x}_{0}$ where $\left\{\bar{x}_{1}, \bar{x}_{2}, \ldots, \bar{x}_{n}\right\}$ are eigen vectors of $A_{n \times m}$ form a basis, what is the advantage?
+    
+    $$
+    \begin{aligned}
+    A \bar{v} &= A c_{1} \bar{x}_1 + A C_{2} \bar{x}_{2} + \ldots + A c_{n} \bar{x}_{n} \\
+    1 &= c_{1} A \bar{x}_{1} + C_{2} A \bar{x}_{2} + \ldots + C_{n} A \bar{x}_{n}\\
+    A\left(A V_{c}\right) &= c_{1} \lambda_{1} \bar{x}_{1} + c_{2} \lambda_{2} \bar{x}_{2} + \ldots + c_{n} \lambda_{n} \bar{x}_{n} \\
+    A^{2}(V) = A(A V) &= C_{1} \lambda_{1} A \bar{x}_{1}+C_{2} \lambda_{2} A \bar{x}_{2} + \ldots + c \lambda_{n} Ax_{m} \\
+    &=c_{1} \lambda_{1}^{2} \bar{x}_{1} + C_{2} \lambda_{2}^{2} \bar{x}_{2} + \ldots + c_{n} \lambda_{n}^{2} \bar{X}_{n} \\
+    A^{R} \bar{v} &= c_{1}\left(\lambda_{1}\right)^{K} \bar{x}_{1} + c_{2} \lambda_{2}^{k} \bar{x}_{2} + \ldots + c_{n} \lambda_{n}^{k} \bar{x}_{n}\\
+    A^{k} v &= c_{1} A^{k} \bar{x}_{1} + c_{2} A^{k} x_{2} + \ldots + C_{n} A^{k} \bar{x}_n
+    \end{aligned}
+    $$
+    
+    From a computational point of view, multiplying by a scalar is much faster than by a matrix. Find the eigen values and vectors in another example
+    
+    $$
+    \begin{aligned}
+    A &= \left[\begin{array}{ll}
+    1 & 2 \\
+    2 & 4
+    \end{array}\right]\\
+    A-\lambda I &= \left[\begin{array}{ccc}
+    1 -\lambda & 2 \\
+    2 & 4-\lambda
+    \end{array}\right]\\
+    \operatorname{det}(A-\lambda I) &= 4-5 \lambda+\lambda^{2}-4 \\
+    &=\lambda(\lambda-5)\\
+    \lambda_{1}&=0\\
+    (A- \lambda I) \bar{x}_{1} &=0 \\
+    \left[\begin{array}{ll}
+    1 & 2 \\
+    2 & 4
+    \end{array}\right] \left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right] & =\left[\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right] \\
+    \bar{x}_{1} &= \left[\begin{array}{l}
+    2 \\
+    -1
+    \end{array}\right]\\
+    \lambda_2 &= 5 \\
+    (A-\lambda_2 I) \bar{x}_2&=0 \\
+    \left[\begin{array}{rr}
+    -4 & 2 \\
+    2 & -1
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]&=0 \\
+    \bar{x}_{2} &= \left[\begin{array}{l}
+    1 \\
+    2
+    \end{array}\right]
+    \end{aligned}
+    $$
+    
+    Note, we could have complex eigen values and eigen vectors
+    
+    $$
+    \begin{aligned}
+    Q &= \left[\begin{array}{ll}
+    0 & 1 \\
+    -1 & 0
+    \end{array}\right]\\
+    \operatorname{det}(A-\lambda I) &= 0\\
+    \operatorname{det}\left[\begin{array}{cc}
+    0-\lambda & 1 \\
+    -1 & 0-\lambda
+    \end{array}\right]&=0\\
+    \lambda^{2}+1&=0\\
+    \lambda^{2}&=-1\\ 
+    \lambda &= \pm \sqrt{-1}\\
+    & = \pm i\\
+    \lambda_{1} &=i\\
+    (A-\lambda I) \bar{x} &= 0\\
+    {\left[\begin{array}{ll}
+    -i & 1 \\
+    -1 & -i
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right]} \\
+    \bar{x}_{1}&=\left[\begin{array}{l}
+    1 \\
+    i
+    \end{array}\right]\\
+    \lambda_{2}&=-i\\
+    \operatorname{det}\left(A-\lambda_{2} I\right) \bar{x} &=0 \\
+    \left[\begin{array}{cc}
+    1 & 1 \\
+    -1 & i
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right] \\
+    x_{1}\left(\begin{array}{c}
+    i \\
+    -i
+    \end{array}\right)+x_{2}\left(\begin{array}{l}
+    1 \\
+    i
+    \end{array}\right)&=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    i\left(\begin{array}{c}
+    i \\
+    -1
+    \end{array}\right)+1\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right) &= \left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    \bar{x}_{2} &= \left[\begin{array}{l}
+    i \\
+    1
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+\subsection{Diagonalization}
+
+    $A= S \wedge S^{-1}$ where $S=\left[x_{1} | \ldots | x_{n}\right]$ and $\bar{x}_{1}, \ldots, \bar{x}_{n}$ are linearly independent eigen vectors for matrix $A_{nxn}$ and 
+
+    $$
+    \Lambda=\left[\begin{array}{llll}
+    \lambda_{1} & 0 & \cdots & 0 \\
+    0 & \lambda_{2} & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots \\ 
+    0 & \cdots & 0 & \lambda_{n}
+    \end{array}\right]
+    $$
+
+    is a diagonal matrix made of eigen Values of $A$. Proof:
+
+    $$
+    \begin{aligned}
+    A S &=A \underbrace{\left[\bar{x}_{1}\left|\bar{x}_{2}\right| \ldots \mid \overline{x_{n}}\right]}_{S} \\
+    &=\left[A \bar{x}_{1}\left|A \bar{x}_{2}\right| \ldots \mid A \bar{x}_{n}\right]
+    \end{aligned}
+    $$
+    
+    Since $\bar{x}_{1}, \ldots, \bar{x}_{n}$ are eigen vectors of $A$.
+    
+    $$
+    \begin{aligned}
+    x &=\left[\lambda_{1} \bar{x},\left|\lambda_{2} \bar{x}_{2}\right| \ldots \mid \lambda_{n} x_{n}\right] \\
+    &=\left[x_{1}\left|x_{2}\right| \ldots \mid x_{n}\right]
+    \left[\begin{array}{llll}
+    \lambda_{1} & 0 & \cdots & 0 \\
+    0 & \lambda_{2} & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots \\ 
+    0 & \cdots & 0 & \lambda_{n}
+    \end{array}\right] \\
+    &= S \cdot \Lambda
+    \end{aligned}
+    $$
+
+    $$
+    \begin{aligned}
+    AS &= S \Lambda\\
+    A S S^{-1} &= S \Lambda S^{-1}\\
+    A &= S \cdot \Lambda \cdot S^{-1}\\
+    A &= \left[\begin{array}{ll}
+    0.5 & 0.5 \\
+    0.5 & 0.5
+    \end{array}\right]\\
+    \lambda_{1} &= 1 \Rightarrow \bar{x}_{1}\left(\begin{array}{c}
+    1 \\
+    1
+    \end{array}\right)\\
+    \lambda_{2} &= 0 \Rightarrow \bar{x}_{2}\left(\begin{array}{c}
+    -1 \\
+    1
+    \end{array}\right)\\
+    S &= \left[\bar{x}_{1} \mid \bar{x}_{2}\right] =\left[\begin{array}{cc}
+    1 & -1 \\
+    1 & 1
+    \end{array}\right]\\
+    S^{-1} &= \frac{1}{2}\left[\begin{array}{cc}
+    1 & 1 \\
+    -1 & 1
+    \end{array}\right]=\left[\begin{array}{cc}
+    -.5 & .5 \\
+    -.5 & .5
+    \end{array}\right]\\
+    \Lambda &= \left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 0
+    \end{array}\right]\\
+    S^{-1} A S &= \Lambda\\
+    \left[\begin{array}{cc}
+    5 & 5 \\
+    -.5 & 5
+    \end{array}\right]\left[\begin{array}{cc}
+    .5 & .5 \\
+    .5 & .5
+    \end{array}\right]\left[\begin{array}{cc}
+    1 & -1 \\
+    1 & 1
+    \end{array}\right]&=\left[\begin{array}{ll}
+    1 & 0 \\
+    0 & 0
+    \end{array}\right]
+    \end{aligned}
+    $$
+
+    Remarks
+
+    \begin{enumerate}
+        \item [I.] If $\lambda_{1}, \ldots, \lambda_{n}$ are distinct $\Rightarrow x_{1}, \ldots, x_{n}$ are linearly independent.
+        \item [II.] Matrix $S$ is not unique $\Rightarrow$ then there is another matrix $Q$ where $Q^{-1} A Q= \Lambda$. 
+        
+        $$
+        \begin{aligned}
+        Q&=S\left[\begin{array}{ll}a & 0 \\ 0 & b\end{array}\right], a, b \in \mathbb{R}\\
+        \left[\begin{array}{ll}
+        \bar{x}_{1}[\bar{x} & \bar{x}_{2}
+        \end{array}\right]\left[\begin{array}{ll}
+        a & 0 \\
+        0 & b
+        \end{array}\right] &= \left[a \bar{x}_{1} \mid b \bar{x}_{2}\right]
+        \end{aligned}
+        $$
+        
+        \item[III.] Eigen vectors come in the same order as eigen values in $\Lambda$. Some matrices have to few eigen values \& vectors, $\therefore$ non diagonalizable.
+    \end{enumerate}
+    
+\subsection{Difference Equation}
+
+    $$
+    U_{R+1}=A U_{R}
+    $$
+
+    $$
+    \begin{aligned}
+    U_{1} &= A u_{0}\\
+    U_{2} &= A U_{1} = A \left( A U_{0} \right) = A^{2} U_{0}\\
+    U_{3} &=A U_{2} = A\left(A^{2} U_{0}\right) = A^{3} U_{0}\\
+    & \vdots \\
+    U_{K} & = A_{K} u_{0}
+    \end{aligned}
+    $$
+
+    or
+
+    $$
+    \begin{aligned}
+    U_{R} &= A^{R} \bar{u}_{0} = ( S \Lambda S^{-1} )^{k} U_{0} \\
+    & = S \Lambda^{k} S^{-1} U_{0}
+    \end{aligned}
+    $$
+
+\subsection{Differential Equation}
+
+    $$
+    \frac{\partial \bar{u}}{\partial t} = A \bar{u}
+    $$
+    
+    where $\bar{u}=\left[\begin{array}{l}x \\ y\end{array}\right]$ note $\bar{u}(t) = \left[\begin{array}{l} x(t) \\ y(t)\end{array}\right]$
+
+    $$
+    \begin{aligned}
+    A&=\left[\begin{array}{ll}
+    0 & 1 \\
+    1 & 0
+    \end{array}\right]\\
+    \left[\begin{array}{l}
+    x^{\prime} \\
+    y^{\prime}
+    \end{array}\right]&=\left[\begin{array}{ll}
+    0 & 1 \\
+    1 & 0
+    \end{array}\right]\left[\begin{array}{l}
+    x \\
+    y
+    \end{array}\right]\\
+    x^{\prime} &=y \\
+    y^{\prime} &=x
+    \end{aligned}
+    $$
+
+    Given initial conditions
+
+    $$
+    \begin{aligned}
+    \frac{d \bar{v}}{d t} &= A \bar{u}\\
+    \bar{u}(0)&
+    \end{aligned}
+    $$
+
+    Solution
+
+    $$
+    \begin{aligned}
+    u(t) &= e^{\lambda t} \cdot \bar{x}\\
+    \frac{\partial}{\partial t} u(t) &=\frac{\partial}{\partial t} e^{d t} \bar{x} \\
+    &= \lambda e^{\lambda t} \bar{x} \\
+    u_{i}(t) &= e^{\lambda_i t} \cdot \bar{x}_i
+    \end{aligned}
+    $$
+
+    Note on the general solution $u(t)=c_{1}u_{1}(t) + c_{2}u_{2}(t) + \ldots + c_{n} u_{n}(t)$ where $c_{1}, c_{2}, \ldots, c_{n}$ can be found using initial conditions. Solve the following matrix differential equation
+
+    $$
+    \begin{aligned}  
+    \frac{\partial \bar{u}}{\partial t} &= \left[\begin{array}{ll}
+    0 & 1 \\
+    1 & 0
+    \end{array}\right] \bar{u} \\
+    \bar{u}(0) &= \left[\begin{array}{l}
+    4 \\
+    2
+    \end{array}\right]\\
+    \operatorname{det}(A-\lambda I)&=0\\
+    \operatorname{det}\left[\begin{array}{cc}
+    0-\lambda & 1 \\
+    1 & 0-\lambda
+    \end{array}\right]&=0\\
+    \lambda^{2}-1&=0\\
+    \lambda^{2} &=1\\
+    \lambda_{1} &=\pm 1\\
+    \lambda_{1} &=1 (A-\lambda I) \bar{x}_{1} =0\\
+    \left[\begin{array}{cc}
+    -1 & 1 \\
+    1 & -1
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right]\\
+    \bar{x}_{1}&=\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)\\
+    \lambda_{2}&=-1\\
+    (A-\lambda I) \bar{x}_{2}&=0\\
+    \left[\begin{array}{ll}
+    1 & 1 \\
+    1 & 1
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right]&=\left[\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right]\\
+    \bar{x}_{2}&=\left(\begin{array}{c}
+    -1 \\
+    1
+    \end{array}\right)\\
+    \bar{u}_{1} &= e^{\lambda_{1}^{+}} \bar{x}_{1}=e^{t}\left[\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right]=\left[\begin{array}{l}
+    e^{t} \\
+    e^{t}
+    \end{array}\right] \\
+    \bar{u}_{2}&=e^{\lambda_{2} t} = e^{-t}\left[\begin{array}{c}
+    -1 \\
+    1
+    \end{array}\right]=\left[\begin{array}{c}
+    -e^{-t} \\
+    e^{-t}
+    \end{array}\right]\\
+    \bar{u} &= c_{1} \bar{u}_1 + c_{2}+\bar{u}_{2} \\
+    \bar{u}(t) &= c_{1}\left[\begin{array}{c}
+    e^{t} \\
+    e^{t}
+    \end{array}\right]+c_{2}\left[\begin{array}{c}
+    -e^{-t} \\
+    e^{-t}
+    \end{array}\right] \\
+    \bar{u}(0) &= c_{1}\left[\begin{array}{l}
+    e^{0} \\
+    e^{0}
+    \end{array}\right] + c_{2}\left[\begin{array}{c}
+    -c^{0} \\
+    e^{-0}
+    \end{array}\right] \\
+    &=\left[\begin{array}{l}
+    c_{1} \\
+    c_{1}
+    \end{array}\right]+\left[\begin{array}{c}
+    -c_{2} \\
+    c_{1}
+    \end{array}\right]\\
+    &=\left[\begin{array}{l}
+    C_{1}-C_{2} \\
+    C_{1}+C_{2}
+    \end{array}\right]=\left[\begin{array}{l}
+    4 \\
+    2
+    \end{array}\right]
+    c_{1}-c_{2} &= 4 \\
+    c_{1}+c_{2} & =2 \\
+    3c_{1} &= 6 \\
+    c_{2} &= 3 \\
+    3-c_{2}&=4 \\
+    c_{2}&=-1 \\
+    U(t) &= \left[\begin{array}{l}
+    3 e^{t} + e^{-t} \\
+    3 e^{t} - e^{-t}
+    \end{array}\right]
+    \end{aligned}
+    $$
+ 
+\subsection{Symmetric Matrices}
+
+    A symmetric matrix has real eigenvalues if matrix $A$ is symmetric
+    
+    $$
+    A=Q \Lambda Q^{-1}=Q \Lambda Q^{\top}
+    $$
+
+    $Q$ is orthonormal matrix mode of eigen vector of $x$. Note for orthonormal matrices their inverse is the same as their transpose.
+    
+    $$
+    Q^{\top}=Q^{-1}
+    $$
+
+    Proof: Suppose $\bar{x}, \bar{y}$ are eigen vectors of a real symmetric matrix. How do we show orthogonality $\bar{x} \perp \bar{y}$?
+    \begin{enumerate}
+        \item [1.] $(A \bar{X})^{\top} \bar{Y} = \bar{X}^{\top} A^{\top} \bar{Y} = \bar{X}^{\top} A \bar{Y} = \bar{x}^{\top} \lambda_{2} \bar{Y}$
+        \item [2.] $A \bar{x}^{\top} \bar{y} = \left(\lambda_{1} \bar{x} \right)^{\top} \bar{y} = \bar{x}^{\top} \lambda_{1} \bar{y}$ 
+    \end{enumerate}
+        
+    $$
+    \begin{aligned}
+    \bar{x}^{\top} \lambda_{2} \bar{y} &= \bar{x}^{\top} \lambda_{1} \bar{y} \\
+    \lambda_{2}\left(\bar{x}^{\top} \bar{y}\right) &= \lambda_{1} \left(\bar{x}^{\top} \bar{y}\right) \\
+    \lambda_{1} &\neq \lambda_{2}\\
+    \bar{x} T \bar{y} &=? \\
+    \end{aligned}
+    $$
+    
+    note $\bar{x}^{\top} \bar{y}=\overline{0} \Rightarrow \bar{x} \perp \bar{y}$
+    $$
+    S=\left[\bar{x}_{1}\left|\bar{x}_{3}\right| \ldots \mid \bar{x}_{n}\right]
+    $$
+
+    Example
+
+    $$
+    \begin{aligned}
+    A_{2 \times 2}&=\left[\begin{array}{rr}
+    -3 & 4 \\
+    4 & 3
+    \end{array}\right]\\
+    \lambda_1 &= 5\\
+    \lambda_2 &= -5\\
+    \bar{x}_{1}&=\left[\begin{array}{l}
+    1 \\
+    2
+    \end{array}\right] \\
+    \bar{x}_{2}&=\left[\begin{array}{c}
+    -2 \\
+    1
+    \end{array}\right] \\
+    \bar{z}_{1}&=\left[\begin{array}{l}
+    1 / \sqrt{5} \\
+    2 / \sqrt{5}
+    \end{array}\right] \\
+    \bar{x}_{2}&=\left[\begin{array}{l}
+    -2 / \sqrt{5} \\
+    1 / \sqrt{5}
+    \end{array}\right]\\
+    A &= S \wedge S^{-1}\\
+    &=\frac{1}{r_{5}}\left[\begin{array}{cc}
+    1 & -2 \\
+    2 & 1
+    \end{array}\right]\left[\begin{array}{cc}
+    5 & 0 \\
+    0 & -5
+    \end{array}\right] \frac{1}{r_{s}}\left[\begin{array}{cc}
+    1 & 2 \\
+    -2 & 1
+    \end{array}\right]\\
+    A&=\left[\begin{array}{l}
+    \bar{x}_{1} \mid \bar{x}_{2}
+    \end{array}\right]\left[\begin{array}{ll}
+    \lambda_{1} & 0 \\
+    0 & \lambda_{3}
+    \end{array}\right]\left[\begin{array}{l}
+    x_{1}^{\top} \\
+    \bar{x}_{2}^{T}
+    \end{array}\right]\\
+    &=\left[\begin{array}{lll}
+    \lambda_{1} x_{1} l & \lambda_{2} x_{d}
+    \end{array}\right]\left[\frac{x_{1}^{\top}}{x_{1}^{\top}}\right]\\
+    A&=\lambda_{1} \bar{x}_{1} \bar{x}_{1}^{\top}+\lambda_{a} x_{2} \bar{x}_{2}^{\top}
+    \end{aligned}    
+    $$
+
+\end{document}
