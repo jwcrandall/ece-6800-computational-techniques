@@ -1,0 +1,761 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Section 6.1}
+\begin{enumerate}
+
+    \item [3.] \textbf{Q.} Compute the eigenvalues and eigenvectors of $A$ and $A^{-1}$. Check the trace !
+    $$
+    A=\left[\begin{array}{ll}
+    0 & 2 \\
+    1 & 1
+    \end{array}\right] \text { and } A^{-1}=\left[\begin{array}{rr}
+    -1 / 2 & 1 \\
+    1 / 2 & 0
+    \end{array}\right]
+    $$
+    $A^{-1}$ has the \rule{1cm}{0.15mm} eigenvectors as $A$. When $A$ has eigenvalues $\lambda_{1}$ and $\lambda_{2}$, its inverse has eigenvalues \rule{1cm}{0.15mm}. \textbf{A.}
+
+    $$
+    \begin{aligned}
+    \operatorname{det}(A-\lambda I) &=0 \\
+    A-\lambda I &= \left(\begin{array}{ll}
+    0 & 2 \\
+    1 & 1
+    \end{array}\right)-\lambda\left(\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right) \\
+    &=\left(\begin{array}{cc}
+    -\lambda & 2 \\
+    1 & 1-\lambda
+    \end{array}\right)\\
+    \operatorname{det}\left(\begin{array}{cc}
+    -\lambda & 2 \\
+    1 & 1-\lambda
+    \end{array}\right) &=0 \\
+    (-\lambda)(1-\lambda)-(2)(1) &=0 \\
+    \lambda^{2}-\lambda-2 &=0 \\
+    (\lambda-2)(\lambda+1) &=0 \\
+    \lambda &=2,-1
+    \end{aligned}
+    $$
+
+    The sum of the entries on the main diagonal is called the trace of $A$. Thus, the trace of $A$ is $0+1=1$ which equals to the sum of its eigenvalues.
+
+    $$
+    \begin{aligned}
+    \lambda & = -1\\
+    \left(\begin{array}{ll}
+    1 & 2 \\
+    1 & 2
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    x_{1}+2 y_{1} &=0 \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    2 \\
+    -1
+    \end{array}\right)\\
+    \lambda &= 2\\    
+    \left(\begin{array}{cc}
+    -2 & 2 \\
+    1 & -1
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    -2 x_{1}+2 y_{1} &=0 \\
+    x_{1} &=y_{1} \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)
+    \end{aligned}
+    $$
+
+    For matrix $A^{-1}$, the eigenvectors remains same as matrix $A$ and its eigenvalue is given as $\lambda^{-1}$.
+
+    $$
+    \begin{aligned}
+    A^{-1}-\lambda I &= \left(\begin{array}{cc}
+    \frac{-1}{2} & 1 \\
+    \frac{1}{2} & 0
+    \end{array}\right)-\lambda\left(\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right)\\
+    &=\left(\begin{array}{cc}
+    -\frac{1}{2}-\lambda & 1 \\
+    \frac{1}{2} & -\lambda
+    \end{array}\right)\\
+    \operatorname{det}\left(\begin{array}{cc}
+    -\frac{1}{2}-\lambda & 1 \\
+    \frac{1}{2} & -\lambda
+    \end{array}\right)&=0 \\
+    (-\lambda)\left(-\frac{1}{2}-\lambda\right)-\left(\frac{1}{2}\right)(1)&=0 \\
+    \lambda^{2}+\frac{1}{2} \lambda-\frac{1}{2}&=0 \\
+    2 \lambda^{2}+\lambda-1&=0 \\
+    (2 \lambda-1)(\lambda+1)&=0 \\
+    \lambda&=\frac{1}{2},-1\\
+    \lambda &= -1 \\
+    \left(\begin{array}{cc}
+    \frac{1}{2} & 1 \\
+    \frac{1}{2} & 1
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    \frac{1}{2} x_{1}+y_{1} &=0 \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    2 \\
+    -1
+    \end{array}\right)\\
+    \lambda & = \frac{1}{2}\\
+    \left(\begin{array}{cc}
+    -1 & 1 \\
+    \frac{1}{2} & -\frac{1}{2}
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    -x_{1}+y_{1} &=0 \\
+    x_{1} &=y_{1} \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)
+    \end{aligned}
+    $$
+
+    The trace of the matrix $A^{-1}$ is $-\frac{1}{2}+0=-\frac{1}{2}$ which equals to the sum of its eigenvalues.
+    Therefore, the matrix $A^{-1}$ has the same eigenvectors as $A$. When $\mathrm{A}$ has eigenvalues as $\lambda_{1}$ and $\lambda_{2}$, its inverse has eigenvalues $\frac{1}{\lambda_{1}}$ and $\frac{1}{\lambda_{2}}$.
+    
+    \item [13.] \textbf{Q.} From the unit vector $u=\left(\frac{1}{6}, \frac{1}{6}, \frac{3}{6}, \frac{5}{6}\right)$ construct the rank one projection matrix $P=u u^{\mathrm{T}}$. This matrix has $P^{2^{2}}=P$ because $u^{\mathrm{T}} \boldsymbol{u}=1$. \textbf{A.}
+
+    $$
+    \begin{aligned}
+    P &=\mathbf{u u}^{T} \\
+    &=\left(\begin{array}{llll}
+    \frac{1}{6} \\
+    \frac{1}{6} \\
+    \frac{3}{6} \\
+    \frac{5}{6}
+    \end{array}\right)\left(\begin{array}{cccc}
+    \frac{1}{6} & \frac{1}{6} & \frac{3}{6} & \frac{5}{6}
+    \end{array}\right) \\
+    &=\left(\begin{array}{llll}
+    \frac{1}{36} & \frac{1}{36} & \frac{3}{36} & \frac{5}{36} \\
+    \frac{1}{36} & \frac{1}{36} & \frac{3}{36} & \frac{5}{36} \\
+    \frac{3}{36} & \frac{3}{36} & \frac{9}{36} & \frac{15}{36} \\
+    \frac{5}{36} & \frac{5}{36} & \frac{15}{36} & \frac{25}{36}
+    \end{array}\right)
+    \end{aligned}
+    $$
+    
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $P u=u$ comes from $\left(u u^{\mathrm{T}}\right) u=u$( \rule{1cm}{0.15mm}). Then $\boldsymbol{u}$ is an eigenvector with $\lambda=1$. 
+        \textbf{A.}
+
+        $$
+        \begin{aligned}
+        P \mathbf{u} &=\left(\mathbf{u}\mathbf{u}^{T}\right) \mathbf{u} \\
+        &=\mathbf{u}\left(\mathbf{u}^{T} \mathbf{u}\right) \\
+        &=\mathbf{u}
+        \end{aligned}
+        $$
+
+        $\mathbf{u}$ is a unit vector, so $\mathbf{u}^{T} \mathbf{u}=1$
+        
+        \item [b.] \textbf{Q.} If $v$ is perpendicular to $u$ show that $P v=\mathbf{0}$. Then $\lambda=0$. 
+        \textbf{A.}
+
+        $$
+        \begin{aligned}
+        P v &=\left(\mathbf{u}\mathbf{u}^{T}\right) v \\
+        &=\mathbf{u}\left(\mathbf{u}^{T} v\right) \\
+        &=\mathbf{0}
+        \end{aligned}
+        $$
+
+        $v$ is perpendicular to $\mathbf{u}$, so $\mathbf{u}^{T} v=0$ ?
+        
+        \item [c.] \textbf{Q.} Find three independent eigenvectors of $P$ all with eigenvalue $\lambda=0$. 
+        \textbf{A.}
+        Three linearly independent eigenvectors can be found by finding the null space of $\mathbf{u}^{T} \boldsymbol{v}=\mathbf{u}^{T} \mathbf{x}$.
+
+        $$
+        \begin{aligned}
+        0&=\frac{1}{6}\left[\begin{array}{llll}
+        1 & 1 & 3 & 5
+        \end{array}\right]\left[\begin{array}{l}
+        x_{1} \\
+        x_{2} \\
+        x_{3} \\
+        x_{4}
+        \end{array}\right]\\
+        x_{1}+x_{2}+3 x_{3}+5 x_{4}&=0
+        \end{aligned}
+        $$
+
+        The equation has 4 variables and we can choose three free variables. By choosing different values of these variables we get the following solutions $v=(-1,1,0,0)^{T},(-3,0,1,0)^{T},(-5,0,0,1)^{T}$.
+
+        
+    \end{enumerate}
+
+    \item [33.] \textbf{Q.} Suppose $\boldsymbol{u}, \boldsymbol{v}$ are orthonormal vectors in $\mathrm{R}^{2}$, and $A=\boldsymbol{u} v^{\mathrm{T}}$. Compute $A^{2}=\boldsymbol{u} v^{\mathrm{T}} \boldsymbol{u} \boldsymbol{v}^{\mathrm{T}}$ to discover the eigenvalues of $A$. Check that the trace of $A$ agrees with $\lambda_{1}+\lambda_{2}$. 
+    \textbf{A.}
+
+    $$
+    \begin{aligned}
+    v^{T} u &=0\\
+    A&=u v^{T}\\
+    A^{2} &=u v^{T} u v^{T} \\
+    &=u\left(v^{T} u\right) v^{T}
+    A^{2} &=u(0) v^{T} \\
+    A^{2} &=0
+    \end{aligned}
+    $$
+    $A^{2}$ is a zero matrix, so it's all eigenvalues are 0. 
+
+    $$
+    \begin{aligned}
+    A&=u v^{T} \\
+    &=\left(\begin{array}{ll}
+    u_{1} & u_{2}
+    \end{array}\right)\left(\begin{array}{l}
+    v_{1} \\
+    v_{2}
+    \end{array}\right) \\
+    &=\left(\begin{array}{ll}
+    u_{1} v_{1} & u_{1} v_{2} \\
+    u_{2} v_{1} & u_{2} v_{2}
+    \end{array}\right)\\
+    \text{ trace }&=u_{1} v_{1}+u_{2} v_{2}\\
+     v^{T} u &= u_{1} v_{1}+u_{2} v_{2}\\
+    \text{ trace }&=0\\
+    \lambda_{1}+\lambda_{2}&=0
+    \end{aligned}
+    $$
+    
+\end{enumerate}
+
+\subsection{Section 6.2}
+\begin{enumerate}
+    \item [10.] \textbf{Q.} Prove that every third Fibonacci number in $0,1,1,2,3, \ldots$ is even. 
+    \textbf{A.}
+
+    $$
+    \begin{aligned}
+    F_{k+2}&=F_{k+1}+F_{k}
+    \end{aligned}
+    $$
+
+    $F_{0}$ is 0 and $F_{1}$ is 1. This operation produces numbers in order of even, odd, odd, even, odd, odd, even, odd, odd. Every third number of the series is even.
+    
+    \item [11.] True or false: If the eigenvalues of $A$ are $2,2,5$ then the matrix is certainly
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} invertible. 
+        \textbf{A.} True. The determinant of a matrix is given by taking the product of the eigen values of the given matrix. $\operatorname{det}(A) \neq 0$ as 0 is not an eigen value of $A$. A matrix is invertible only when its determinant is non-zero.
+        
+        \item [b.] \textbf{Q.} diagonalizable. 
+        \textbf{A.} False. Matrix $A$ is not diagonalizable if there is only one independent vector corresponding to eigen value 2. Since eigenvalue 2 of the matrix is repeated, one line of eigenvectors for this eigenvalue is repeated. Algebraic multiplicity of matrix $A$ will be greater than geometric multiplicity.
+        
+        \item [c.] \textbf{Q.} not diagonalizable. 
+        \textbf{A.} True. Matrix $A$ can be diagonalizable when number of eigen vectors corresponding to eigen value 2 are two, otherwise it is not diagonalizable.
+        
+    \end{enumerate}
+    
+    \item [33.] \textbf{Q.} Find the eigenvalues and eigenvectors and the $k$ th power of $A$. For this "adjacency matrix" the $i, j$ entry of $A^{k}$ counts the $k$-step paths from $i$ to $j$. 
+    
+    $$A=\left[\begin{array}{lll}1 & 1 & 1 \\ 1 & 0 & 0 \\ 1 & 0 & 0\end{array}\right]$$
+
+    \textbf{A.} 
+    $$
+    \begin{aligned}
+    \operatorname{det}(A-\lambda I) &= 0\\
+    \left|\begin{array}{ccc}
+    1-\lambda & 1 & 1 \\
+    1 & -\lambda & 0 \\
+    1 & 0 & -\lambda
+    \end{array}\right| &=0 \\
+    (1-\lambda)(-\lambda)(-\lambda)-1(-\lambda)+1(\lambda) &=0 \\
+    -\lambda^{3}+\lambda^{2}+2 \lambda &=0 \\
+    \lambda(\lambda-2)(\lambda+1) &=0\\
+    \lambda & = 2\\
+    \left(\begin{array}{ccc}
+    -1 & 1 & 1 \\
+    1 & -2 & 0 \\
+    1 & 0 & -2
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1} \\
+    z_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1} \\
+    z_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    2 \\
+    1 \\
+    1
+    \end{array}\right)\\
+    \lambda &= -1\\
+    \left(\begin{array}{lll}
+    2 & 1 & 1 \\
+    1 & 1 & 0 \\
+    1 & 0 & 1
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1} \\
+    z_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1} \\
+    z_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    -1 \\
+    -1
+    \end{array}\right)\\
+    \lambda &=0\\
+    \left(\begin{array}{lll}
+    1 & 1 & 1 \\
+    1 & 0 & 0 \\
+    1 & 0 & 0
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1} \\
+    z_{1}
+    \end{array}\right)&=\left(\begin{array}{l}
+    0 \\
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1} \\
+    z_{1}
+    \end{array}\right)&=\left(\begin{array}{l}
+    0 \\
+    1 \\
+    -1
+    \end{array}\right)\\
+    S&=\left(\begin{array}{ccc}
+    2 & 1 & 0 \\
+    1 & -1 & 1 \\
+    1 & -1 & -1
+    \end{array}\right)\\
+    S^{-1}&=\frac{1}{6}\left(\begin{array}{ccc}
+    2 & 1 & 1 \\
+    2 & -2 & -2 \\
+    0 & 3 & -3
+    \end{array}\right)\\
+    \Lambda&=\left(\begin{array}{ccc}
+    2 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & 0
+    \end{array}\right)\\
+    \end{aligned}
+    $$
+
+    Eigenvectors of $A$ are linearly independent, matrix $A$ is diagonalizable.
+
+    $$
+    \begin{aligned}
+    A^{k} &=S \Lambda^{k} S^{-1} \\
+    &=\frac{1}{6}\left(\begin{array}{ccc}
+    2 & 1 & 0 \\
+    1 & -1 & 1 \\
+    1 & -1 & -1
+    \end{array}\right)\left(\begin{array}{ccc}
+    2^{k} & 0 & 0 \\
+    0 & (-1)^{k} & 0 \\
+    0 & 0 & 0
+    \end{array}\right)\left(\begin{array}{ccc}
+    2 & 1 & 1 \\
+    2 & -2 & -2 \\
+    0 & 3 & -3
+    \end{array}\right) \\
+    &=\frac{1}{6}\left(\begin{array}{ccc}
+    2 & 1 & 0 \\
+    1 & -1 & 1 \\
+    1 & -1 & -1
+    \end{array}\right)\left(\begin{array}{ccc}
+    2^{k+1} & 2^{k} & 2^{k} \\
+    2(-1)^{k} & -2(-1)^{k} & -2(-1)^{k} \\
+    0 & 0 & 0
+    \end{array}\right) \\
+    &=\frac{2^{k}}{6}\left(\begin{array}{ccc}
+    4 & 2 & 2 \\
+    2 & 1 & 1 \\
+    2 & 1 & 1
+    \end{array}\right)+\frac{(-1)^{k}}{3}\left(\begin{array}{ccc}
+    1 & -1 & -1 \\
+    -1 & 1 & 1 \\
+    -1 & 1 & 1
+    \end{array}\right)
+    \end{aligned}
+    $$
+    
+\end{enumerate}
+
+\subsection{Section 6.3}
+\begin{enumerate}
+    \item [1.] \textbf{Q.} Find two $\lambda$'s and $\boldsymbol{x}$'s so that $\boldsymbol{u}=e^{\lambda t} \boldsymbol{x}$ solves
+    
+    $$
+    \frac{d \boldsymbol{u}}{d t}=\left[\begin{array}{ll}
+    4 & 3 \\
+    0 & 1
+    \end{array}\right] \boldsymbol{u}
+    $$
+    
+    What combination $u=c_{1} e^{\lambda_{1} t} x_{1}+c_{2} e^{\lambda_{2} t} x_{2}$ starts from $u(0)=(5,-2)$? 
+    \textbf{A.}
+
+     $$
+    A=\left(\begin{array}{ll}
+    4 & 3 \\
+    0 & 1
+    \end{array}\right)
+    $$
+
+    Matrix $A$ is triangular, its eigenvalues are given by its diagonal elements 4 and 1.
+
+    $$
+    \begin{aligned}
+    \lambda & = 4\\
+    (A-\lambda I) x&=0\\
+    \left(\begin{array}{cc}
+    0 & 3 \\
+    0 & -3
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right)\\
+    \lambda & = 1\\
+    (A-\lambda I) x&=0\\
+    \left(\begin{array}{ll}
+    3 & 3 \\
+    0 & 0
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)\\
+    u_{1}&=e^{4 t}\left(\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right) \\
+    u_{2}&=e^{t}\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)
+    \end{aligned}
+    $$
+
+    general solution $u(t)$
+
+    $$
+    \begin{aligned}
+    u(0)&=\left(\begin{array}{ll}
+    5 & -2
+    \end{array}\right)^{T}\\
+    u(0)&=c_{1} u_{1}+c_{2} u_{2}\\
+    \left(\begin{array}{c}
+    5 \\
+    -2
+    \end{array}\right)&=3\left(\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right)+2\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)\\
+    c_{1}&=3\\
+    c_{2}&=2\\
+    u(t)&=3 e^{4 t}\left(\begin{array}{l}
+    1 \\
+    0
+    \end{array}\right)+2 e^{t}\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)
+    \end{aligned}
+    $$
+
+    \item [4.] \textbf{Q.} A door is opened between rooms that hold $v(0)=30$ people and $w(0)=10$ people. The movement between rooms is proportional to the difference $v-w$ :
+    
+    $$
+    \frac{d v}{d t}=w-v \quad \text { and } \quad \frac{d w}{d t}=v-w
+    $$
+    
+    Show that the total $v+w$ is constant (40 people). Find the matrix in $d \boldsymbol{u} / d t=A \boldsymbol{u}$ and its eigenvalues and eigenvectors. What are $v$ and $w$ at $t=1$ and $t=\infty$ ? 
+    
+    \textbf{A.}
+
+    $$
+    \begin{aligned}
+    &\frac{d v}{d t}+\frac{d w}{d t}=(w-v)+(v-w) \\
+    &\frac{d(v+w)}{d t}=0
+    \end{aligned}
+    $$
+
+    $(v+w)$ is constant and is independent of time. The number of people in both rooms at $t=0$ is 40, so $v+w=40$.
+
+    $$
+    \begin{aligned}
+    u&=\left(\begin{array}{ll}
+    v & w
+    \end{array}\right)^{T}\\
+    \frac{d}{d t}\left(\begin{array}{l}
+    v \\
+    w
+    \end{array}\right)&=\left(\begin{array}{cc}
+    -1 & 1 \\
+    1 & -1
+    \end{array}\right)\left(\begin{array}{l}
+    v \\
+    w
+    \end{array}\right)\\
+    \frac{d u}{d t}&=\left(\begin{array}{cc}
+    -1 & 1 \\
+    1 & -1
+    \end{array}\right) u\\
+    A&=\left(\begin{array}{cc}
+    -1 & 1 \\
+    1 & -1
+    \end{array}\right)
+    \end{aligned}
+    $$
+
+    For matrix $A$ the columns adds up to zero, therefore 0 is an eigenvalue of the matrix. The trace of $A$ is $-2$, therefore the other eigenvalue of $A$ is $-2$.
+
+    $$
+    \begin{aligned}
+    \lambda & = 0\\
+    (A-\lambda I) x&=0\\
+    \left(\begin{array}{cc}
+    -1 & 1 \\
+    1 & -1
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)\\
+    \lambda & = -2\\
+    (A-\lambda I) x&=0\\
+    \left(\begin{array}{ll}
+    1 & 1 \\
+    1 & 1
+    \end{array}\right)\left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    0 \\
+    0
+    \end{array}\right) \\
+    \left(\begin{array}{l}
+    x_{1} \\
+    y_{1}
+    \end{array}\right) &=\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)\\
+    u_{1}&=\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right) \\
+    u_{2}&=e^{-2 t}\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)
+    \end{aligned}
+    $$
+
+    general solution $u(t)$
+
+    $$
+    \begin{aligned}
+    u(0)&=\left(\begin{array}{ll}
+    30 & 10
+    \end{array}\right)^{T}\\
+    u(0)&=c_{1} u_{1}+c_{2} u_{2}\\
+    \left(\begin{array}{l}
+    30 \\
+    10
+    \end{array}\right)&=20\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)+10\left(\begin{array}{c}
+    1 \\
+    -1
+    \end{array}\right)\\
+    c_1&=20\\
+    c_2&=10\\
+    u(t)&=20\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)+10 e^{-2 t}\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)\\
+    t=1\\
+    \left(\begin{array}{l}
+    v(1) \\
+    w(1)
+    \end{array}\right)&=20\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)+10 e^{-2}\left(\begin{array}{l}
+    1 \\
+    -1
+    \end{array}\right)\\
+    v(1)&=20+10 e^{-2} \\
+    w(1)&=20-10 e^{-2} \\
+    t &\rightarrow \infty \\
+    u(\infty)&=20\left(\begin{array}{l}
+    1 \\
+    1
+    \end{array}\right)\\
+    v(\infty)&=20 \\
+    w(\infty)&=20
+    \end{aligned}
+    $$
+    
+    \item [19.] \textbf{Q.} The matrix $B=\left[\begin{array}{lr}0 & -4 \\ 0 & 0\end{array}\right]$ has $B^{2}=0$. Find $e^{B t}$ from a (short) infinite series. Check that the derivative of $e^{B t}$ is $B e^{B t}$. 
+    
+    \textbf{A.}
+
+    $$
+    \begin{aligned}
+    e^{B t}&=I+B t+\frac{1}{2}(B t)^{2}+\frac{1}{6}(B t)^{3}+\cdots\\
+    e^{B t} &=I+B t \\
+    &=\left(\begin{array}{cc}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right)+\left(\begin{array}{cc}
+    0 & -4 t \\
+    0 & 0
+    \end{array}\right) \\
+    &=\left(\begin{array}{cc}
+    1 & -4 t \\
+    0 & 1
+    \end{array}\right)\\
+    \frac{d e^{B t}}{d t}&=\left(\begin{array}{cc}
+    0 & -4 \\
+    0 & 0
+    \end{array}\right)\\
+    B e^{B t} &=\left(\begin{array}{cc}
+    0 & -4 \\
+    0 & 0
+    \end{array}\right)\left(\begin{array}{cc}
+    1 & -4 t \\
+    0 & 1
+    \end{array}\right) \\
+    &=\left(\begin{array}{cc}
+    0 & -4 \\
+    0 & 0
+    \end{array}\right)
+    \end{aligned}
+    $$
+    
+    \item [22.] \textbf{Q.} If $A^{2}=A$ show that the infinite series produces $e^{A t}=I+\left(e^{t}-1\right) A$. For $A=\left[\begin{array}{ll}1 & 4 \\ 0 & 0\end{array}\right]$ in Problem 21 this gives $e^{A t}=$ \rule{1cm}{0.15mm}.
+    
+    \textbf{A.}
+
+    $$
+    \begin{aligned}
+    e^{A t}&=I+A t+\frac{1}{2}(A t)^{2}+\frac{1}{6}(A t)^{3}+\cdots\\
+    A^{3} &=A^{2} A \\
+    &=A A \\
+    &=A^{2} \\
+    &=A \\
+    A^{4} &=A^{2} A^{2} \\
+    &=A A \\
+    &=A^{2} \\
+    &=A\\
+    e^{A t} &=I+A t+\frac{1}{2} A t^{2}+\frac{1}{6} A t^{3}+\cdots \\
+    &=I+A\left(t+\frac{1}{2} t^{2}+\frac{1}{6} t^{3}+\cdots\right) \\
+    &=I+A\left(e^{t}-1\right)\\
+    e^{A t} &=\left(\begin{array}{ll}
+    1 & 0 \\
+    0 & 1
+    \end{array}\right)+\left(\begin{array}{ll}
+    1 & 4 \\
+    0 & 0
+    \end{array}\right)\left(e^{t}-1\right) \\
+    &=\left(\begin{array}{cc}
+    e^{t} & 4\left(e^{t}-1\right) \\
+    0 & 1
+    \end{array}\right)
+    \end{aligned}
+    $$
+    
+\end{enumerate}
+
+\end{document}

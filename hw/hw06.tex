@@ -1,0 +1,118 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Section 6.4}
+\begin{enumerate}
+    \item [3.] \textbf{Q.} Find the eigenvalues and the unit eigenvectors of
+    $$
+    A=\left[\begin{array}{lll}
+    2 & 2 & 2 \\
+    2 & 0 & 0 \\
+    2 & 0 & 0
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    \item [5.] \textbf{Q.} Find an orthogonal matrix $Q$ that diagonalizes this symmetric matrix:
+    $$
+    A=\left[\begin{array}{rrr}
+    1 & 0 & 2 \\
+    0 & -1 & -2 \\
+    2 & -2 & 0
+    \end{array}\right]
+    $$
+    \textbf{A.}
+    
+    \item [11.] \textbf{Q.} Write $A$ and $B$ in the form $\lambda_{1} x_{1} x_{1}^{\mathrm{T}}+\lambda_{2} x_{2} x_{2}^{\mathrm{T}}$ of the spectral theorem $Q \Lambda Q^{T}$ :
+    $$
+    A=\left[\begin{array}{ll}
+    3 & 1 \\
+    1 & 3
+    \end{array}\right] \quad B=\left[\begin{array}{rr}
+    9 & 12 \\
+    12 & 16
+    \end{array}\right] \quad\left(\text { keep }\left\|x_{1}\right\|=\left\|x_{2}\right\|=1\right)
+    $$
+    \textbf{A.}
+    
+\end{enumerate}
+
+\subsection{Section 6.6}
+\begin{enumerate}
+    \item [1.] \textbf{Q.} If $C=F^{-1} A F$ and also $C=G^{-1} B G$, what matrix $M$ gives $B=M^{-1} A M$ ? Conclusion: If $C$ is similar to $A$ and also to $B$ then \rule{1cm}{0.15mm}.
+    
+    \item [7.]
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} If $x$ is in the nullspace of $A$ show that $M^{-1} x$ is in the nullspace of $M^{-1} A M$. \textbf{A.}
+
+        \item [b.] \textbf{Q.} The nullspaces of $A$ and $M^{-1} A M$ have the same (vectors)(basis)(dimension). \textbf{A.}
+    \end{enumerate}
+    
+\end{enumerate}
+
+\subsection{Section 6.7}
+\begin{enumerate}
+    \item [1.] \textbf{Q.} Find the eigenvalues and unit eigenvectors $v_{1}, v_{2}$ of $A^{\mathrm{T}} A$. Then find $u_{1}=A v_{1} / \sigma_{1}$ : 
+    
+    $$
+    A=\left[\begin{array}{ll}1 & 2 \\ 3 & 6\end{array}\right]  \text{ and } 
+    A^{\mathrm{T}} A=\left[\begin{array}{ll}10 & 20 \\ 20 & 40\end{array}\right] \text{ and }
+    AA^{\mathrm{T}}=\left[\begin{array}{rr}5 & 15 \\ 15 & 45\end{array}\right]
+    $$ 
+    
+    Verify that $\boldsymbol{u}_{1}$ is a unit eigenvector of $A A^{\mathrm{T}}$. Complete the matrices $U, \Sigma, V$.
+    
+    $$
+    \text{SVD } \quad
+    \left[\begin{array}{ll}
+    1 & 2 \\
+    3 & 6
+    \end{array}\right]=\left[\begin{array}{ll}
+    u_{1} & u_{2}
+    \end{array}\right]\left[\begin{array}{ll}
+    \sigma_{1} & \\
+    & 0
+    \end{array}\right]\left[\begin{array}{ll}
+    v_{1} & v_{2}
+    \end{array}\right]^{\mathrm{T}}
+    $$
+    
+    \textbf{A.}
+    
+    \item [2.] \textbf{Q.} Write down orthonormal bases for the four fundamental subspaces of this $A$. \textbf{A.}
+    
+\end{enumerate}
+
+\subsection{Section 7.1}
+\begin{enumerate}
+    \item [3.] (only acef) Which of these transformations are not linear? The input is $v=\left(v_{1}, v_{2}\right)$ :
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $T(\boldsymbol{v})=\left(v_{2}, v_{1}\right)$ \textbf{A.}
+        \item [c.] \textbf{Q.}$T(v)=\left(0, v_{1}\right)$ \textbf{A.}
+        \item [e.] \textbf{Q.} $T(\boldsymbol{v})=v_{1}-v_{2}$ \textbf{A.}
+        \item [f.] \textbf{Q.} $T(\boldsymbol{v})=v_{1} v_{2}$. \textbf{A.}
+    \end{enumerate}
+    
+    \item [5.] \textbf{Q.} Suppose $T(v)=v$ except that $T\left(0, v_{2}\right)=(0,0)$. Show that this transformation satisfies $T(c v)=c T(v)$ but not $T(v+w)=T(v)+T(w)$ \textbf{A.}
+    
+    \item [12.] Suppose a linear $T$ transforms $(1,1)$ to $(2,2)$ and $(2,0)$ to $(0,0)$. Find $T(v)$ :
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} $v=(2,2)$ \textbf{A.}
+        \item [b.] \textbf{Q.} $v=(3,1)$ \textbf{A.}
+        \item [c.] \textbf{Q.} $v=(-1,1)$ \textbf{A.}
+        \item [d.] \textbf{Q.} $v=(a, b)$ \textbf{A.}
+    \end{enumerate}
+    
+\end{enumerate}
+
+\subsection{Section 7.2}
+\begin{enumerate}
+    \item [14.] 
+    \begin{enumerate}
+        \item [a.] \textbf{Q.} What matrix transforms $(1,0)$ into $(2,5)$ and transforms $(0,1)$ to $(1,3)$ ? \textbf{A.}
+        \item [b.] \textbf{Q.} What matrix transforms $(2,5)$ to $(1,0)$ and $(1,3)$ to $(0,1)$ ? \textbf{A.}
+        \item [c.] \textbf{Q.} Why does no matrix transform $(2,6)$ to $(1,0)$ and $(1,3)$ to $(0,1)$ ? \textbf{A.}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
